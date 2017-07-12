@@ -143,6 +143,331 @@
    ],
    "activities":[
       {
+         "_id":"naXFCSFHMuPTLWHne",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"y8e7ciygd4o6bwoWp",
+         "activityType":"moveCard",
+         "listId":"EcWCKZgk37vPKwChj",
+         "cardId":"RaR9vddaewYQ4Sn3i",
+         "createdAt":"2017-07-12T13:11:07.153Z"
+      },
+      {
+         "_id":"FYSBpfk3ect8gLEAN",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"RaR9vddaewYQ4Sn3i",
+         "commentId":"SCzb7oAehA6gBJmQ4",
+         "createdAt":"2017-07-12T13:02:52.376Z"
+      },
+      {
+         "_id":"6LowasnjPMmcHAJHg",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"RaR9vddaewYQ4Sn3i",
+         "commentId":"q5xLJkXvPQYxGWyRH",
+         "createdAt":"2017-07-12T12:57:39.137Z"
+      },
+      {
+         "_id":"cq8WmZoNMuur8GJmp",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"8k8hT8G4ToMbRd5hu",
+         "activityType":"moveCard",
+         "listId":"y8e7ciygd4o6bwoWp",
+         "cardId":"kukbD8Q44TwkxZX9D",
+         "createdAt":"2017-07-11T09:39:35.741Z"
+      },
+      {
+         "_id":"faBxni9rngqRgbKHw",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"8k8hT8G4ToMbRd5hu",
+         "activityType":"moveCard",
+         "listId":"y8e7ciygd4o6bwoWp",
+         "cardId":"RaR9vddaewYQ4Sn3i",
+         "createdAt":"2017-07-11T09:39:32.918Z"
+      },
+      {
+         "_id":"CFYLkBnD6s5NwmpeX",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"8k8hT8G4ToMbRd5hu",
+         "activityType":"moveCard",
+         "listId":"y8e7ciygd4o6bwoWp",
+         "cardId":"xcooQzP47XKRRY7Yv",
+         "createdAt":"2017-07-11T09:39:26.799Z"
+      },
+      {
+         "_id":"JoGSzaYijTQa26nR6",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"xcooQzP47XKRRY7Yv",
+         "commentId":"k5HZXYjp2y2unqiiv",
+         "createdAt":"2017-07-11T09:37:06.503Z"
+      },
+      {
+         "_id":"3F3kMAhCHCFDHm8cM",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"createCard",
+         "listId":"8k8hT8G4ToMbRd5hu",
+         "cardId":"xcooQzP47XKRRY7Yv",
+         "createdAt":"2017-07-11T09:36:57.178Z"
+      },
+      {
+         "_id":"8vbYMQauAFdsKWEmE",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"createCard",
+         "listId":"8k8hT8G4ToMbRd5hu",
+         "cardId":"kukbD8Q44TwkxZX9D",
+         "createdAt":"2017-07-11T09:34:47.399Z"
+      },
+      {
+         "_id":"W45cmwNXyyFeRb6F7",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"RaR9vddaewYQ4Sn3i",
+         "commentId":"TCJFEzWgcjThrMvgM",
+         "createdAt":"2017-07-11T09:31:46.689Z"
+      },
+      {
+         "_id":"KvH3x7BMRt3ahNzc8",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"RaR9vddaewYQ4Sn3i",
+         "commentId":"a5B2qt6K9r6HpkTzB",
+         "createdAt":"2017-07-11T09:29:34.858Z"
+      },
+      {
+         "_id":"MfFm4rtcv5tTeex5p",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"createCard",
+         "listId":"8k8hT8G4ToMbRd5hu",
+         "cardId":"RaR9vddaewYQ4Sn3i",
+         "createdAt":"2017-07-11T09:29:25.901Z"
+      },
+      {
+         "_id":"rHN6aSmycdv8ojDEA",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"y8e7ciygd4o6bwoWp",
+         "activityType":"moveCard",
+         "listId":"kq5Q5bEFBXqGPMY36",
+         "cardId":"XCBBwHYFSvF7XTu8j",
+         "createdAt":"2017-07-10T16:52:14.270Z"
+      },
+      {
+         "_id":"rAdQGNecFWwKEAp9E",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"XCBBwHYFSvF7XTu8j",
+         "commentId":"5WcrKkmmYpWmPrQYj",
+         "createdAt":"2017-07-10T16:52:08.016Z"
+      },
+      {
+         "_id":"fsRvsf3Er76m3uMXB",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"XCBBwHYFSvF7XTu8j",
+         "commentId":"fiCu9SonNrmrP4z4Q",
+         "createdAt":"2017-07-10T16:45:44.224Z"
+      },
+      {
+         "_id":"5QG7zkBGvriJRLfYv",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"XCBBwHYFSvF7XTu8j",
+         "commentId":"QSt2goHhxXbEyZWYE",
+         "createdAt":"2017-07-10T16:35:23.139Z"
+      },
+      {
+         "_id":"67wfJYkrdYPaBQSaP",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"y8e7ciygd4o6bwoWp",
+         "activityType":"moveCard",
+         "listId":"2pTToTE9N5GqrFZyC",
+         "cardId":"eLCL8Yk6FbfjLhH2C",
+         "createdAt":"2017-07-10T14:32:41.628Z"
+      },
+      {
+         "_id":"3EJ3mRKrakcqS8bQM",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"eLCL8Yk6FbfjLhH2C",
+         "commentId":"shT9q6yJ9cv29nu3r",
+         "createdAt":"2017-07-10T14:32:33.003Z"
+      },
+      {
+         "_id":"6PoKEHwjH8TMHchwM",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"y8e7ciygd4o6bwoWp",
+         "activityType":"moveCard",
+         "listId":"2pTToTE9N5GqrFZyC",
+         "cardId":"mAvEnHcZ4NeRt8pNs",
+         "createdAt":"2017-07-10T11:04:57.087Z"
+      },
+      {
+         "_id":"szmruZfek9Pf4cv4c",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"mAvEnHcZ4NeRt8pNs",
+         "commentId":"7gtEFKns2TTur4HGG",
+         "createdAt":"2017-07-10T11:04:47.808Z"
+      },
+      {
+         "_id":"rX52PcZ5wXW6mSyoA",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"y8e7ciygd4o6bwoWp",
+         "activityType":"moveCard",
+         "listId":"2pTToTE9N5GqrFZyC",
+         "cardId":"KxxNw3NBYFtD3aEtC",
+         "createdAt":"2017-07-10T10:29:41.524Z"
+      },
+      {
+         "_id":"Hb2bSWdksgTJtoFFb",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"KxxNw3NBYFtD3aEtC",
+         "commentId":"w2zsc7iDkdZaSqbrg",
+         "createdAt":"2017-07-10T10:14:20.279Z"
+      },
+      {
+         "_id":"r2BfdHbXSez6YydiP",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"TQ8Nq2cdWn7ox7edi",
+         "activityType":"moveCard",
+         "listId":"y8e7ciygd4o6bwoWp",
+         "cardId":"XCBBwHYFSvF7XTu8j",
+         "createdAt":"2017-07-10T09:10:58.803Z"
+      },
+      {
+         "_id":"o7u7yR3Z5Ytx58DbF",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"y8e7ciygd4o6bwoWp",
+         "activityType":"moveCard",
+         "listId":"EcWCKZgk37vPKwChj",
+         "cardId":"EnpouBJH6wi48cS8j",
+         "createdAt":"2017-07-09T16:51:52.457Z"
+      },
+      {
+         "_id":"5DjsaEPBCvjpMEMD6",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"EnpouBJH6wi48cS8j",
+         "commentId":"asfP4MAWXJtfLprSc",
+         "createdAt":"2017-07-09T16:51:32.210Z"
+      },
+      {
+         "_id":"4zRDDrJKAozpjov4B",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"EnpouBJH6wi48cS8j",
+         "commentId":"EgY9aPeTwT88zcx6N",
+         "createdAt":"2017-07-09T16:49:43.365Z"
+      },
+      {
+         "_id":"mzzcBsmzJRRQe2w4g",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"DMhGwrkNGAqzMEiy5",
+         "commentId":"9fAF4dASCXrtyShiM",
+         "createdAt":"2017-07-09T16:45:24.032Z"
+      },
+      {
+         "_id":"Wn52F2LHjwLwGrbYx",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"createCard",
+         "listId":"ePoinnsbFuebsEJGi",
+         "cardId":"DMhGwrkNGAqzMEiy5",
+         "createdAt":"2017-07-09T16:45:14.781Z"
+      },
+      {
+         "_id":"W8kTGeHBh2CQmKkuk",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"8k8hT8G4ToMbRd5hu",
+         "activityType":"moveCard",
+         "listId":"y8e7ciygd4o6bwoWp",
+         "cardId":"mAvEnHcZ4NeRt8pNs",
+         "createdAt":"2017-07-09T16:23:56.355Z"
+      },
+      {
+         "_id":"HviRjvJTtTifE6BRK",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"Rc6iQqF2RHz4dumMy",
+         "commentId":"pxQB8GjPjYMdiHktj",
+         "createdAt":"2017-07-09T14:00:59.413Z"
+      },
+      {
+         "_id":"7qBn9jW3XZDnhGTdv",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"createCard",
+         "listId":"SLwrL7RW3k93PqZPx",
+         "cardId":"Rc6iQqF2RHz4dumMy",
+         "createdAt":"2017-07-09T13:59:30.214Z"
+      },
+      {
+         "_id":"N3kLrwfwe9pDanqye",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"ePoinnsbFuebsEJGi",
+         "activityType":"moveCard",
+         "listId":"y8e7ciygd4o6bwoWp",
+         "cardId":"EnpouBJH6wi48cS8j",
+         "createdAt":"2017-07-09T13:19:27.671Z"
+      },
+      {
+         "_id":"SWzH7CKdARKsbLeDx",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addChecklist",
+         "cardId":"TPycRt3dbJkk8gLqG",
+         "checklistId":"9rdajzPYBgDC4YHnF",
+         "createdAt":"2017-07-06T14:41:11.257Z"
+      },
+      {
+         "_id":"KRFxRTGnfPT6rzKMo",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addChecklist",
+         "cardId":"TPycRt3dbJkk8gLqG",
+         "checklistId":"eH7oDQDELmieEE3qH",
+         "createdAt":"2017-07-06T14:41:05.536Z"
+      },
+      {
+         "_id":"xGAr5cPTsCiGAKfvS",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addChecklist",
+         "cardId":"TPycRt3dbJkk8gLqG",
+         "checklistId":"TrpgNZQWefW9hxW6h",
+         "createdAt":"2017-07-06T14:41:00.900Z"
+      },
+      {
+         "_id":"dgmGsHrf2awRPCPG9",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addChecklist",
+         "cardId":"TPycRt3dbJkk8gLqG",
+         "checklistId":"KPvnQ9ZsqvDm5auiM",
+         "createdAt":"2017-07-06T14:40:50.692Z"
+      },
+      {
+         "_id":"LZaWyhSTEhrfro3td",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"8k8hT8G4ToMbRd5hu",
+         "activityType":"moveCard",
+         "listId":"y8e7ciygd4o6bwoWp",
+         "cardId":"eLCL8Yk6FbfjLhH2C",
+         "createdAt":"2017-07-06T10:11:37.738Z"
+      },
+      {
+         "_id":"ycmsKvgDz9hg2WZMd",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"eLCL8Yk6FbfjLhH2C",
+         "commentId":"qexBeRcGKLqXMLTpv",
+         "createdAt":"2017-07-06T09:02:41.560Z"
+      },
+      {
+         "_id":"y9CQdpi2schNajARx",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"createCard",
+         "listId":"8k8hT8G4ToMbRd5hu",
+         "cardId":"eLCL8Yk6FbfjLhH2C",
+         "createdAt":"2017-07-06T09:02:33.790Z"
+      },
+      {
          "_id":"z54h6a9yJg4GN3KFX",
          "userId":"uBWXBv7eE9Yu63FXf",
          "memberId":"uBWXBv7eE9Yu63FXf",
@@ -157,14 +482,6 @@
          "activityType":"joinMember",
          "cardId":"TPycRt3dbJkk8gLqG",
          "createdAt":"2017-07-05T14:43:22.934Z"
-      },
-      {
-         "_id":"jJw5yZRRcPiqC6Qjy",
-         "userId":"uBWXBv7eE9Yu63FXf",
-         "activityType":"addChecklist",
-         "cardId":"TPycRt3dbJkk8gLqG",
-         "checklistId":"6eBkgTKh3edMQTmof",
-         "createdAt":"2017-07-05T12:02:07.897Z"
       },
       {
          "_id":"p7rKawp9mhroQZRjF",
@@ -1966,13 +2283,15 @@
 
          ],
          "labelIds":[
-
+            "LBiiEz",
+            "PFfqCM",
+            "bXDr8y"
          ],
-         "listId":"ePoinnsbFuebsEJGi",
-         "sort":2,
+         "listId":"EcWCKZgk37vPKwChj",
+         "sort":27,
          "archived":false,
          "createdAt":"2017-06-21T15:45:11.803Z",
-         "dateLastActivity":"2017-06-21T15:45:54.924Z",
+         "dateLastActivity":"2017-07-09T16:51:55.209Z",
          "userId":"uBWXBv7eE9Yu63FXf"
       },
       {
@@ -2308,11 +2627,11 @@
          "labelIds":[
             "hmLPPr"
          ],
-         "listId":"8k8hT8G4ToMbRd5hu",
-         "sort":6,
+         "listId":"2pTToTE9N5GqrFZyC",
+         "sort":22.25,
          "archived":false,
          "createdAt":"2017-06-28T08:54:24.028Z",
-         "dateLastActivity":"2017-06-28T09:08:33.479Z",
+         "dateLastActivity":"2017-07-10T14:32:43.777Z",
          "userId":"uBWXBv7eE9Yu63FXf"
       },
       {
@@ -2396,6 +2715,22 @@
          "archived":false,
          "createdAt":"2017-06-29T15:14:40.499Z",
          "dateLastActivity":"2017-07-04T10:47:47.329Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"Rc6iQqF2RHz4dumMy",
+         "title":"Tree",
+         "members":[
+
+         ],
+         "labelIds":[
+
+         ],
+         "listId":"SLwrL7RW3k93PqZPx",
+         "sort":3,
+         "archived":false,
+         "createdAt":"2017-07-09T13:59:30.185Z",
+         "dateLastActivity":"2017-07-09T13:59:30.186Z",
          "userId":"uBWXBv7eE9Yu63FXf"
       },
       {
@@ -2573,11 +2908,11 @@
             "BecLjk",
             "scXf6p"
          ],
-         "listId":"y8e7ciygd4o6bwoWp",
-         "sort":17,
+         "listId":"2pTToTE9N5GqrFZyC",
+         "sort":22,
          "archived":false,
          "createdAt":"2017-07-04T19:07:14.598Z",
-         "dateLastActivity":"2017-07-04T19:07:41.735Z",
+         "dateLastActivity":"2017-07-10T10:29:41.505Z",
          "userId":"uBWXBv7eE9Yu63FXf"
       },
       {
@@ -2653,11 +2988,11 @@
          "labelIds":[
 
          ],
-         "listId":"TQ8Nq2cdWn7ox7edi",
-         "sort":9,
+         "listId":"kq5Q5bEFBXqGPMY36",
+         "sort":5,
          "archived":false,
          "createdAt":"2017-07-05T12:01:13.110Z",
-         "dateLastActivity":"2017-07-05T12:01:13.111Z",
+         "dateLastActivity":"2017-07-10T16:52:14.247Z",
          "userId":"uBWXBv7eE9Yu63FXf"
       },
       {
@@ -2674,6 +3009,88 @@
          "archived":false,
          "createdAt":"2017-07-03T10:00:20.147Z",
          "dateLastActivity":"2017-07-05T14:43:33.541Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"eLCL8Yk6FbfjLhH2C",
+         "title":"Path Planning for Natural Phenomena",
+         "members":[
+
+         ],
+         "labelIds":[
+            "scXf6p",
+            "BecLjk",
+            "teFfoz"
+         ],
+         "listId":"2pTToTE9N5GqrFZyC",
+         "sort":22.5,
+         "archived":false,
+         "createdAt":"2017-07-06T09:02:33.758Z",
+         "dateLastActivity":"2017-07-10T14:32:41.612Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"DMhGwrkNGAqzMEiy5",
+         "title":"LESSON 7 | TERRAIN",
+         "members":[
+
+         ],
+         "labelIds":[
+
+         ],
+         "listId":"ePoinnsbFuebsEJGi",
+         "sort":14,
+         "archived":false,
+         "createdAt":"2017-07-09T16:45:14.761Z",
+         "dateLastActivity":"2017-07-09T16:45:14.761Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"RaR9vddaewYQ4Sn3i",
+         "title":"TreeSketch:\nInteractive Procedural Modeling of Trees on a Tablet",
+         "members":[
+
+         ],
+         "labelIds":[
+
+         ],
+         "listId":"EcWCKZgk37vPKwChj",
+         "sort":23.5,
+         "archived":false,
+         "createdAt":"2017-07-11T09:29:25.857Z",
+         "dateLastActivity":"2017-07-12T13:11:07.142Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"kukbD8Q44TwkxZX9D",
+         "title":"New Modeling Method for Trees",
+         "members":[
+
+         ],
+         "labelIds":[
+
+         ],
+         "listId":"y8e7ciygd4o6bwoWp",
+         "sort":21,
+         "archived":false,
+         "createdAt":"2017-07-11T09:34:47.389Z",
+         "dateLastActivity":"2017-07-11T09:39:35.733Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"xcooQzP47XKRRY7Yv",
+         "title":"RODKAEW Y., CHONGSTITVATANA P., SIRIPANT\nS., LURSINSAP C.: Particle systems for plant\nmodeling.",
+         "members":[
+
+         ],
+         "labelIds":[
+
+         ],
+         "listId":"y8e7ciygd4o6bwoWp",
+         "sort":19,
+         "archived":false,
+         "createdAt":"2017-07-11T09:36:57.168Z",
+         "dateLastActivity":"2017-07-11T09:39:26.783Z",
          "userId":"uBWXBv7eE9Yu63FXf"
       }
    ],
@@ -3299,6 +3716,118 @@
          "text":"http://forums.odforce.net/topic/20959-procedural-tree-modelling-branches/",
          "cardId":"XCBBwHYFSvF7XTu8j",
          "createdAt":"2017-07-05T12:01:24.877Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"qexBeRcGKLqXMLTpv",
+         "text":"https://nccastaff.bournemouth.ac.uk/jmacey/MastersProjects/MSc16/04/index.html",
+         "cardId":"eLCL8Yk6FbfjLhH2C",
+         "createdAt":"2017-07-06T09:02:41.539Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"pxQB8GjPjYMdiHktj",
+         "text":"idea: you could create and attribute pscale and an attribute width.\nuse pscale when the camera is close to the tree and skin the curves with actual geometry. when the camera is distant polyreduce to lower quality, far away just render lines with width attribute (copy from pscale)",
+         "cardId":"Rc6iQqF2RHz4dumMy",
+         "createdAt":"2017-07-09T14:00:59.396Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"9fAF4dASCXrtyShiM",
+         "text":"https://www.sidefx.com/tutorials/lesson-7-terrain/",
+         "cardId":"DMhGwrkNGAqzMEiy5",
+         "createdAt":"2017-07-09T16:45:24.026Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"EgY9aPeTwT88zcx6N",
+         "text":"__GRASS__\n* curves have an attribute __width__ to define the thickness at rendertime\n* by default curves always face the camera\n* when copying, enable the N in the 2nd tab, \"enable attributes\"\n* leaf shader already set up in houdini\n* double side shader",
+         "cardId":"EnpouBJH6wi48cS8j",
+         "createdAt":"2017-07-09T16:49:43.341Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"asfP4MAWXJtfLprSc",
+         "text":"__VINES__\n* don't use alpha and texture, slow down rendertime\n* use trace SOP from alpha map to create geometry\n* carve has an \"extract 3D curve\" toggle\n* sweep has a twist toggle\n* polywire with a cog to __use L-System settings__\n* UV quickshade to test",
+         "cardId":"EnpouBJH6wi48cS8j",
+         "createdAt":"2017-07-09T16:51:32.197Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"w2zsc7iDkdZaSqbrg",
+         "text":"__ALGORITHM__\n* N attraction points, 1 or more tree nodes\n* __S(v)__ = set of attraction points that influence a __v__ node of the tree: if _distance(_ __n, v__ _) <_ __di__ -> __n__ belongs to __S(v)__ where\n    - __n__ = attraction point\n    - __di__ = radius of influence\n* if __S(v)__ != empty\n    - create __v'__\n    - attach __v'__ to __v__ with a segment __(v, v')__\n    - __D__ = distance of __v'__ to __v__\n    - direction = average of normalized vectors toward all sources n of S(v)\n    - optionally add tropism with __g__ vector\n* for each n in S(v) if exists at least one v so that __distance(n, v) < dk__, delete n, where __dk__ = kill radius",
+         "cardId":"KxxNw3NBYFtD3aEtC",
+         "createdAt":"2017-07-10T10:14:20.251Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"7gtEFKns2TTur4HGG",
+         "text":"__INTRODUCTION__\n* need for scattering primitives across large pieces of geometry\n* XGen -. combination of different gen patterns & primitive types\n\n__DESIGN__\n* 4 basic modules: _primitive, generator, renderer, patch_ combined to form a __description__\n* __C++__ backend, __Maya__ frontend\n\n__GROOMING__\n* interactive grooming using manipulation guides\n* __reference object__ to set up grooming & apply to model\n* __expression system__ with attributes as length, width, bend controlled by custom MEL scripts or procedural functions",
+         "cardId":"mAvEnHcZ4NeRt8pNs",
+         "createdAt":"2017-07-10T11:04:47.780Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"shT9q6yJ9cv29nu3r",
+         "text":"* Dijkstra algorithm to find a path in a graph\n* DLA + L-system as ways to produce natural patterns\n* weight via image processing",
+         "cardId":"eLCL8Yk6FbfjLhH2C",
+         "createdAt":"2017-07-10T14:32:32.974Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"QSt2goHhxXbEyZWYE",
+         "text":"__RECURSIVE__\n* __DOP network__:\n    - location = gives birth to a single particle, moves with initial velocity\n    - group = for particles with life > treshhold\n    - split = \n        *  activates every 15 frames\n        * works on groups __parts__ & __splits__\n        * creates particle in a group __splits__\n* __solver__ applies frev frame to current one\n* __add__ generates lines between points, removes unused points\n* __vop sop__ for noise",
+         "cardId":"XCBBwHYFSvF7XTu8j",
+         "createdAt":"2017-07-10T16:35:23.120Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"fiCu9SonNrmrP4z4Q",
+         "text":"__VEX TREE V1__\n* trunk as line + group for its points\n* __VOP SOP__\n    - add current P to a noised one\n    - simple noise with amplitude multiplier\n    - multiplied with __f@ptnum/(f2numpt - 1)__ to get where we are on the curve\n    - fed into ramp for user control\n* __wrangle__ for branches runs over points, it's for every point of the trunk geometry\n    - __ch(\"start\")__ & ch(\"end\")__for range of points for branches to grow from\n    -  density based on __rand(@ptnum) < ch(\"rand\")__\n    - save __@P__, __angle__, __length__\n    - save __x = length * cos(angle)__ __y = length * sin(angle)__\n    - save __vector b = set(x, ch(\"gravity\"), z)\n    - for loop on __i__\n        * create a vector __c = @P + (b * i)\n        * add elevation vector\n        * add noise\n        * create branch\n* __group__\n* append same wrangle over for new generation",
+         "cardId":"XCBBwHYFSvF7XTu8j",
+         "createdAt":"2017-07-10T16:45:44.209Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"5WcrKkmmYpWmPrQYj",
+         "text":"__VDB TREE CLP__\n* __UV quickshade__ to see shading results\n* __subdivide__ make it highpoly\n* __vdbfrompolygons__ converts input geo to VDB\n* __vdbsmoothsdf__ high density (?)\n* __vdbanalysis__ find closest points\n* __vdbvectorsplit__ to remove inner volume\n* __VOPS int__ checks file sampled with a treshhold\n* __VOP__ both filename and global used as inputs for 3 __volumesample__ blocks, then plugged in a __float to vec__ to the new position",
+         "cardId":"XCBBwHYFSvF7XTu8j",
+         "createdAt":"2017-07-10T16:52:07.985Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"a5B2qt6K9r6HpkTzB",
+         "text":"http://algorithmicbotany.org/papers/TreeSketch.SBM2012.pdf",
+         "cardId":"RaR9vddaewYQ4Sn3i",
+         "createdAt":"2017-07-11T09:29:34.850Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"TCJFEzWgcjThrMvgM",
+         "text":"http://dl.acm.org/citation.cfm?id=2331083&picked=formats&CFID=691671188&CFTOKEN=59751538",
+         "cardId":"RaR9vddaewYQ4Sn3i",
+         "createdAt":"2017-07-11T09:31:46.682Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"k5HZXYjp2y2unqiiv",
+         "text":"https://www.researchgate.net/publication/266472675_Particle_Systems_for_Plant_Modeling",
+         "cardId":"xcooQzP47XKRRY7Yv",
+         "createdAt":"2017-07-11T09:37:06.496Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"q5xLJkXvPQYxGWyRH",
+         "text":"__BACKGROUND__\n* __recursive & hierarchical models__:\n    - generative algorithm:\n        * repeat locally defined ramified geometry over cosecutive orders of branching hierarchy\n        * hard for modeler to understand generative process\n        * then introduced modelling languages for generative algorithms\n        * specification of bounding box and pruning of outsider branches\n    - control over silhouette:\n        * top down algos -> decompone plants axes into smaller segments (__internodes__)\n        * silhouette is given by the reach of 1st order branches\n    - limb shape: to move from 2D to 3D volumes\n    - branch proliferation: \"\n* __self-organizing trees__\n    - generative algos:\n        * harmonious distribution of branches densities not achieved automatically\n        * shape determined by either light or space\n    - tree form: silhouette easily specified by constraining the space within which trees grow",
+         "cardId":"RaR9vddaewYQ4Sn3i",
+         "createdAt":"2017-07-12T12:57:39.116Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"SCzb7oAehA6gBJmQ4",
+         "text":"__TREE GENERATION__\n* __overview__:\n    - competing for both space and light at the same time\n    - seedling -> branches from buds along their supporting axes\n* __bushing & sketching__:\n    - space for growth with marker points\n    - marker near buds to simulate natural growth\n    - bush continually generates markers (uniform distribution) in a sphere\n* __competing for space__:\n    - branches grow in the direction determined by the distribution of buds on their supporting axes\n    - axes modified by gravity\n    - bud volume perception with angle and radius __r + d__\n    - place markers __M__\n    - remove markers from M if:\n        * m in the occupacy zone of a bud\n        * m age is too old\n        * m still there after tree is done growing\n    - remaining markers: buds compete for them\n        * m associated with closest bud if m is in its sphere of influence\n        * m alone remains there for next iteration\n    - all buds associated to at least one m are _enabled_ which means they will produce a shoot if their vigour > treshhold\n* __shoot growth__: evaluates vigor for the bud __(see notes for formula)__\n\n* __shedding__: controlling the density of the crown and self-pruning of branches in the lower part of the trunk. Shed happens when the vigor ration < treshhold Th\n* __gravimorphism__: is the _b_ factor in ___Q = bL^k___ where __b = cos^2(tau) + dsin^2(tau)__ and __d__ is the distance between branch axis and ellipse\n* __gravitrophism__:  rest position for branches subjected to forces can be up, plain or down",
+         "cardId":"RaR9vddaewYQ4Sn3i",
+         "createdAt":"2017-07-12T13:02:52.367Z",
          "userId":"uBWXBv7eE9Yu63FXf"
       }
    ],
