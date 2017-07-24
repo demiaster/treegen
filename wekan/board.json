@@ -159,6 +159,192 @@
    ],
    "activities":[
       {
+         "_id":"4ekWw6ecFGq7LN8iy",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"y8e7ciygd4o6bwoWp",
+         "activityType":"moveCard",
+         "listId":"2pTToTE9N5GqrFZyC",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "createdAt":"2017-07-24T20:29:56.437Z"
+      },
+      {
+         "_id":"vD26p5dDFnMDskha5",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "commentId":"rpiCzxihQarFJmsjF",
+         "createdAt":"2017-07-24T20:29:45.597Z"
+      },
+      {
+         "_id":"E55Mu7vHxzJisi7Ef",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "commentId":"x4m28dcYpNnSCYDBz",
+         "createdAt":"2017-07-24T20:29:02.433Z"
+      },
+      {
+         "_id":"MZBqBZ7pRy7BmNvjD",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "commentId":"Q3EPJKT98aszej5vQ",
+         "createdAt":"2017-07-24T19:42:25.819Z"
+      },
+      {
+         "_id":"24gpTuYdBLZ6ymRcu",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "commentId":"rni7GD4gPHY9XfMEZ",
+         "createdAt":"2017-07-24T19:32:48.397Z"
+      },
+      {
+         "_id":"nJ7NKhBeiPi2HkMCA",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "commentId":"TouJ3YNipyss7Q3Mx",
+         "createdAt":"2017-07-24T19:28:53.597Z"
+      },
+      {
+         "_id":"ydE2TDJB7PFJEGjKK",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "commentId":"yTWmFYzCrtSMSqvdk",
+         "createdAt":"2017-07-24T15:24:10.046Z"
+      },
+      {
+         "_id":"7XZtfGiCvc7jTpuKJ",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"xcooQzP47XKRRY7Yv",
+         "commentId":"5kWezXKTJFEMizeN9",
+         "createdAt":"2017-07-24T15:06:29.536Z"
+      },
+      {
+         "_id":"QaPR7wwEGo59Nfcwi",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"kukbD8Q44TwkxZX9D",
+         "commentId":"JxtRkE6qpDTpCjXqh",
+         "createdAt":"2017-07-24T14:58:46.097Z"
+      },
+      {
+         "_id":"uwDciLNNZmnvNRsHf",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"eLCL8Yk6FbfjLhH2C",
+         "commentId":"dn69Kgy8n45Kxc2hh",
+         "createdAt":"2017-07-24T14:51:57.107Z"
+      },
+      {
+         "_id":"cxAJ3WAG4DPfTpjrS",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"KxxNw3NBYFtD3aEtC",
+         "commentId":"rxv8dT9wkwQwesFF4",
+         "createdAt":"2017-07-24T14:49:00.123Z"
+      },
+      {
+         "_id":"6AD6fwTGjcr2DBEnv",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"oNhGtjjeb6WMSjPuD",
+         "commentId":"q5RMzh68iQeYwrmcC",
+         "createdAt":"2017-07-24T14:43:01.193Z"
+      },
+      {
+         "_id":"Fv2Nhs4duKRLm7hdg",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"R5QMi6xzmXaBF5m3E",
+         "commentId":"HvLQZyndyHMPTywJv",
+         "createdAt":"2017-07-24T14:34:25.033Z"
+      },
+      {
+         "_id":"4rLQL6cNaXsonYq77",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"2WwGEtkMrjRKefADv",
+         "commentId":"2jinkhvE97TyWTmE5",
+         "createdAt":"2017-07-24T14:32:49.812Z"
+      },
+      {
+         "_id":"ipvhnLGd43hn7zPvA",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"x2Kq4v8qJKznTRAnd",
+         "commentId":"ysu3Lf23o9jEttDmc",
+         "createdAt":"2017-07-24T14:30:47.215Z"
+      },
+      {
+         "_id":"G2C2iZ6wMSJpEWorG",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"STJt2FDxb472eMkuo",
+         "commentId":"NsAfgzZPo6pTWwNSz",
+         "createdAt":"2017-07-24T14:24:10.159Z"
+      },
+      {
+         "_id":"soiMDHopZgTM7wH8n",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"createCard",
+         "listId":"pJgjjEwsq7fX9ahTH",
+         "cardId":"D2CkAo5M6PdwqW5xJ",
+         "createdAt":"2017-07-24T14:21:42.520Z"
+      },
+      {
+         "_id":"Wi8mWuzcMeCyQ8dgP",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"createCard",
+         "listId":"pJgjjEwsq7fX9ahTH",
+         "cardId":"M3vfBeFMtfJgY7vSu",
+         "createdAt":"2017-07-24T14:21:37.552Z"
+      },
+      {
+         "_id":"nixLurgTZzdTwQWaD",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"2FSfmntSWfPK53H8k",
+         "commentId":"9KtNby8L56Ehiz5yg",
+         "createdAt":"2017-07-24T14:03:46.181Z"
+      },
+      {
+         "_id":"fwQQ7uFQvq4ZCjiJa",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"TANqy7cwD4eMZZupS",
+         "commentId":"gRnCz8NFyraYxhuTc",
+         "createdAt":"2017-07-24T14:01:43.852Z"
+      },
+      {
+         "_id":"vAxzu3WwWHvAfoJyc",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"jzXhwv4i69Kk5mpDW",
+         "commentId":"quGFSMzpDh9zvmAJf",
+         "createdAt":"2017-07-24T13:57:56.614Z"
+      },
+      {
+         "_id":"nKKJ9zrPdhtzomWnb",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "activityType":"addComment",
+         "cardId":"n9AW5SNdAsRdPPjnu",
+         "commentId":"6fdwCZ82XGAkXrWXW",
+         "createdAt":"2017-07-24T13:33:59.905Z"
+      },
+      {
+         "_id":"5zcpjcNmHB6kn5W93",
+         "userId":"uBWXBv7eE9Yu63FXf",
+         "oldListId":"8k8hT8G4ToMbRd5hu",
+         "activityType":"moveCard",
+         "listId":"y8e7ciygd4o6bwoWp",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "createdAt":"2017-07-21T07:13:09.102Z"
+      },
+      {
          "_id":"DdwTyJJeYsXKpbRgX",
          "userId":"uBWXBv7eE9Yu63FXf",
          "oldListId":"y8e7ciygd4o6bwoWp",
@@ -2508,7 +2694,7 @@
       },
       {
          "_id":"n9AW5SNdAsRdPPjnu",
-         "title":"Power Up Your Houdini Skills",
+         "title":"Power Up Your Houdini Skills with SideFX",
          "members":[
 
          ],
@@ -2521,7 +2707,7 @@
          "sort":13,
          "archived":false,
          "createdAt":"2017-06-21T13:46:43.625Z",
-         "dateLastActivity":"2017-06-30T09:27:57.336Z",
+         "dateLastActivity":"2017-07-24T13:34:08.425Z",
          "userId":"uBWXBv7eE9Yu63FXf"
       },
       {
@@ -2860,11 +3046,11 @@
             "scXf6p",
             "bXDr8y"
          ],
-         "listId":"8k8hT8G4ToMbRd5hu",
-         "sort":3,
+         "listId":"2pTToTE9N5GqrFZyC",
+         "sort":25.5,
          "archived":false,
          "createdAt":"2017-06-28T08:50:04.440Z",
-         "dateLastActivity":"2017-06-28T09:08:06.541Z",
+         "dateLastActivity":"2017-07-24T20:29:59.905Z",
          "userId":"uBWXBv7eE9Yu63FXf"
       },
       {
@@ -3454,6 +3640,38 @@
          "archived":false,
          "createdAt":"2017-07-18T16:07:05.075Z",
          "dateLastActivity":"2017-07-18T16:15:27.804Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"M3vfBeFMtfJgY7vSu",
+         "title":"branching backwards",
+         "members":[
+
+         ],
+         "labelIds":[
+
+         ],
+         "listId":"pJgjjEwsq7fX9ahTH",
+         "sort":0,
+         "archived":false,
+         "createdAt":"2017-07-24T14:21:37.531Z",
+         "dateLastActivity":"2017-07-24T14:21:37.531Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"D2CkAo5M6PdwqW5xJ",
+         "title":"scale",
+         "members":[
+
+         ],
+         "labelIds":[
+
+         ],
+         "listId":"pJgjjEwsq7fX9ahTH",
+         "sort":1,
+         "archived":false,
+         "createdAt":"2017-07-24T14:21:42.514Z",
+         "dateLastActivity":"2017-07-24T14:21:42.514Z",
          "userId":"uBWXBv7eE9Yu63FXf"
       }
    ],
@@ -4303,6 +4521,317 @@
          "text":"__CONCLUSIONS__\n\nfew controls, good realistic results",
          "cardId":"xcooQzP47XKRRY7Yv",
          "createdAt":"2017-07-20T14:36:54.645Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"6fdwCZ82XGAkXrWXW",
+         "text":"__REFERENCE__\nPower Up Your Houdini Skills with SideFX, 2017. Making the Last Bastion. _3D World Magazine_, 20 June 2017, Available from: https://issuu.com/futurepublishing/docs/houdini_issuu [Accessed 24 July 2017].",
+         "cardId":"n9AW5SNdAsRdPPjnu",
+         "createdAt":"2017-07-24T13:33:59.889Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"quGFSMzpDh9zvmAJf",
+         "text":"__REFERENCE__\n\nSchwank, A., James, C. J., Milciotta, T., 2016. The Trees of The Jungle Book. _SIGGRAPH ’16 Talks_, 24-28 July 2016. Anaheim, CA: ACM",
+         "cardId":"jzXhwv4i69Kk5mpDW",
+         "createdAt":"2017-07-24T13:57:56.585Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"gRnCz8NFyraYxhuTc",
+         "text":"__REFERENCE__\n\nKeim, H., Simmons, M., Teece, D., Reisweber, J., Drakeley, S., 2016. Art-Directable Procedural Vegetation in Disney’s Zootopia. _SIGGRAPH ’16_, 24-28 July 2016. Anaheim, CA: ACM",
+         "cardId":"TANqy7cwD4eMZZupS",
+         "createdAt":"2017-07-24T14:01:43.838Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"9KtNby8L56Ehiz5yg",
+         "text":"__REFERENCE__\nBasalla, D., 2005. _Forest Generation with Maya and Renderman_. Thesis (MSc). Bournemouth University.",
+         "cardId":"2FSfmntSWfPK53H8k",
+         "createdAt":"2017-07-24T14:03:46.164Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"NsAfgzZPo6pTWwNSz",
+         "text":"__REFERENCE__\nSideFX, 2017. _Smurfs: The Lost Village_. sidefx.com, SideFx. Available from: https://www.sidefx.com/community/sony-imageworks-smurfs-the-lost-village/ [Accessed 24 July 2017].",
+         "cardId":"STJt2FDxb472eMkuo",
+         "createdAt":"2017-07-24T14:24:10.141Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"ysu3Lf23o9jEttDmc",
+         "text":"__REFERENCES__\n\nShek, A., Lacewell, D., Selle, A., Teece, D., Thompson, T., 2010. Art-directing Disney's Tangled procedural trees. _SIGGRAPH 2010 Talks_, 26 - 30 July Los Angeles. New York: ACM, 53.",
+         "cardId":"x2Kq4v8qJKznTRAnd",
+         "createdAt":"2017-07-24T14:30:47.187Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"2jinkhvE97TyWTmE5",
+         "text":"__REFERENCE__\nMelson, T., 2016. Can’t See The Jungle For The Trees. _SIGGRAPH ’16 Talks_, 24 - 28 July Anaheim, CA. New York: ACM",
+         "cardId":"2WwGEtkMrjRKefADv",
+         "createdAt":"2017-07-24T14:32:49.784Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"HvLQZyndyHMPTywJv",
+         "text":"__REFERENCE__\nSoares, O., Moser, M., Aalbers, F., 2016. Vegetation Choreography in The Good Dinosaur. _SIGGRAPH ’16 Talks_, 24 - 28 July Anaheim, CA. New York: ACM",
+         "cardId":"R5QMi6xzmXaBF5m3E",
+         "createdAt":"2017-07-24T14:34:25.024Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"q5RMzh68iQeYwrmcC",
+         "text":"__REFERENCE__\nCieri, S., Muraca, A., Schwank, A., Preti, F., Micilotta, T., 2016. The Jungle Book: Art-Directing Procedural Scatters in Rich Environments. _DigiPro ’16_, 23 - 23 July Anaheim, CA. New York: ACM, 57-59.",
+         "cardId":"oNhGtjjeb6WMSjPuD",
+         "createdAt":"2017-07-24T14:43:01.163Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"rxv8dT9wkwQwesFF4",
+         "text":"__REFERENCE__\nRunions, A., Lane, B., Prusinkiewicz, P., 2007. Modeling Trees with a Space Colonization Algorithm. In: Ebert, D., Mérillou, S., _NPH'07 Proceedings of the Third Eurographics conference on Natural Phenomena_, 4 September 2007, Prague. Aire-la-Ville: Eurographics Association, 63-70.",
+         "cardId":"KxxNw3NBYFtD3aEtC",
+         "createdAt":"2017-07-24T14:49:00.095Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"dn69Kgy8n45Kxc2hh",
+         "text":"__REFERENCE__\nCamilleri, E., 2016. _Path Planning for Natural Phenomena_. Thesis (MSc). Bournemouth University.",
+         "cardId":"eLCL8Yk6FbfjLhH2C",
+         "createdAt":"2017-07-24T14:51:57.097Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"JxtRkE6qpDTpCjXqh",
+         "text":"__REFERENCES__\nWang, C., Yang, K., Han, D., 2008. New Modeling Method for Trees. _2008 International Conference on Advanced Computer Theory and Engineering_, 20-22 December 2008 Phuket. Los Vaqueros Circle: Institute of Electrical and Electronics Engineers ( IEEE ), 633-637.",
+         "cardId":"kukbD8Q44TwkxZX9D",
+         "createdAt":"2017-07-24T14:58:46.076Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"5kWezXKTJFEMizeN9",
+         "text":"__REFERENCE__\nRodkaew, Y., Chongstitvatana, P., Siripani, S., Lursinsap, S., 2003. Particle Systems for Plant Modeling.",
+         "cardId":"xcooQzP47XKRRY7Yv",
+         "createdAt":"2017-07-24T15:06:29.508Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"yTWmFYzCrtSMSqvdk",
+         "text":"__REFERENCE__\nWeber, J., Penn, J., 1995. Creation and Rendering of Realistic Trees. _22nd International ACM Conference on Computer Graphics and Interactive Techniques_, 6 - 11 August 1995 Los Angeles. New York: ACM, 119 - 128.",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "createdAt":"2017-07-24T15:24:10.020Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"TouJ3YNipyss7Q3Mx",
+         "text":"__INTRO__\n* find proper LOD\n* realism -> trees have to be fully 3D\n* wide variety\n* oscillation due to wind\n* degrade GEO to proper LOD",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "createdAt":"2017-07-24T19:28:53.576Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"rni7GD4gPHY9XfMEZ",
+         "text":"__PREVIOUS MODELS__\n* __Honda__: assumption that monopodial == special case of dichotomous for structures parallel to the line of gravity\n* __Lyndenmayer__: L-Systems (rewriting strings), later manipulated by __Prusinkiewicz__\n* __Aono & Kunii__: introduced attraction, inhibition, variation of angles\n* __oppenheimer__: fractal theory of self similarity, same rules for each level (not found to be necessary for author's opinion)\n* __Reeves & Blau__: grasses and trees using particles\n* __De Reffye__: probability for death, pause, ramification & iteration but too botanic and hard for non botanic people",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "createdAt":"2017-07-24T19:32:48.373Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"Q3EPJKT98aszej5vQ",
+         "text":"__APPROACH__\n* primary structure such as primary trunk (curved/cone-like)\n* split along length\n* clones, generated using different seeds\n* children formed from trunk and any existing clones, different attributes from parents but some of them are related (length)\n* 2nd level... and so on\n* cross-sectional variation, not always straight\n* wind yields to complex oscillatory motions with different amplitudes and frequencies defending on thickness",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "createdAt":"2017-07-24T19:42:25.790Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"x4m28dcYpNnSCYDBz",
+         "text":"__TREE CREATION__\n* __curved stem__: 2 main elements, stem and leaf with its own referencing system\n* __stemsplits__\n    - stem extends out to the periphery of the tree potentially splitting off cloned stems along its length\n    - no pre-determined limit to split number along a segment\n* __stem children__: \n    - we could build a tree with just clones but not enough variety\n    - we spawn children\n    - too many children scales up badly, __Honda__ solves it with branches interactions and unequal flow rates\n* __stem radius__\n    - for all levels except trunk, radius is a function of parent radius and proportional to the scale of the whole tree\n    - __radius-trunk = length-tr * ratio * 0scale-tr__\n    - radius-ch = radius-par * (length-ch / length-par)\n* __leaves__\n    - if leaves non zero ->leaves as last level of recursion\n    - leaves per branch = leaves * shaperatio( 4(tapered), offset-ch / length-par) * qual\n    - pre=defined shapes for leaves\n* __pruning__\n    - used to force a tree to fit a specific envelope\n    - Prusinkiewicz did same for L-System, here used to influence shape through the underlying structure\n    - each stem has to know the new length before it spawns any children\n*__wind sway__\n    - stem bending as the deflection of an elastic rod with a circular cross-section fixed on one end\n    - rod as a kind of pendulum\n    - rest of the model as the superpositions of coupled oscillators whose period and phase angles differ\n* __leaf orientation__: leaves are naturally oriented upwards to optimize direct (sun) and scattered (sky) light",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "createdAt":"2017-07-24T20:29:02.414Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"rpiCzxihQarFJmsjF",
+         "text":"__DEGRADATION__\n3 LOD:\n* high poly\n* low poly\n* lines with points for leaves",
+         "cardId":"jCoM6tTeyqbLuvK3Z",
+         "createdAt":"2017-07-24T20:29:45.586Z",
+         "userId":"uBWXBv7eE9Yu63FXf"
+      }
+   ],
+   "checklists":[
+      {
+         "_id":"KPvnQ9ZsqvDm5auiM",
+         "cardId":"TPycRt3dbJkk8gLqG",
+         "title":"STEMEN",
+         "createdAt":"2017-07-06T14:40:50.659Z",
+         "items":[
+            {
+               "_id":"KPvnQ9ZsqvDm5auiM0",
+               "title":"stemen shape",
+               "isFinished":true
+            },
+            {
+               "_id":"KPvnQ9ZsqvDm5auiM1",
+               "title":"custom stemen shape",
+               "isFinished":true
+            },
+            {
+               "_id":"KPvnQ9ZsqvDm5auiM2",
+               "title":"stemen orientation",
+               "isFinished":true
+            },
+            {
+               "_id":"KPvnQ9ZsqvDm5auiM3",
+               "title":"custom stemenbase shape",
+               "isFinished":true
+            },
+            {
+               "_id":"KPvnQ9ZsqvDm5auiM4",
+               "title":"stemen length",
+               "isFinished":true
+            },
+            {
+               "_id":"KPvnQ9ZsqvDm5auiM5",
+               "title":"stemen length variation",
+               "isFinished":true
+            },
+            {
+               "_id":"KPvnQ9ZsqvDm5auiM6",
+               "title":"stemen bend",
+               "isFinished":true
+            },
+            {
+               "_id":"KPvnQ9ZsqvDm5auiM7",
+               "title":"sculpt stemen",
+               "isFinished":true
+            }
+         ],
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"TrpgNZQWefW9hxW6h",
+         "cardId":"TPycRt3dbJkk8gLqG",
+         "title":"STEM",
+         "createdAt":"2017-07-06T14:41:00.867Z",
+         "items":[
+            {
+               "_id":"TrpgNZQWefW9hxW6h0",
+               "title":"flower orientation",
+               "isFinished":false
+            },
+            {
+               "_id":"TrpgNZQWefW9hxW6h1",
+               "title":"multiple flowers",
+               "isFinished":false
+            },
+            {
+               "_id":"TrpgNZQWefW9hxW6h2",
+               "title":"sculpt stem",
+               "isFinished":true
+            },
+            {
+               "_id":"TrpgNZQWefW9hxW6h3",
+               "title":"stem LOD",
+               "isFinished":true
+            },
+            {
+               "_id":"TrpgNZQWefW9hxW6h4",
+               "title":"stem length",
+               "isFinished":true
+            },
+            {
+               "_id":"TrpgNZQWefW9hxW6h5",
+               "title":"number of stems",
+               "isFinished":false
+            },
+            {
+               "_id":"TrpgNZQWefW9hxW6h6",
+               "title":"stem orientation",
+               "isFinished":true
+            },
+            {
+               "_id":"TrpgNZQWefW9hxW6h7",
+               "title":"stem bending",
+               "isFinished":true
+            },
+            {
+               "_id":"TrpgNZQWefW9hxW6h8",
+               "title":"stem noise",
+               "isFinished":true
+            },
+            {
+               "_id":"TrpgNZQWefW9hxW6h9",
+               "title":"custom stem",
+               "isFinished":true
+            }
+         ],
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"eH7oDQDELmieEE3qH",
+         "cardId":"TPycRt3dbJkk8gLqG",
+         "title":"PETALS",
+         "createdAt":"2017-07-06T14:41:05.481Z",
+         "items":[
+            {
+               "_id":"eH7oDQDELmieEE3qH0",
+               "title":"number of petals",
+               "isFinished":true
+            },
+            {
+               "_id":"eH7oDQDELmieEE3qH1",
+               "title":"rows",
+               "isFinished":true
+            },
+            {
+               "_id":"eH7oDQDELmieEE3qH2",
+               "title":"petal length",
+               "isFinished":true
+            },
+            {
+               "_id":"eH7oDQDELmieEE3qH3",
+               "title":"petal bend",
+               "isFinished":false
+            },
+            {
+               "_id":"eH7oDQDELmieEE3qH4",
+               "title":"petal models",
+               "isFinished":true
+            },
+            {
+               "_id":"eH7oDQDELmieEE3qH5",
+               "title":"petal orientation",
+               "isFinished":true
+            },
+            {
+               "_id":"eH7oDQDELmieEE3qH6",
+               "title":"petal variations",
+               "isFinished":true
+            },
+            {
+               "_id":"eH7oDQDELmieEE3qH7",
+               "title":"custom petals",
+               "isFinished":true
+            }
+         ],
+         "userId":"uBWXBv7eE9Yu63FXf"
+      },
+      {
+         "_id":"9rdajzPYBgDC4YHnF",
+         "cardId":"TPycRt3dbJkk8gLqG",
+         "title":"LEAVES",
+         "createdAt":"2017-07-06T14:41:11.231Z",
+         "items":[
+            {
+               "_id":"9rdajzPYBgDC4YHnF0",
+               "title":"leaves model",
+               "isFinished":false
+            },
+            {
+               "_id":"9rdajzPYBgDC4YHnF1",
+               "title":"buds model",
+               "isFinished":false
+            }
+         ],
          "userId":"uBWXBv7eE9Yu63FXf"
       }
    ],
