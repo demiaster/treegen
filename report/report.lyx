@@ -1,0 +1,693 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{multirow}
+\usepackage{graphicx}
+\newcommand{\terminaltext}[1]{{\footnotesize \colorbox{black}{\color{green}\texttt{#1}}}}
+\graphicspath{ {images/} }
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language british
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Modelling of non-hero vegetation in Houdini
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace 2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Marta Feriani
+\begin_inset Newline newline
+\end_inset
+
+s4900092
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/BUlogo.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand lstlistoflistings
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+
+\lang english
+blabla
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Introduction
+\end_layout
+
+\begin_layout Section
+Motivation
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:fearing]{Fearing (2000)}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+Related Work
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/MPM.png
+	lyxscale 50
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+MPM
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MPM"
+
+\end_inset
+
+MPM method as implemented by 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:stomakhin]{Stomakhin et al (2013)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Trees
+\end_layout
+
+\begin_layout Section
+Related Works
+\end_layout
+
+\begin_layout Standard
+bla
+\end_layout
+
+\begin_layout Section
+The algorithm
+\end_layout
+
+\begin_layout Standard
+bla
+\end_layout
+
+\begin_layout Subsection
+Overview
+\end_layout
+
+\begin_layout Standard
+bla
+\end_layout
+
+\begin_layout Subsection
+Growth Algorithm
+\end_layout
+
+\begin_layout Standard
+bla
+\end_layout
+
+\begin_layout Subsection
+Radius Function
+\end_layout
+
+\begin_layout Standard
+bla
+\end_layout
+
+\begin_layout Section
+Implementation
+\end_layout
+
+\begin_layout Standard
+bla
+\end_layout
+
+\begin_layout Subsection
+Data structure
+\end_layout
+
+\begin_layout Standard
+attribute list
+\end_layout
+
+\begin_layout Part
+Flowers
+\end_layout
+
+\begin_layout Section
+Implementation
+\end_layout
+
+\begin_layout Subsection
+Network
+\end_layout
+
+\begin_layout Subsection
+User Interface
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusions
+\end_layout
+
+\begin_layout Section
+Future Work
+\end_layout
+
+\begin_layout Part*
+
+\lang english
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+References
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{part}{References}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:houdini2017"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+Power Up Your Houdini Skills with SideFX, 2017.
+ Making the Last Bastion.
+ 
+\shape italic
+3D World Magazine
+\shape default
+, 20 June 2017, Available from: https://issuu.com/futurepublishing/docs/houdini_i
+ssuu [Accessed 24 July 2017].
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:schwank2016"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Schwank, A., James, C.
+ J., Milciotta, T., 2016.
+ The Trees of The Jungle Book.
+ 
+\shape italic
+SIGGRAPH ’16 Talks
+\shape default
+, 24-28 July 2016.
+ Anaheim, CA: ACM
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:keim2016"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Keim, H., Simmons, M., Teece, D., Reisweber, J., Drakeley, S., 2016.
+ Art-Directable Procedural Vegetation in Disney’s Zootopia.
+ 
+\shape italic
+SIGGRAPH ’16
+\shape default
+, 24-28 July 2016.
+ Anaheim, CA: ACM
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:basalla2005"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Basalla, D., 2005.
+ 
+\shape italic
+Forest Generation with Maya and Renderman
+\shape default
+.
+ Thesis (MSc).
+ Bournemouth University.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:smurfs2017"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+SideFX, 2017.
+ 
+\shape italic
+Smurfs: The Lost Village
+\shape default
+.
+ sidefx.com, SideFx.
+ Available from: https://www.sidefx.com/community/sony-imageworks-smurfs-the-lost-
+village/ [Accessed 24 July 2017].
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:shek2010"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Shek, A., Lacewell, D., Selle, A., Teece, D., Thompson, T., 2010.
+ Art-directing Disney's Tangled procedural trees.
+ 
+\shape italic
+SIGGRAPH 2010 Talks
+\shape default
+, 26 - 30 July Los Angeles.
+ New York: ACM, 53.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:melson2016"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Melson, T., 2016.
+ Can’t See The Jungle For The Trees.
+ 
+\shape italic
+SIGGRAPH ’16 Talks
+\shape default
+, 24 - 28 July Anaheim, CA.
+ New York: ACM
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:soares2016"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Soares, O., Moser, M., Aalbers, F., 2016.
+ Vegetation Choreography in The Good Dinosaur.
+ 
+\shape italic
+SIGGRAPH ’16 Talks
+\shape default
+, 24 - 28 July Anaheim, CA.
+ New York: ACM
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:cieri2016"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cieri, S., Muraca, A., Schwank, A., Preti, F., Micilotta, T., 2016.
+ The Jungle Book: Art-Directing Procedural Scatters in Rich Environments.
+ 
+\shape italic
+DigiPro ’16
+\shape default
+, 23 - 23 July Anaheim, CA.
+ New York: ACM, 57-59.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:runions2007"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Runions, A., Lane, B., Prusinkiewicz, P., 2007.
+ Modeling Trees with a Space Colonization Algorithm.
+ In: Ebert, D., Mérillou, S., 
+\shape italic
+NPH'07 Proceedings of the Third Eurographics conference on Natural Phenomena
+\shape default
+, 4 September 2007, Prague.
+ Aire-la-Ville: Eurographics Association, 63-70.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:camilleri2016"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Camilleri, E., 2016.
+ 
+\shape italic
+Path Planning for Natural Phenomena
+\shape default
+.
+ Thesis (MSc).
+ Bournemouth University.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:wang2008"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wang, C., Yang, K., Han, D., 2008.
+ New Modeling Method for Trees.
+ 
+\shape italic
+2008 International Conference on Advanced Computer Theory and Engineering
+\shape default
+, 20-22 December 2008 Phuket.
+ Los Vaqueros Circle: Institute of Electrical and Electronics Engineers
+ ( IEEE ), 633-637.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:rodkaew2003"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rodkaew, Y., Chongstitvatana, P., Siripani, S., Lursinsap, S., 2003.
+ Particle Systems for Plant Modeling.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:weber1995"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Weber, J., Penn, J., 1995.
+ Creation and Rendering of Realistic Trees.
+ 
+\shape italic
+22nd International ACM Conference on Computer Graphics and Interactive Technique
+s
+\shape default
+, 6 - 11 August 1995 Los Angeles.
+ New York: ACM, 119 - 128.
+\end_layout
+
+\end_body
+\end_document
