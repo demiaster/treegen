@@ -326,6 +326,90 @@ Lindenmayer (anno) REFERENCE!!!! introduced a string rewriting system know
  The axiom is used as starting point for the production.
  The string produced by iterating over the axiom can be later interpreted
  as geometric commands.
+ Prusinkiewicz applies Lindenmayer rewriting system to plants structures
+ adding few extensions such as context sensitivity and random variations.
+\end_layout
+
+\begin_layout Standard
+L-Systems produce good results but the self similarity and the production
+ patterns remain clearly visible in the final model.
+ To overcome the pattern visibility, literature (REFERENCE) has introduced
+ stochastic L-System which involves the selection of a production rule from
+ the set based on a probability value.
+ Other improvements on L-Systems involve the definition of a container volume
+ for the L-System to grow into.
+ Given the volume and an initial segment, the system will set the depth
+ for the recursion.
+\end_layout
+
+\begin_layout Standard
+Oppenheimer (anno) REFERENCE also relies on Honda recursive approach by
+ developing natural patterns using fractals.
+ The fractal specification is based on parameters such as branching angles,
+ branch-to-prent ratio and branch-per-stem number.
+ The fractal method by Oppenheimer was found to be affected by severe self
+ similarity pattern visibility which gave the final shape a machine-made
+ look.
+ To overcome this problem 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:weber1995]{Weber and Penn (1995)}
+\end_layout
+
+\end_inset
+
+ improved the recursive model by adding randomness and organized functions
+ to affect the tree development.
+\end_layout
+
+\begin_layout Standard
+The interpretation of a tree as a recursive structure is justified by the
+ process of tree development but plays a smaller role for fully grown trees.
+ Buds may have different fate such as grown to major limbs, be shed or remain
+ small twigs.
+ In the architecture of a mature tree, therefore, the regularity of the
+ recursive branching is mainly lost, overridden by subsequent development.
+ Furthermore, finding rules and fitting parameters for recursive structures
+ is a non trivial task.
+ A small variation on the initial conditions will propagate exponentially
+ through the generations becoming more and more evident.
+ Once we managed to define the rules for a tree species, they often result
+ to have nothing in common with other tree species.
+ Even trying to tweak the existing rules to produce small variation on the
+ produced model will drastically affect the whole new structure.
+ Given the recursive nature of both L-System and fractals, even the use
+ of random variables cannot completely overcome self-similarity issue and
+ the resulting architectures give the machine-made impression.
+\end_layout
+
+\begin_layout Standard
+New models for 3D tree modelling find common ground in the Runion et al
+ REFERENCE approach developed for leaves venation.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:weber1995]{Rodkaev et al (2003)}
+\end_layout
+
+\end_inset
+
+ inherit Runion approach and apply it to a new algorithm based on particles
+ that produces realistic leaves venation on a 2D space or a branching structure
+ in a 3D space.
+ Rodkaev populates a shape or a volume with particles.
+ Each particle will move towards a predefined goal position merging with
+ neighbours particles when the distance is smaller than a certain threshold.
+ The trail for the particles trajectories generates the tree graph.
 \end_layout
 
 \begin_layout Section
