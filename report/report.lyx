@@ -303,7 +303,29 @@ Related Works
 \end_layout
 
 \begin_layout Standard
-bla
+The modelling of natural shapes such as trees is difficult because of the
+ richness of small details.
+ The history of trees 3D modelling starts with a recursive algorithm proposed
+ by Honda (1971) REFERENCE!!!.
+ The recursive structure relies on a few geometrical attributes such as
+ branching angles and length ratio between consecutive segments.
+ Honda also studies the nature of trees branching addressing the monopodial
+ branching pattern as a special case for the dichotomous branching for structure
+s that are parallel to the gravity.
+ Honda's recursive approach has been at the core of many later modelling
+ algorithms.
+\end_layout
+
+\begin_layout Standard
+Lindenmayer (anno) REFERENCE!!!! introduced a string rewriting system know
+ as L-System to describe the cellular interaction.
+ An L-System is a formal grammar that consists of an alphabet, production
+ rules and an axiom.
+ The alphabet is a collection of symbols that can be used to produce strings.
+ Production rules expand each symbol or string into some larger string.
+ The axiom is used as starting point for the production.
+ The string produced by iterating over the axiom can be later interpreted
+ as geometric commands.
 \end_layout
 
 \begin_layout Section
