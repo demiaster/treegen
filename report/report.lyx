@@ -164,7 +164,33 @@ LatexCommand lstlistoflistings
 \begin_layout Abstract
 
 \lang english
-blabla
+Vegetation modelling plays a key role in shots composition.
+ Achieving a belieavable and true result has proven to be a tedious and
+ time consuming task for artists.
+ To overcome this issue we present a Houdini toolset for trees and flowers
+ modelling.
+ Through specifying different parameters values the toolset will generate
+ a variety of tree and flowers species.
+ Trees structures are achieved using the space colonization algorithm by
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:runions2007]{Runions et al (2007)}
+\end_layout
+
+\end_inset
+
+.
+ Model parameters are meaningful to visual characteristics and offer an
+ appropriate control over the silhouette and branching structure.
+ Experiments show that the toolset can produce a reasonable variety of trees
+ and flower species.
 \end_layout
 
 \begin_layout Standard
@@ -182,10 +208,6 @@ blabla
 Introduction
 \end_layout
 
-\begin_layout Section
-Motivation
-\end_layout
-
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -200,10 +222,6 @@ hyperref[par:fearing]{Fearing (2000)}
 \end_inset
 
  
-\end_layout
-
-\begin_layout Section
-Related Work
 \end_layout
 
 \begin_layout Standard
