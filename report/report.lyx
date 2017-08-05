@@ -459,7 +459,26 @@ Overview
 \end_layout
 
 \begin_layout Standard
-bla
+The algorithm proceeds as follows.
+ A 3D envelope for the tree crown is specified as input.
+ Its volume is seeded with a set of attraction points.
+ The attraction points influence the growth of the tree structure by signalling
+ the availability of empty space within the tree crown envelope.
+ A single point is specified as input and acts as the base of the tree.
+ Having the attracting points and the first tree point, the tree structure
+ is generated as an iterative process.
+ Each iteration produces new tree points in the direction of the neighbour
+ attraction points to extend the existing tree structure.
+ The algorithm may stop after a user defined number of iterations.
+ If let running, the algorithm stops either when there are no attraction
+ points within the radius of influence or when there are no attraction points
+ left.
+\end_layout
+
+\begin_layout Standard
+Further manipulation involves subdivision and smoothing of the internodes
+ (branch that connects two consecutive nodes of the tree), skinning and
+ scattering of organs such as leaves, flowers or fruits.
 \end_layout
 
 \begin_layout Subsection
