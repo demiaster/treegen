@@ -413,11 +413,45 @@ hyperref[par:weber1995]{Rodkaev et al (2003)}
 \end_layout
 
 \begin_layout Section
-The algorithm
+The method
 \end_layout
 
 \begin_layout Standard
-bla
+Similar to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:weber1995]{Rodkaev et al (2003)}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:runions2007]{Runions et al (2007)}
+\end_layout
+
+\end_inset
+
+ suggest a space colonization algorithm as an extension of the 3D leaves
+ venation by Runion et al REFERENCE.
+ Unlike Rodkaev, Runions branching structure is formed in a base-to-leaves
+ order.
+ Each iteration of the algorithm produces new elements that expand the tree
+ structure formed in the previous steps.
+ This approach results not only to be adaptive to obstacle and neighbour
+ plants, but also provides controls over the growth process that results
+ in a wide variety of tree structures.
 \end_layout
 
 \begin_layout Subsection
