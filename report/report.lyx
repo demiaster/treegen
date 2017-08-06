@@ -930,7 +930,19 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-bla
+Houdini, vex over python(faster) wrangle node
+\end_layout
+
+\begin_layout Subsection
+Wrangle Node
+\end_layout
+
+\begin_layout Standard
+run over points/primitive/details.
+ multiple input geometry but only first input gets on as output of the node.
+ Needs to cook before updating the values for the geometry.
+ can only access the geometry as its state when it's input in the current
+ wrangle node.
 \end_layout
 
 \begin_layout Subsection
@@ -938,7 +950,58 @@ Data structure
 \end_layout
 
 \begin_layout Standard
-attribute list
+works over points.
+ each point has id, parent, kids, Cd, n_dead, attr_dead, fertile, dir, growdir,
+ length, pt, newborn(?), nbrs, inf, generation.
+ Stripped away when not necessary anymore.
+\end_layout
+
+\begin_layout Subsection
+Parameter initialization
+\end_layout
+
+\begin_layout Standard
+define the 3D envelop, user input, choice on how many iteration, D, Dk,
+ Di scaling factor (manipulated through the generations).
+ Root point input as just points or a user selected trunk.
+ Explanation of the algorithm for just nodes, new chapter for user defined
+ trunk and branches.
+\end_layout
+
+\begin_layout Subsection
+Population of the envelope
+\end_layout
+
+\begin_layout Standard
+3D shape turned to a volume, level of customization to wrap around object,
+ interact with object.
+\end_layout
+
+\begin_layout Subsection
+Growth
+\end_layout
+
+\begin_layout Standard
+the whole subnetwork with the big loop
+\end_layout
+
+\begin_layout Subsubsection
+Finding neighbours
+\end_layout
+
+\begin_layout Standard
+separation between points, first on nodes to find possible influencing attractor
+s, separate again between influencing and non influencing.
+ input influencing and cycle over them to find closest tree node.
+ append themselves on the nbrs attribute for the closest found tree node.
+\end_layout
+
+\begin_layout Subsubsection
+Set fertility for the tree nodes
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Part
