@@ -486,15 +486,443 @@ Growth Algorithm
 \end_layout
 
 \begin_layout Standard
-bla
+Competition for space plays a fundamental role in the colonization algorithm
+ and determines the branching pattern for the tree structure.
+ Before delving into the details of the algorithm some definitions and axioms
+ are needed.
 \end_layout
 
-\begin_layout Subsection
-Radius Function
+\begin_layout Subsubsection
+Definitions and axioms
 \end_layout
 
-\begin_layout Standard
-bla
+\begin_layout Enumerate
+Every point the algorithm uses is either a tree node or an attraction node.
+ From now on we will refer to tree nodes with 
+\begin_inset Formula $v$
+\end_inset
+
+ and attraction nodes with 
+\begin_inset Formula $s$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $N$
+\end_inset
+
+ is the set of all the attraction points.
+\begin_inset Formula 
+\begin{equation}
+\forall s,s\in N
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $T$
+\end_inset
+
+ is the set for the tree nodes
+\begin_inset Formula 
+\begin{equation}
+\forall v,s\in N
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If we refer to 
+\begin_inset Formula $p$
+\end_inset
+
+ as a generic point in the algorithm
+\begin_inset Formula 
+\begin{equation}
+\nexists p(p\in N\land p\in T)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S(v)$
+\end_inset
+
+ is the set of attraction points 
+\begin_inset Formula $s$
+\end_inset
+
+ that influence the growth of the tree point 
+\begin_inset Formula $v$
+\end_inset
+
+ for the current iteration.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $d(a,b)$
+\end_inset
+
+ is the Euler distance between point 
+\begin_inset Formula $a$
+\end_inset
+
+ and point 
+\begin_inset Formula $b$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+d(a,b)=\sqrt{(a.x-b.x)^{2}+(a.y-b.y)^{2}+(a.z-b.z)^{2}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $di$
+\end_inset
+
+ is the 
+\shape italic
+radius of influence
+\shape default
+ which represents the maximum distance between 
+\begin_inset Formula $s$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ so that 
+\begin_inset Formula $s\in S(v)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $dk$
+\end_inset
+
+ is the 
+\shape italic
+kill distance
+\shape default
+.
+ If 
+\begin_inset Formula $d(s,v)$
+\end_inset
+
+ is less than 
+\begin_inset Formula $dk$
+\end_inset
+
+, 
+\begin_inset Formula $s$
+\end_inset
+
+ gets removed.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $D$
+\end_inset
+
+ is the distance between consecutive nodes of the tree
+\end_layout
+
+\begin_layout Subsubsection
+Steps
+\end_layout
+
+\begin_layout Enumerate
+Define a 3D shape for the tree crown.
+ Initialize the parameters N, di, dk, D.
+\end_layout
+
+\begin_layout Enumerate
+Populate the 3D envelope with attraction points using a certain random distribut
+ion.
+\end_layout
+
+\begin_layout Enumerate
+Define at least one tree node to act as the base of the tree structure.
+\end_layout
+
+\begin_layout Enumerate
+Each attraction point 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $s\in N$
+\end_inset
+
+, may influence the tree node 
+\begin_inset Formula $v$
+\end_inset
+
+ that is closest to it.
+ The influence occurs if 
+\begin_inset Formula $d(s,v)<di$
+\end_inset
+
+.
+ For each 
+\begin_inset Formula $s\in N$
+\end_inset
+
+, check if there is any 
+\begin_inset Formula $v\in T$
+\end_inset
+
+ that meets the condition.
+ More than one attraction point may influence the same 
+\begin_inset Formula $v$
+\end_inset
+
+ tree point: all the attraction points that influence 
+\begin_inset Formula $v$
+\end_inset
+
+ are gathered in the 
+\begin_inset Formula $S(v)$
+\end_inset
+
+ set.
+\end_layout
+
+\begin_layout Enumerate
+For each tree node 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $v\in T$
+\end_inset
+
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang british
+, if S(v) is not empty, a new tree node 
+\begin_inset Formula $v^{\prime}$
+\end_inset
+
+is created.
+ The new tree node lies at a distance 
+\begin_inset Formula $D$
+\end_inset
+
+ from 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $v$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang british
+ in the direction of the average of the normalized vectors towards the attractio
+n points 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $s\in S(v)$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+v^{\prime}\in T
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+d(v,v^{\prime})=D
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\vec{n}=\sum_{s\in S(v)}\frac{s-v}{\shortparallel s-v\shortparallel}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\hat{n}=\frac{\vec{n}}{\shortparallel n\shortparallel}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+v^{\prime}=v+D\hat{n}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+perform a check to test, if any, attraction points 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $s\in N$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ should be removed if the following condition is true for at least one 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $v\in T$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+:
+\begin_inset Formula 
+\begin{equation}
+d(s,v)<dk
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+repeat from steps 4 to 6 until we meet the stop conditions mentioned in
+ HYPERREF!!!.
 \end_layout
 
 \begin_layout Section
