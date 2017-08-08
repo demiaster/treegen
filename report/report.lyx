@@ -225,6 +225,10 @@ hyperref[par:fearing]{Fearing (2000)}
 \end_layout
 
 \begin_layout Standard
+related works, motivation to do it in houdini
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -930,7 +934,21 @@ Implementation
 \end_layout
 
 \begin_layout Standard
-Houdini, vex over python(faster) wrangle node
+The network for the implementation of the growth algorithm relies on the
+ layering of simple rules that eventually lead to the creation of the complexity
+ that characterizes trees in nature.
+ Houdini supports multiple scripting languages such as HScript, Python and
+ VEX.
+ Being Python widely used as scripting language and being a reality shared
+ between many DCC software, it might seem the most sensible choice.
+ On the other hand, VEX scripting language is Houdini native language.
+ VEX gives direct access to geometry data and provides a wide variety of
+ built-in function optimized for best performances on the Houdini geometry
+ internal representation.
+ In terms of performances, VEX has proven to be faster than Python because
+ it implements automatic multithreading while Python does not have the same
+ feature.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -938,11 +956,46 @@ Wrangle Node
 \end_layout
 
 \begin_layout Standard
-run over points/primitive/details.
- multiple input geometry but only first input gets on as output of the node.
- Needs to cook before updating the values for the geometry.
+Needs to cook before updating the values for the geometry.
  can only access the geometry as its state when it's input in the current
  wrangle node.
+\end_layout
+
+\begin_layout Standard
+The wrangle node is the most present node type in the network therefore
+ it seemed only natural to give a brief explanation of how it works.
+\end_layout
+
+\begin_layout Standard
+METTICI UNA IMMAGINE The attribute wrangle is a low level node that allows
+ for the tweaking of the geometry attributes using VEX code.
+ Its capabilities correspond to the Attribute VOP SOP.
+ The main difference between the two of them is that wrangle uses a a textual
+ editor whilst the Attribute VOP SOP uses a visual network.
+\end_layout
+
+\begin_layout Standard
+The node can edit the input geometry by changing or adding attributes.
+ It can also remove or create new geometry for example by adding points,
+ linking points together to create polygons and so on.
+ The snippet runs on details or on every point/primitive/vertex of the first
+ input geometry.
+ Using the multiple sources to the node it is also possible to access data
+ from different geometry at the same time.
+ When having multiple sources, only the first input geometry will flow down
+ to the next node of the network whilst the other input geometries will
+ be lost.
+\end_layout
+
+\begin_layout Standard
+When the snippet affects the attributes of the geometry, these attribute
+ will not be available until the node is cooked.
+ This often makes is difficult to populate geometry attributes such as array
+ within the same wrangle node.
+ Due to this, the implementation of particular parts of the growth algorithm
+ might not seem the most straightforward or obvious way to approach the
+ problem but have been deliberately tweaked to overcome this particular
+ issue.
 \end_layout
 
 \begin_layout Subsection
@@ -954,6 +1007,12 @@ works over points.
  each point has id, parent, kids, Cd, n_dead, attr_dead, fertile, dir, growdir,
  length, pt, newborn(?), nbrs, inf, generation.
  Stripped away when not necessary anymore.
+\end_layout
+
+\begin_layout Standard
+The growth algorithm, as presented in HYPERREF, mostly relies on points
+ position.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -998,10 +1057,6 @@ s, separate again between influencing and non influencing.
 
 \begin_layout Subsubsection
 Set fertility for the tree nodes
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Part
