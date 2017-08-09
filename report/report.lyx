@@ -487,6 +487,13 @@ Further manipulation involves subdivision and smoothing of the internodes
 
 \begin_layout Subsection
 Growth Algorithm
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Growth-Algorithm"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1003,16 +1010,107 @@ Data structure
 \end_layout
 
 \begin_layout Standard
-works over points.
- each point has id, parent, kids, Cd, n_dead, attr_dead, fertile, dir, growdir,
- length, pt, newborn(?), nbrs, inf, generation.
- Stripped away when not necessary anymore.
+The growth algorithm, as presented in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Growth-Algorithm"
+
+\end_inset
+
+, mostly relies on points position.
+ Each point has certain attributes to make it possible to create the tree
+ structure.
+ The attribute @type divides the point set in two main categories respectively
+ the tree nodes and the attraction points.
+ Given the nature of the algorithm, the total number of attraction points
+ will decrease each iteration whilst every new node that will be created
+ will increase the count for the tree nodes.
+ To give a better visualization for this partition, the colour attribute
+ @Cd is initialized to {1, 0.5, 0} for the tree node and to {0, 0.5, 1} for
+ the attraction points.
 \end_layout
 
 \begin_layout Standard
-The growth algorithm, as presented in HYPERREF, mostly relies on points
- position.
- 
+The aim of the algorithm is to create a believable branching structure to
+ reproduce natural trees.
+ Stems might grow in only one direction or fork producing new stems.
+ Older stems also grow thicker to balance the weight of the younger stems.
+ This branching pattern can be represented by an acyclic graph data structure.
+\end_layout
+
+\begin_layout Standard
+A graph is a finite collection of vertices and edges.
+ Graph are used to model pairwise relations between object.
+ The vertices, or nodes, represent the objects while the edges are the relations.
+ The different nature of the relations leads to different kinds of graphs.
+ In the case of a directed graph, each edge has an orientation, from one
+ vertex to another vertex.
+ A path is a sequence of edges.
+ A node A is reachable by another node B if there exists a path that leads
+ from A to B.
+ If for each node in the graph there is no path that connects the node to
+ itself, the graph is said to be acyclic.
+ Being a graph a hierarchical structure, it is appropriate to address relationsh
+ip between nodes as parent/child relationship.
+ Each node is therefore aware either of its parent, its children or both.
+ In computer science, to reproduce the relationships between nodes, each
+ node contains a pointer to the connected ones.
+ The network developed for this project provides each tree node with two
+ attributes an integer and an array to store references to the parent and
+ the children respectively.
+ Unfortunately Houdini does not have pointers like structures.
+ The points of a geometry are stored in an array like structure.
+ The @ptnum attribute refers to the index of the point in that array.
+ When referring to a point using the @ptnum attribute, one can gain direct
+ access to that points other attributes, either built in or custom.
+ Unfortunately, being the @ptnum ultimately just an index in an array, its
+ value is not consistent through the network.
+ Operation such as adding or removing points or merging together two geometry
+ may shift or offset the @ptnum value.
+ Given its unstable nature, the @ptnum did not seem to be a suitable choice
+ to build parent/child relation upon.
+ As a workaround, each treepoint also stores a unique identifier @id.
+ Smaller @id values belong to older tree points while greater values belong
+ to younger ones.
+ When populating the @parent and @kids attributes, the reference to the
+ other points will not be represented by the @ptnum but by the @id instead.
+ Having to rely on a custom attribute such as the @id automatically translate
+ into losing the direct access granted by the @ptnum.
+ This greatly affects the performances of the whole algorithm because in
+ order to find a node with a specific @id, one has to cycle over each point
+ of the geometry and check for a match.
+ In order not to loose this convenient feature, every time the algorithm
+ has to work on the tree nodes, the sort node is used to remap the @ptnum
+ based on the @id value.
+ This solution allows for a reliable hierarchy structure while maintaining
+ speed of access.
+\end_layout
+
+\begin_layout Standard
+Another important information about the tree nodes is the grow direction
+ and the length of the internode.
+ Storing this values make it possible for a later more detailed manipulation
+ of branching angles.
+ Each point therefore stores a @growdir attribute that holds the normalized
+ growth vectors that links the parent to the node point position.
+\end_layout
+
+\begin_layout Standard
+As a final step, each node also has two flags respectively for death and
+ fertility.
+ While the fertility flag signals if the node can produce a child in the
+ current iterationand can be therefore non fertile and fertile in two consecutiv
+e iteration, when the death flag is set it determines an irreversible condition
+ for the node.
+ A node dies whenever it reaches the maximum amount of children or for degenerat
+ed cases such as the position of the child node being coincident with its
+ own position.
+\end_layout
+
+\begin_layout Standard
+As the information needed on a per node basis are quite important in terms
+ of quantities, whenever an attribute is not needed any longer, it is removed
+ from the geometry.
 \end_layout
 
 \begin_layout Subsection
