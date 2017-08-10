@@ -1450,14 +1450,224 @@ Finding neighbours
 \end_layout
 
 \begin_layout Standard
-separation between points, first on nodes to find possible influencing attractor
-s, separate again between influencing and non influencing.
- input influencing and cycle over them to find closest tree node.
- append themselves on the nbrs attribute for the closest found tree node.
+The nodes and the attraction points are divided based on the @type value.
+ In order to keep the calculation as light as possible, a preparation step
+ is undertaken using the 
+\begin_inset Quotes eld
+\end_inset
+
+find_influencing_attr
+\begin_inset Quotes erd
+\end_inset
+
+ before finding the closest tree node of each attraction point.
+ The wrangle receives as first input geometry the set 
+\begin_inset Formula $N$
+\end_inset
+
+ of the attraction points and as second input the set 
+\begin_inset Formula $T$
+\end_inset
+
+ of tree nodes.
+ The node purpose is to isolate the attraction points that will influence
+ the tree growth for the current iteration from the inert ones.
+ The snippet is set to run over details.
+ Iterating over each tree node, a function _setInfluencing() is invoked.
+ The function takes as an input a the position of the tree node.
+ Based on that position, the function retrieves all the attraction points
+ that are closer than the user defined 
+\begin_inset Formula $di$
+\end_inset
+
+ distance.
+ Every attraction point that satisfies this condition is flagged as influence
+ node.
+ The set of influence node is therefore a subset of the set 
+\begin_inset Formula $N$
+\end_inset
+
+ of all the attraction points.
+ Using the blast node, the influencing nodes are separated from the other
+ inactive attraction points.
+ The tree nodes and the influencing nodes are wired into the 
+\begin_inset Quotes eld
+\end_inset
+
+find_neighbour
+\begin_inset Quotes erd
+\end_inset
+
+ subnetwork.
+ The search for the closest tree node is implemented in 
+\begin_inset Quotes eld
+\end_inset
+
+fast_search
+\begin_inset Quotes erd
+\end_inset
+
+: the wrangle takes as first input geometry the tree nodes and as a second
+ input geometry the influencing points.
+ At this stage not only each influencing point will look for its closest
+ tree point but the sets 
+\begin_inset Formula $S(v)$
+\end_inset
+
+ are populated as well.
+ In this implementation the set is stored as a tree node array attribute
+ @nbrs and will contain the @ptnum for all the influencing points for which
+ the node is the closest of the tree nodes.
+ This operation can be computationally heavy, therefore the following algorithm
+ has been developed aiming to optimize such operations.
+ The algorithm is divided in three parts:
+\end_layout
+
+\begin_layout Itemize
+an array closest[] is declared to have the same size as the total count
+ of influencing points.
+ Starting from the index 0, the influencing point with @ptnum 0 is processed.
+ The point will search for the closest tree node and will store its value
+ in the array.
+ The process moves to index 1 and processes the influencing point with @ptnum
+ 1 and so on until the closest[] array is completely populated.
+ Given the population process, the indices of the closest[] array represent
+ the influencing points.
+\end_layout
+
+\begin_layout Itemize
+two new array are created:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the argsort function applied to the closest[] array will return a list of
+ indices that, if applied to the closest[] will give a sorted sequence in
+ an increasing order.
+ In this particular case, the indices represent the influencing points.
+ The newly created ordered_attr[] array holds therefore a sorted sequence
+ for the influencing points.
+\end_layout
+
+\begin_layout Itemize
+the sort function applied to the closest[] will return a sorted array in
+ increasing order.
+ This new array is the ordered_closest[]
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+using the newly created arrays, the algorithm proceeds to locate the sets
+ S(v) and store them in the proper tree nodes.
+ The sets are consecutive chunks of the ordered_attr[] array.
+ To tokenize it properly, the ordered_closest[] is used.
+ A for loop iterates over the length of the array.
+ The value of ordered_attr[i] is stored in a new temporary array nbrs[].
+ A check is performed to compare the current element for ordered_closest
+ and its consecutive one.
+ It the two do not match, it means that the end of the current set S(v)
+ has been reached.
+ The temporary array is assigned as @nbrs attribute to the tree node specified
+ in ordered_closest[i].
+ The temporary array is cleared for the next set.
+\end_layout
+
+\begin_layout Standard
+The algorithm proved to be dramatically faster compared to its basic implementat
+ion.
+ The reader can compare the performances by switching the input for the
+ switch node in the 
+\begin_inset Quotes eld
+\end_inset
+
+grow_alg/find_neighbour
+\begin_inset Quotes erd
+\end_inset
+
+ subnetwork.
+ The approach undertaken here also improved Runion algorithm by reducing
+ the number of computation required to achieve the result.
 \end_layout
 
 \begin_layout Subsubsection
 Set fertility for the tree nodes
+\end_layout
+
+\begin_layout Standard
+blablabla
+\end_layout
+
+\begin_layout Subsubsection
+Calculate new born direction
+\end_layout
+
+\begin_layout Standard
+blablabla
+\end_layout
+
+\begin_layout Subsubsection
+Creation of the new node
+\end_layout
+
+\begin_layout Standard
+create_new_node
+\end_layout
+
+\begin_layout Standard
+separation between oldnodes and newborn and non fertile
+\end_layout
+
+\begin_layout Standard
+set_id
+\end_layout
+
+\begin_layout Standard
+update_parent
+\end_layout
+
+\begin_layout Standard
+merge treenodes together
+\end_layout
+
+\begin_layout Subsubsection
+Remove attraction points
+\end_layout
+
+\begin_layout Standard
+set_dead_attr
+\end_layout
+
+\begin_layout Subsubsection
+Preparation to next iteration
+\end_layout
+
+\begin_layout Standard
+reset direction, fertile and nbrs for nodes, join them back together
+\end_layout
+
+\begin_layout Subsubsection
+Extra controls
+\end_layout
+
+\begin_layout Standard
+number of children, correction angle, distance pruning, probability pruning,
+ scale D, dk while running
+\end_layout
+
+\begin_layout Subsection
+Linking the points
+\end_layout
+
+\begin_layout Standard
+blablabla
+\end_layout
+
+\begin_layout Subsection
+Cross section evaluation
+\end_layout
+
+\begin_layout Standard
+blablabla
 \end_layout
 
 \begin_layout Part
