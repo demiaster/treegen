@@ -1137,7 +1137,48 @@ Tree crown
 \end_layout
 
 \begin_layout Standard
-simple, collision, wrap.
+The network provides up to three different ways to specify the crown volume
+ for the tree.
+ All of them take as an input polygonal shapes that are later converted
+ to volume.
+ At its very basic implementation, the user specified tree crown is converted
+ to a volume using the Isooffset node.
+ The conversion result to be necessary in order to populate the crown tree
+ volume with the attraction points.
+ Moving from the base implementation, the user can specify a collision object
+ for the tree crown to interact width.
+ This options makes it possible to simulate a tree growth process where
+ the final shape is affected by the surrounding obstacles.
+ The collision object is then converted to a volume.
+ To identify the viable area for the tree to grow, the volume mix node performs
+ the subtraction operation between the two input volumes.
+ The resulting volume is then used for the tree to grow.
+ Another option allows the user to specify not the crown tree volume directly
+ but calculates the viable space for growth from a given object.
+ The input geometry is converted to volume twice: the first conversion replicate
+s the input geometry closely whilst the second one will inflate the volume
+ with a user defined offset.
+ The difference between the volumes will create a layer wrapped around the
+ initial object.
+ This option can convey the illusion of a plant clinging and growing finding
+ support on an object, like vines do.
+\end_layout
+
+\begin_layout Standard
+Unfortunately the conversion from polygon to volume can produce artefacts
+ due to the conversion method used by the Isooffset node.
+ Different workarounds to this problem have been tried but none of them
+ proved to be successful for all kinds of input geometry.
+ IMMAGINE DEL PROBLEMA
+\end_layout
+
+\begin_layout Subsubsection
+Population of the envelope
+\end_layout
+
+\begin_layout Standard
+3D shape turned to a volume, level of customization to wrap around object,
+ interact with object.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1259,15 +1300,6 @@ trunk
  whether they are single points or points being selected from a custom structure.
  This attribute plays a key role in a later part of the network to set and
  scale the cross section of the branches according to their age.
-\end_layout
-
-\begin_layout Subsection
-Population of the envelope
-\end_layout
-
-\begin_layout Standard
-3D shape turned to a volume, level of customization to wrap around object,
- interact with object.
 \end_layout
 
 \begin_layout Subsection
