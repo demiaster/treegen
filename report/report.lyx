@@ -1173,12 +1173,77 @@ Unfortunately the conversion from polygon to volume can produce artefacts
 \end_layout
 
 \begin_layout Subsubsection
-Population of the envelope
+Attraction Points
 \end_layout
 
 \begin_layout Standard
-3D shape turned to a volume, level of customization to wrap around object,
- interact with object.
+At early stages of the production, the volume obtained from the tree crown
+ shape was seeded with points with a uniform distribution.
+ The resulting trees, as described by Runion (REFERENCEEEEE) shows a uniform
+ density in the branches distribution.
+ In many trees and shrubs however, the density increases near the crown
+ surface due to better light exposure.
+ To achieve the same result, following Runion suggestion, the network implements
+ a custom scattering distribution.
+ As a first step, the tree crown is still seeded with attraction points
+ using a uniform distribution.
+ A wrangle node 
+\begin_inset Quotes eld
+\end_inset
+
+distance_from_bounding_object
+\begin_inset Quotes erd
+\end_inset
+
+ evaluates, for each attraction point, the distance from the bounding object
+ provided as a second input to the node.
+ The resulting value is stored to an attribute named @dist.
+ The promote Houdini node is used twice to find respectively the maximum
+ distance @max_dist and the minimum distance @min_dist for the @dist attribute.
+ These information feed a second wrangle node 
+\begin_inset Quotes eld
+\end_inset
+
+radial_distribution
+\begin_inset Quotes erd
+\end_inset
+
+: each node @dist value is taken from its original range (@min_dist, @max_dist)
+ and shifted to its corresponding value in the new range (0, 1).
+ The resulting variable is linked to a user customizable ramp.
+ The value from the ramp represents the probability for the attraction point
+ to survive.
+ A random number based on the @ptnum of the current attraction point is
+ calculated and compared to the probability value.
+ If it results to be less, the attraction point gets removed.
+ The ramp extends the potential of Runion idea by giving the users not only
+ control over the density near the crown surface but providing them with
+ a greater art directability over the branches density from the centroid
+ of the shape to its boundaries.
+\end_layout
+
+\begin_layout Standard
+The same principles are used to define a second custom distribution that
+ uses the Y coordinate of the point position is used instead of the distance
+ from the object (
+\begin_inset Quotes eld
+\end_inset
+
+AP_height
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+vertical_distribution
+\begin_inset Quotes erd
+\end_inset
+
+).
+ The newly generated attraction points are then initialized.
+ 
 \end_layout
 
 \begin_layout Subsubsection
