@@ -955,7 +955,6 @@ The network for the implementation of the growth algorithm relies on the
  In terms of performances, VEX has proven to be faster than Python because
  it implements automatic multithreading while Python does not have the same
  feature.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -963,14 +962,9 @@ Wrangle Node
 \end_layout
 
 \begin_layout Standard
-Needs to cook before updating the values for the geometry.
- can only access the geometry as its state when it's input in the current
- wrangle node.
-\end_layout
-
-\begin_layout Standard
-The wrangle node is the most present node type in the network therefore
- it seemed only natural to give a brief explanation of how it works.
+The wrangle node REFERENCEEEEE is the most present node type in the network
+ therefore it seemed only natural to give a brief explanation of how it
+ works.
 \end_layout
 
 \begin_layout Standard
@@ -1007,6 +1001,13 @@ When the snippet affects the attributes of the geometry, these attribute
 
 \begin_layout Subsection
 Data structure
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Data-structure"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1092,15 +1093,15 @@ Another important information about the tree nodes is the grow direction
  Storing this values make it possible for a later more detailed manipulation
  of branching angles.
  Each point therefore stores a @growdir attribute that holds the normalized
- growth vectors that links the parent to the node point position.
+ growth vector that links the parent to the node point position.
 \end_layout
 
 \begin_layout Standard
 As a final step, each node also has two flags respectively for death and
  fertility.
  While the fertility flag signals if the node can produce a child in the
- current iterationand can be therefore non fertile and fertile in two consecutiv
-e iteration, when the death flag is set it determines an irreversible condition
+ current iteration and can be therefore non fertile and fertile in two consecuti
+ve iteration, when the death flag is set it determines an irreversible condition
  for the node.
  A node dies whenever it reaches the maximum amount of children or for degenerat
 ed cases such as the position of the child node being coincident with its
@@ -1123,6 +1124,141 @@ define the 3D envelop, user input, choice on how many iteration, D, Dk,
  Root point input as just points or a user selected trunk.
  Explanation of the algorithm for just nodes, new chapter for user defined
  trunk and branches.
+\end_layout
+
+\begin_layout Standard
+In order for the growth algorithm to start, some parameters have to be set
+ such as the tree crown envelope, the attraction points position and the
+ roots points.
+\end_layout
+
+\begin_layout Subsubsection
+Tree crown
+\end_layout
+
+\begin_layout Standard
+simple, collision, wrap.
+\end_layout
+
+\begin_layout Subsubsection
+Roots
+\end_layout
+
+\begin_layout Standard
+The network provides three different ways to specify the roots for the growth
+ algorithm.
+ An user can either create single root points by specifying the coordinates,
+ input a premade set of points or a trunk and branches curves structure.
+\end_layout
+
+\begin_layout Standard
+For the first two option the initialization of the nodes attributes follows
+ the same process.
+ All the root points @parent is set to -1 to signal that they do not have
+ any parent.
+ As said before, the colour @Cd is initialized to yellow {1, 0.5, 0} and
+ the @kids is declared as an empty array, the @type to 
+\begin_inset Quotes eld
+\end_inset
+
+node
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Space will be allocated for for the @growdir @n_dead and @attr_dead.
+ The initial values for these parameters are respectively {0, 0, 0}, 0 meaning
+ that the node is alive and -1 to signal a default value.
+\end_layout
+
+\begin_layout Standard
+The initialization of some attributes such as @parent, @kids and @type differs
+ in the case of a custom trunk structure is fed in the system.
+ This kind of structure already contains primitive information that link
+ together points in a precise hierarchy.
+ The most likely scenario is that each branch is represented as a curve
+ primitive.
+ The fork points of the structure will then belong to two different primitive
+ at once, for example to both the trunk and a branch.
+ The first attribute to be initialized is the @kids array using the 
+\begin_inset Quotes eld
+\end_inset
+
+trunk_kids
+\begin_inset Quotes erd
+\end_inset
+
+ snippet.
+ This wrangle node is encapsulated in a for loop nodes block that will iterate
+ on each primitive of the input geometry.
+ The wrangle will therefore process the points of one primitive at the time.
+ In the wrangle interface, the snippet is set to run over details so that
+ the iteration process over the points is explicitly declared in in the
+ code.
+ The snippet starts by retrieving an ordered array of the current primitive
+ points.
+ A for loop then iterates over this array reading the point value and assigning
+ the next point in the array to itself as @kids element.
+ By using this approach, the snippet successfully handles specific cases
+ in which the children to the point belong to different primitives.
+ After having initialized the @kids attribute, the @parent comes straightforward
+: the 
+\begin_inset Quotes eld
+\end_inset
+
+trunk_parent
+\begin_inset Quotes erd
+\end_inset
+
+ wrangle iterates over each point of the input geometry regardless the primitive
+ they belong to.
+ Each point will read its own @kids list and proceeds to set itself as @parent
+ attribute to these points.
+ One can refer to this process as parent injection.
+ It is important to highlight that at this stage the @id attribute described
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Data-structure"
+
+\end_inset
+
+ has still not been initialized.
+ The parent-children relation is built on the @ptnum.
+ It is also important to understand that in this particular part of the
+ network all the geometry being processed belongs to the tree structure.
+ The @id can be therefore initialized as a plain copy of the @ptnum.
+ Being @ptnum and @id coincident at this stage, the initialization process
+ described results to be correct.
+ As a next step, the @type has to be set.
+ The implementation process makes sure that the user is given a certain
+ extent of controls over the choice of root points for the growth algorithm.
+ The network highlights as candidate roots all the points contained within
+ the volume of the tree crown shape.
+ The user can then decide which of them to keep.
+ For the selected points, the @type is set to 
+\begin_inset Quotes eld
+\end_inset
+
+node
+\begin_inset Quotes erd
+\end_inset
+
+ while the remaining ones are set to 
+\begin_inset Quotes eld
+\end_inset
+
+trunk
+\begin_inset Quotes erd
+\end_inset
+
+.
+ During the growth algorithm, only the nodes will interact while the others
+ will be lifeless.
+ A final attribute @generation is initialized for all root points regardless
+ whether they are single points or points being selected from a custom structure.
+ This attribute plays a key role in a later part of the network to set and
+ scale the cross section of the branches according to their age.
 \end_layout
 
 \begin_layout Subsection
