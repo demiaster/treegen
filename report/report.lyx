@@ -460,6 +460,13 @@ hyperref[par:runions2007]{Runions et al (2007)}
 
 \begin_layout Subsection
 Overview
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Overview"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1372,7 +1379,70 @@ Growth
 \end_layout
 
 \begin_layout Standard
-the whole subnetwork with the big loop
+The growth main algorithm lies inside a dedicated subnetwork 
+\begin_inset Quotes eld
+\end_inset
+
+growing_alg
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This subnetwork mainly consists of a for loop that determines the number
+ of time the geometry is processed.
+ Contrary to the stop conditions presented in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Overview"
+
+\end_inset
+
+, the loop will only terminate after an user defined number of iterations.
+ It can happen that the user require the algorithm to run more times than
+ the ones required to meet the stop condition.
+ In this case, even though the network will continue iterating, no new geometry
+ is created.
+ When running the algorithm, the user has also control over the values for
+ 
+\begin_inset Formula $D$
+\end_inset
+
+, 
+\begin_inset Formula $dk$
+\end_inset
+
+ and 
+\begin_inset Formula $di$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Before delving in the growth loop, the wrangle 
+\begin_inset Quotes eld
+\end_inset
+
+AD_treepts
+\begin_inset Quotes erd
+\end_inset
+
+ sets a detail attribute over the geometry that specifies the total number
+ of treepoints based on the @type attribute of the points.
+ This is later used to produce the @id for the new born nodes.
+\end_layout
+
+\begin_layout Standard
+At this stage as well, points with type 
+\begin_inset Quotes eld
+\end_inset
+
+trunk
+\begin_inset Quotes erd
+\end_inset
+
+ are filtered out of the growth process and rejoined with the rest of the
+ geometry when the process ends.
 \end_layout
 
 \begin_layout Subsubsection
