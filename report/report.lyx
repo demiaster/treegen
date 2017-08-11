@@ -667,6 +667,13 @@ kill distance
 
 \begin_layout Subsubsection
 Steps
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Steps"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1937,7 +1944,36 @@ Remove attraction points
 \end_layout
 
 \begin_layout Standard
-set_dead_attr
+As a final step of the growth algorithm, as described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Steps"
+
+\end_inset
+
+, the network has to remove the attraction points that are closer to the
+ tree points than the kill distance 
+\begin_inset Formula $dk$
+\end_inset
+
+.
+ Runion explains that greater values for this parameter yield to increasingly
+ sparse crowns.
+ In his algorithm, the 
+\begin_inset Formula $dk$
+\end_inset
+
+ is a constant of the whole groth process.
+ The tree branching structure presented in his research always result to
+ be too sparse when it comes to small twigs closer to the tree crown shape.
+ In an attempt to improve the appearance of such small twigs, the algorithm
+ presented in this project scales the value for 
+\begin_inset Formula $dk$
+\end_inset
+
+ based on a ramp.
+ The user can therefore manipulate its value and decrease it for younger
+ twigs to achieve better density and more details near the crown surface.
 \end_layout
 
 \begin_layout Subsubsection
