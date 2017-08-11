@@ -966,6 +966,13 @@ The network for the implementation of the growth algorithm relies on the
 
 \begin_layout Subsection
 Wrangle Node
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Wrangle-Node"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1668,23 +1675,261 @@ Creation of the new node
 \end_layout
 
 \begin_layout Standard
+At this stage, the network has gathered all the information needed to create
+ the new generation of tree nodes.
+ The wrangle 
+\begin_inset Quotes eld
+\end_inset
+
 create_new_node
+\begin_inset Quotes erd
+\end_inset
+
+ runs over each fertile node of the tree structure.
+ The position of the new tree node is determined and the point created using
+ the addpoint() Houdini VEX function.
+ The _initializeAttribute() function is then invoked to take care of all
+ the parameters of the new born that will make it a viable new tree node.
+ The function takes as parameters the @ptnum of the newborn and the @ptnum,
+ @dir and @gen of the parent node.
+ With these information it proceeds populating the attributes for the newborn
+ as described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Initialization-of-newborn"
+
+\end_inset
+
+ 
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Initialization of newborn tree node
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:Initialization-of-newborn"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+attr_dead = -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+Cd = {0, 1, 0};
+\end_layout
+
+\begin_layout Plain Layout
+
+fertile = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+generation = parent_generation + 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+growdir = parent_dir;
+\end_layout
+
+\begin_layout Plain Layout
+
+n_dead = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+parent = parent_id;
+\end_layout
+
+\begin_layout Plain Layout
+
+type = "node";
+\end_layout
+
+\begin_layout Plain Layout
+
+id = -1;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+The colour is initialized as green because the new node does not have any
+ children yet.
+ This information is later used in the network to find the points on which
+ to scatter leaves.
+ The @id is temporarily set to a default value and set to its proper value
+ later on in the network.
+ Compared to Runion's algorithm, the project offers a new approach.
+ The original algorithm kept the distance D between consecutive tree nodes
+ as a constant, in nature, though, younger shrubs grow shorter than the
+ previous ones.
+ In an attempt to reproduce this natural phenomena, this projects implements
+ a scaling algorithm that progressively reduces the D length value across
+ generations.
+ The scaling factor is represented as a ramp that the user can manipulate
+ to achieve the desired look.
 \end_layout
 
 \begin_layout Standard
-separation between oldnodes and newborn and non fertile
+To set the newborns id correctly, these points are separated from the other
+ tree nodes.
+ To set the @id, the network relies on the total count of tree points as
+ showed in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Set-newborn-id"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-set_id
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Set newborn id
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:Set-newborn-id"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+foreach newborn
+\end_layout
+
+\begin_layout Plain Layout
+
+	id = treepointcount + current iteration value
+\end_layout
+
+\begin_layout Plain Layout
+
+	update treepoint count as treepointcount + 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The reason behind this particular implementation can be found in the peculiar
+ nature of the Houdini wrangle nodes.
+ The geometry the snippet can access is only the one that is wired in as
+ input to the node.
+ As explained in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Wrangle-Node"
+
+\end_inset
+
+, any changes the snippet produces to the geometry will not be reflected
+ on the geometry until the node is cooked and fed as input to the next node
+ in the network.
+ Following this logic, the update of the tree point count, even if it get
+ changed every iteration, will only be written on the geometry when the
+ snippet has iterated over all the points.
+ The tree point count value used to assign the new id is therefore the same
+ for each newborn.
 \end_layout
 
 \begin_layout Standard
+As a final step, the parents @kid list attribute has to be updated with
+ the newborns @id.
+ The separated tree nodes are fed as first input geometry to the 
+\begin_inset Quotes eld
+\end_inset
+
 update_parent
+\begin_inset Quotes erd
+\end_inset
+
+ wrangle.
+ The wrangle will also take as a second input geometry the newborn points.
+ For each of the newborns, the snippet will retrieve the @parent id value.
+ Given the parent @id, the _findPt() function returns the a handle to the
+ parent node for which the currently processed newborn is appended to the
+ list of children.
+ Since the parent now has at least one child, its colour is set to yellow.
+ To speed up the performances further, the old tree points are divided further
+ so that only the fertile ones, therefore the parents, are fed in the 
+\begin_inset Quotes eld
+\end_inset
+
+update_parent
+\begin_inset Quotes erd
+\end_inset
+
+ wrangle.
 \end_layout
 
 \begin_layout Standard
-merge treenodes together
+Once this setup is completed, the tree nodes are joined back together.
 \end_layout
 
 \begin_layout Subsubsection
