@@ -834,7 +834,7 @@ v^{\prime}\in T
 
 \begin_inset Formula 
 \begin{equation}
-d(v,v^{\prime})=D
+d(v,v^{\prime})=D\label{eq:newborn_dir_magnitude}
 \end{equation}
 
 \end_inset
@@ -842,7 +842,7 @@ d(v,v^{\prime})=D
 
 \begin_inset Formula 
 \begin{equation}
-\vec{n}=\sum_{s\in S(v)}\frac{s-v}{\shortparallel s-v\shortparallel}
+\vec{n}=\sum_{s\in S(v)}\frac{s-v}{\shortparallel s-v\shortparallel}\label{eq:newborn_dir}
 \end{equation}
 
 \end_inset
@@ -850,7 +850,7 @@ d(v,v^{\prime})=D
 
 \begin_inset Formula 
 \begin{equation}
-\hat{n}=\frac{\vec{n}}{\shortparallel n\shortparallel}
+\hat{n}=\frac{\vec{n}}{\shortparallel n\shortparallel}\label{eq:newborn_dir_normal}
 \end{equation}
 
 \end_inset
@@ -858,7 +858,7 @@ d(v,v^{\prime})=D
 
 \begin_inset Formula 
 \begin{equation}
-v^{\prime}=v+D\hat{n}
+v^{\prime}=v+D\hat{n}\label{eq:newborn_position}
 \end{equation}
 
 \end_inset
@@ -1622,7 +1622,45 @@ Calculate new born direction
 \end_layout
 
 \begin_layout Standard
-blablabla
+The 
+\begin_inset Quotes eld
+\end_inset
+
+newborn_dir
+\begin_inset Quotes erd
+\end_inset
+
+ wrangle runs over each tree point that is fed as a first input geometry.
+ If the node results to be fertile, the snippet proceeds to retrieve the
+ identifiers of the influencing points to that tree node stored in the @nbrs
+ array attribute.
+ The set of all the influencing points is fed to the wrangle as a second
+ input geometry.
+ Having the identifiers for the influencing points and the influencing points
+ geometry as input, the algorithm can use the identifiers as lookup keys
+ to retrieve the position of the influencing points.
+ The growth direction for the future newborn is then calculated using 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:newborn_dir"
+
+\end_inset
+
+.
+ The normalized 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:newborn_dir_normal"
+
+\end_inset
+
+ result is stored in the vector attribute @dir of the tree node.
+ This way, the parent node is in charge of holding all the information needed
+ to later create and initialize correctly the new born nodes.
+ Before moving on to the next step of the network, the snippet checks for
+ degenerated cases for which the magnitude of the @dir vector is 0, which
+ happens whenever the @nbrs list of influencing points is empty.
+ These nodes are declared dead and their fertility flag reset to 0.
 \end_layout
 
 \begin_layout Subsubsection
