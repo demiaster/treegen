@@ -1981,7 +1981,20 @@ Preparation to next iteration
 \end_layout
 
 \begin_layout Standard
-reset direction, fertile and nbrs for nodes, join them back together
+Some attributes of the tree nodes have to be reset to default values in
+ order for the next iteration to start in a clean state.
+\end_layout
+
+\begin_layout Itemize
+@dir is set back to {0, 0, 0}
+\end_layout
+
+\begin_layout Itemize
+@nbrs is emptied
+\end_layout
+
+\begin_layout Itemize
+@fertile flag is set to 0
 \end_layout
 
 \begin_layout Subsubsection
@@ -1989,8 +2002,32 @@ Extra controls
 \end_layout
 
 \begin_layout Standard
-number of children, correction angle, distance pruning, probability pruning,
- scale D, dk while running
+Even though the overall algorithm can produce a wide range of different
+ branching structures, the project provides some controls:
+\end_layout
+
+\begin_layout Itemize
+pruning probability: starting from a user defined generation and killing
+ probability threshold value, a random number is calculated for each tree
+ point and compared to the killing probability.
+ If the random number is smaller than the threshold, the node is set to
+ non fertile.
+ This small check gives more controls over the density of the branches.
+\end_layout
+
+\begin_layout Itemize
+pruning by distance: the user can define a minimum distance from the tree
+ crown geometry.
+ Whenever the distance of a tree point from the crown shape is less than
+ that value, the node is set to dead.
+\end_layout
+
+\begin_layout Itemize
+fix growing angles: it may happen that siblings branches grow too close
+ one to each other.
+ A new control checks the angle between siblings branches and modifies the
+ younger sibling position if the angle is less than the specified threshold.
+ 
 \end_layout
 
 \begin_layout Subsection
