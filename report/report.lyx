@@ -1587,6 +1587,7 @@ grow_alg/find_neighbour
  subnetwork.
  The approach undertaken here also improved Runion algorithm by reducing
  the number of computation required to achieve the result.
+ IMMAGINE ALGORITMO, IMMAGINE NETWORK
 \end_layout
 
 \begin_layout Subsubsection
@@ -1594,7 +1595,26 @@ Set fertility for the tree nodes
 \end_layout
 
 \begin_layout Standard
-blablabla
+Extending Runion's algorithm further, the user can specify the maximum count
+ of branches that a node can generate and from which generation the nodes
+ can begin the branching process.
+ This node gives a better control over the final tree structure as it allows
+ to achieve a sparser result when reducing the count of children per node.
+ By choosing the generation from which to start branching, the user can
+ enhance the visual impact of the main trunk structure.
+ The wrangle 
+\begin_inset Quotes eld
+\end_inset
+
+set_fertility
+\begin_inset Quotes erd
+\end_inset
+
+ operates over this constraints: the eligible nodes for the production of
+ a new tree node are flagged as fertile.
+ Another check is here performed: in the case the node has already reached
+ the maximum count of children allowed, the node is flagged as dead and
+ becomes inactive for all the remaining iterations of the growth algorithm.
 \end_layout
 
 \begin_layout Subsubsection
