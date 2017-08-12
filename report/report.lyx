@@ -2263,7 +2263,43 @@ Leaves
 \end_layout
 
 \begin_layout Standard
-blablabla
+In nature, trees produce leaves only on the very ending points of the branching
+ structure.
+ To replicate this phenomena the network isolates all those point of the
+ tree who do not have any children.
+ The leaves are then copied on those points by using the copy_stamp node.
+ For the copy_stamp to work properly, the normal direction has to be set
+ for the tree points.
+ The point SOP activates an edge force on these point.
+ The edge force is directed along the edge direction which is stored in
+ the 
+\family typewriter
+edge_dir
+\family default
+ built in variable for points in Houdini.
+ With a VOP subnetwork the 
+\family typewriter
+edge_dir
+\family default
+ is copied as value for the normal direction of the points.
+\end_layout
+
+\begin_layout Standard
+The user can decide to either use the default geometry or to input a custom
+ model for the leaves.
+ For the default ones, some copy_stamping expression randomizes the roll
+ and pitch within a certain range of values on a per instance basis.
+ For the custom geometry instead, a control is given to specify the number
+ of leaves per tree point.
+ The copy_and_transform evenly spreads the leaves radially by dividing 360
+ degrees of the number of leaf instances specified by the user.
+\end_layout
+
+\begin_layout Standard
+The user can choose whether to use a plain color or apply a custom shader.
+ While the default geometry is ready to shade, the user has to make sure
+ to prepare the custom geometry for the shading process using the UV_project
+ Houdini node before feeding the leaf object as input to the network.
 \end_layout
 
 \begin_layout Section
@@ -2296,39 +2332,6 @@ fixing the scale.
  move in the wind.
  procedural LOD.
  leaves as proxy to be expanded at rendertime.
-\end_layout
-
-\begin_layout Part
-Flowers
-\end_layout
-
-\begin_layout Section
-Implementation
-\end_layout
-
-\begin_layout Subsection
-Network
-\end_layout
-
-\begin_layout Subsection
-User Interface
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Conclusions
-\end_layout
-
-\begin_layout Section
-Future Work
 \end_layout
 
 \begin_layout Part*
