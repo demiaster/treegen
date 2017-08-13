@@ -536,12 +536,14 @@ The algorithm proceeds as follows.
  A single point is specified as input and acts as the base of the tree.
  Having the attracting points and the first tree point, the tree structure
  is generated as an iterative process.
- Each iteration produces new tree points in the direction of the neighbour
+ Each iteration produces new tree points in the direction of the neighbouring
  attraction points to extend the existing tree structure.
- The algorithm may stop after a user defined number of iterations.
- If let running, the algorithm stops either when there are no attraction
- points within the radius of influence or when there are no attraction points
- left.
+ The algorithm may stop after a user-defined number of iterations.
+ If let running, the algorithm will either stop when there are no attraction
+ points close enough to the tree to influence its growth (i.e.
+ no tree points are within a threshold distance, called radius of influence,
+ from the attraction points) or when all attraction points has been reached
+ by tree points.
 \end_layout
 
 \begin_layout Standard
@@ -573,12 +575,12 @@ Definitions and axioms
 \end_layout
 
 \begin_layout Enumerate
-Every point the algorithm uses is either a tree node or an attraction node.
+Every point the algorithm uses is either a tree node or an attraction point.
  From now on we will refer to tree nodes with 
 \begin_inset Formula $v$
 \end_inset
 
- and attraction nodes with 
+ and attraction point with 
 \begin_inset Formula $s$
 \end_inset
 
@@ -592,7 +594,7 @@ Every point the algorithm uses is either a tree node or an attraction node.
  is the set of all the attraction points.
 \begin_inset Formula 
 \begin{equation}
-\forall s,s\in N
+\forall s,\,s\in N
 \end{equation}
 
 \end_inset
@@ -607,7 +609,7 @@ Every point the algorithm uses is either a tree node or an attraction node.
  is the set for the tree nodes
 \begin_inset Formula 
 \begin{equation}
-\forall v,s\in N
+\forall v,\,v\in T
 \end{equation}
 
 \end_inset
@@ -623,7 +625,7 @@ If we refer to
  as a generic point in the algorithm
 \begin_inset Formula 
 \begin{equation}
-\nexists p(p\in N\land p\in T)
+\nexists p\mid p\in N\land p\in T
 \end{equation}
 
 \end_inset
@@ -702,18 +704,14 @@ kill distance
 \shape default
 .
  If 
-\begin_inset Formula $d(s,v)$
+\begin_inset Formula $\exists v\in T\mid d(s,v)<dk$
 \end_inset
 
- is less than 
-\begin_inset Formula $dk$
-\end_inset
-
-, 
+, then 
 \begin_inset Formula $s$
 \end_inset
 
- gets removed.
+ is removed.
 \end_layout
 
 \begin_layout Enumerate
@@ -736,7 +734,23 @@ name "subsec:Steps"
 
 \begin_layout Enumerate
 Define a 3D shape for the tree crown.
- Initialize the parameters N, di, dk, D.
+ Initialize the parameters 
+\begin_inset Formula $N$
+\end_inset
+
+, 
+\begin_inset Formula $di$
+\end_inset
+
+, 
+\begin_inset Formula $dk$
+\end_inset
+
+, 
+\begin_inset Formula $D$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -766,7 +780,7 @@ Each attraction point
 \begin_inset Formula $s\in N$
 \end_inset
 
-, may influence the tree node 
+ may influence the tree node 
 \begin_inset Formula $v$
 \end_inset
 
@@ -831,7 +845,11 @@ For each tree node
 \noun default
 \color inherit
 \lang british
-, if S(v) is not empty, a new tree node 
+, if 
+\begin_inset Formula $S(v)$
+\end_inset
+
+ is not empty, a new tree node 
 \begin_inset Formula $v^{\prime}$
 \end_inset
 
@@ -934,7 +952,7 @@ v^{\prime}=v+D\hat{n}\label{eq:newborn_position}
 \begin_layout Enumerate
 
 \lang english
-perform a check to test, if any, attraction points 
+Perform a check to test if any attraction points 
 \family roman
 \series medium
 \shape up
@@ -962,7 +980,8 @@ perform a check to test, if any, attraction points
 \uwave default
 \noun default
 \color inherit
- should be removed if the following condition is true for at least one 
+ should be removed.
+ This happens if the following condition is true for at least one 
 \family roman
 \series medium
 \shape up
@@ -1004,8 +1023,51 @@ d(s,v)<dk
 \begin_layout Enumerate
 
 \lang english
-repeat from steps 4 to 6 until we meet the stop conditions mentioned in
- HYPERREF!!!.
+repeat from steps 4 to 6 until the stopping conditions mentioned in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Overview"
+
+\end_inset
+
+ are met.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Space Colonization Algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1020,13 +1082,15 @@ The network for the implementation of the growth algorithm relies on the
  VEX.
  Being Python widely used as scripting language and being a reality shared
  between many DCC software, it might seem the most sensible choice.
- On the other hand, VEX scripting language is Houdini native language.
+ On the other hand, VEX scripting language is the Houdini native language.
  VEX gives direct access to geometry data and provides a wide variety of
  built-in function optimized for best performances on the Houdini geometry
  internal representation.
  In terms of performances, VEX has proven to be faster than Python because
  it implements automatic multithreading while Python does not have the same
  feature.
+ Given the marked difference in performance, VEX was used throughout this
+ project.
 \end_layout
 
 \begin_layout Subsection
@@ -1041,17 +1105,35 @@ name "subsec:Wrangle-Node"
 \end_layout
 
 \begin_layout Standard
-The wrangle node REFERENCEEEEE is the most present node type in the network
- therefore it seemed only natural to give a brief explanation of how it
- works.
+The 
+\family typewriter
+Wrangle
+\family default
+ node REFERENCEEEEE is the most present node type in the network therefore
+ it seemed only natural to give a brief explanation of how it works.
 \end_layout
 
 \begin_layout Standard
-METTICI UNA IMMAGINE The attribute wrangle is a low level node that allows
- for the tweaking of the geometry attributes using VEX code.
- Its capabilities correspond to the Attribute VOP SOP.
- The main difference between the two of them is that wrangle uses a a textual
- editor whilst the Attribute VOP SOP uses a visual network.
+The 
+\shape italic
+Attribute Wrangle
+\shape default
+ is a low level node that allows for the tweaking of the geometry attributes
+ using VEX code.
+ Its capabilities correspond to the 
+\shape italic
+Attribute VOP SOP
+\shape default
+.
+ The main difference between the two of them is that 
+\shape italic
+Wrangle
+\shape default
+ uses a a textual editor whilst the 
+\shape italic
+Attribute VOP SOP
+\shape default
+ uses a visual network.
 \end_layout
 
 \begin_layout Standard
@@ -1060,22 +1142,57 @@ The node can edit the input geometry by changing or adding attributes.
  linking points together to create polygons and so on.
  The snippet runs on details or on every point/primitive/vertex of the first
  input geometry.
- Using the multiple sources to the node it is also possible to access data
+ Using  multiple sources to the node it is also possible to access data
  from different geometry at the same time.
- When having multiple sources, only the first input geometry will flow down
- to the next node of the network whilst the other input geometries will
- be lost.
+ When having multiple sources, only the first input geometry will be passed
+ down to the next node of the network whilst the other input geometries
+ will be lost.
 \end_layout
 
 \begin_layout Standard
 When the snippet affects the attributes of the geometry, these attribute
  will not be available until the node is cooked.
- This often makes is difficult to populate geometry attributes such as array
- within the same wrangle node.
- Due to this, the implementation of particular parts of the growth algorithm
+ This often makes is difficult to populate geometry attributes such as arrays
+ within the same 
+\shape italic
+Wrangle
+\shape default
+ node.
+ For this reason the implementation of particular parts of the growth algorithm
  might not seem the most straightforward or obvious way to approach the
- problem but have been deliberately tweaked to overcome this particular
+ problem, but have been deliberately designed to overcome this particular
  issue.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Wrangle node interface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1100,109 +1217,251 @@ reference "subsec:Growth-Algorithm"
 , mostly relies on points position.
  Each point has certain attributes to make it possible to create the tree
  structure.
- The attribute @type divides the point set in two main categories respectively
- the tree nodes and the attraction points.
+ The attribute 
+\family typewriter
+@type
+\family default
+ divides the point set in two main categories, respectively the tree nodes
+ and the attraction points.
  Given the nature of the algorithm, the total number of attraction points
  will decrease each iteration whilst every new node that will be created
  will increase the count for the tree nodes.
  To give a better visualization for this partition, the colour attribute
- @Cd is initialized to {1, 0.5, 0} for the tree node and to {0, 0.5, 1} for
- the attraction points.
+ 
+\family typewriter
+@Cd
+\family default
+ is initialized to 
+\begin_inset Formula ${1,0.5,0}$
+\end_inset
+
+ for the tree node and to 
+\begin_inset Formula ${0,0.5,1}$
+\end_inset
+
+ for the attraction points.
 \end_layout
 
 \begin_layout Standard
 The aim of the algorithm is to create a believable branching structure to
  reproduce natural trees.
- Stems might grow in only one direction or fork producing new stems.
+ Stems might either grow in a single direction or fork producing new stems.
  Older stems also grow thicker to balance the weight of the younger stems.
  This branching pattern can be represented by an acyclic graph data structure.
 \end_layout
 
 \begin_layout Standard
-A graph is a finite collection of vertices and edges.
- Graph are used to model pairwise relations between object.
+A graph REFERENCE is a finite collection of vertices and edges.
+ Graphs are used to model pairwise relations between object.
  The vertices, or nodes, represent the objects while the edges are the relations.
  The different nature of the relations leads to different kinds of graphs.
  In the case of a directed graph, each edge has an orientation, from one
  vertex to another vertex.
  A path is a sequence of edges.
- A node A is reachable by another node B if there exists a path that leads
- from A to B.
+ A node 
+\begin_inset Formula $A$
+\end_inset
+
+ is reachable by another node 
+\begin_inset Formula $B$
+\end_inset
+
+ if there exists a path that leads from 
+\begin_inset Formula $A$
+\end_inset
+
+ to 
+\begin_inset Formula $B$
+\end_inset
+
+.
  If for each node in the graph there is no path that connects the node to
- itself, the graph is said to be acyclic.
- Being a graph a hierarchical structure, it is appropriate to address relationsh
-ip between nodes as parent/child relationship.
+ itself, the graph is said to be 
+\emph on
+acyclic
+\emph default
+.
+ Being a graph a hierarchical structure, it is appropriate to address relations
+ between nodes as parent/child relations.
  Each node is therefore aware either of its parent, its children or both.
- In computer science, to reproduce the relationships between nodes, each
- node contains a pointer to the connected ones.
+ In computer science relations between nodes are implemented by storing
+ in each node a pointer to its connected ones.
  The network developed for this project provides each tree node with two
- attributes an integer and an array to store references to the parent and
- the children respectively.
- Unfortunately Houdini does not have pointers like structures.
- The points of a geometry are stored in an array like structure.
- The @ptnum attribute refers to the index of the point in that array.
- When referring to a point using the @ptnum attribute, one can gain direct
- access to that points other attributes, either built in or custom.
- Unfortunately, being the @ptnum ultimately just an index in an array, its
- value is not consistent through the network.
- Operation such as adding or removing points or merging together two geometry
- may shift or offset the @ptnum value.
- Given its unstable nature, the @ptnum did not seem to be a suitable choice
- to build parent/child relation upon.
- As a workaround, each treepoint also stores a unique identifier @id.
- Smaller @id values belong to older tree points while greater values belong
- to younger ones.
- When populating the @parent and @kids attributes, the reference to the
- other points will not be represented by the @ptnum but by the @id instead.
- Having to rely on a custom attribute such as the @id automatically translate
- into losing the direct access granted by the @ptnum.
+ attributes, an integer and an array, to store references to the parent
+ and the children respectively.
+ Unfortunately, Houdini does not have pointers-like structures.
+ The points of a geometry are stored in an array-like structure.
+ The 
+\family typewriter
+@ptnum
+\family default
+ attribute refers to the index of the point in that array.
+ When referring to a point using the 
+\family typewriter
+@ptnum
+\family default
+ attribute, one can gain direct access to other attributes, either built-in
+ or custom, of that point.
+ Unfortunately, being the 
+\family typewriter
+@ptnum
+\family default
+ ultimately just an index in an array, its value is not consistent through
+ the network.
+ Operations such as adding or removing points or merging together two geometries
+ may shift or offset the 
+\family typewriter
+@ptnum
+\family default
+ value.
+ Given the unstable nature of 
+\family typewriter
+@ptnum, 
+\family default
+building parent/child relation upon it did not seem to be a suitable choice.
+ As a workaround, each tree node also stores a unique identifier 
+\family typewriter
+@id
+\family default
+.
+ Smaller 
+\family typewriter
+@id
+\family default
+ values belong to older tree nodes while greater values identify younger
+ ones.
+ When populating the 
+\family typewriter
+@parent
+\family default
+ and 
+\family typewriter
+@kids
+\family default
+ attributes, the reference to the other points will not be represented by
+ 
+\family typewriter
+@ptnum
+\family default
+ but by 
+\family typewriter
+@id
+\family default
+ instead.
+ Having to rely on a custom attribute such as 
+\family typewriter
+@id
+\family default
+ automatically implies losing the direct access to the points granted by
+ 
+\family typewriter
+@ptnum
+\family default
+.
  This greatly affects the performances of the whole algorithm because in
- order to find a node with a specific @id, one has to cycle over each point
- of the geometry and check for a match.
- In order not to loose this convenient feature, every time the algorithm
- has to work on the tree nodes, the sort node is used to remap the @ptnum
- based on the @id value.
+ order to find a node with a specific 
+\family typewriter
+@id
+\family default
+ one has to cycle over each point of the geometry and check for a match.
+ In order not to loose this convenient feature of direct access, every time
+ the algorithm works on the tree nodes the 
+\shape italic
+Sort
+\shape default
+ node is used to remap 
+\family typewriter
+@ptnum
+\family default
+ based on the 
+\family typewriter
+@id
+\family default
+ value.
  This solution allows for a reliable hierarchy structure while maintaining
  speed of access.
 \end_layout
 
 \begin_layout Standard
-Another important information about the tree nodes is the grow direction
- and the length of the internode.
- Storing this values make it possible for a later more detailed manipulation
- of branching angles.
- Each point therefore stores a @growdir attribute that holds the normalized
- growth vector that links the parent to the node point position.
+Another important information about the tree nodes is the growth direction
+ and the length of the internode (the distance between consecutive tree
+ nodes).
+ Storing this values make it possible for a  more detailed manipulation
+ of branching angles at a later time.
+ Each point therefore stores a 
+\family typewriter
+@growdir
+\family default
+ attribute that holds the normalized growth vector that links the parent
+ to the node point position.
 \end_layout
 
 \begin_layout Standard
 As a final step, each node also has two flags respectively for death and
  fertility.
- While the fertility flag signals if the node can produce a child in the
- current iteration and can be therefore non fertile and fertile in two consecuti
-ve iteration, when the death flag is set it determines an irreversible condition
- for the node.
- A node dies whenever it reaches the maximum amount of children or for degenerat
-ed cases such as the position of the child node being coincident with its
+ The fertility flag signals if the node can produce a child in the current
+ iteration, and can therefore assume 
+\begin_inset Quotes eld
+\end_inset
+
+non fertile
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+fertile
+\begin_inset Quotes erd
+\end_inset
+
+ values in two consecutive iteration.
+ On the other hand, when the death flag is set to 
+\family typewriter
+true
+\family default
+ it determines an irreversible condition for the node.
+ A node dies whenever it reaches the maximum amount of children or in degenerate
+ cases such as the position of the child node being coincident with its
  own position.
 \end_layout
 
 \begin_layout Standard
-As the information needed on a per node basis are quite important in terms
- of quantities, whenever an attribute is not needed any longer, it is removed
+As the information needed on a per-node basis are quite important in terms
+ of quantities, whenever an attribute is not needed any longer it is removed
  from the geometry.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Data Structure (Geometry Spreadsheet)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 Parameter initialization
-\end_layout
-
-\begin_layout Standard
-define the 3D envelop, user input, choice on how many iteration, D, Dk,
- Di scaling factor (manipulated through the generations).
- Root point input as just points or a user selected trunk.
- Explanation of the algorithm for just nodes, new chapter for user defined
- trunk and branches.
 \end_layout
 
 \begin_layout Standard
@@ -1219,24 +1478,31 @@ Tree crown
 The network provides up to three different ways to specify the crown volume
  for the tree.
  All of them take as an input polygonal shapes that are later converted
- to volume.
- At its very basic implementation, the user specified tree crown is converted
- to a volume using the Isooffset node.
- The conversion result to be necessary in order to populate the crown tree
- volume with the attraction points.
+ to a volume.
+ In its very basic implementation, the user-specified tree crown is converted
+ to a volume using the 
+\shape italic
+Isooffset
+\shape default
+ node.
+ The conversion is necessary in order to populate the tree crown volume
+ with the attraction points.
  Moving from the base implementation, the user can specify a collision object
- for the tree crown to interact width.
+ for the tree crown to interact with.
  This options makes it possible to simulate a tree growth process where
- the final shape is affected by the surrounding obstacles.
- The collision object is then converted to a volume.
- To identify the viable area for the tree to grow, the volume mix node performs
- the subtraction operation between the two input volumes.
+ the final shape is affected by surrounding obstacles.
+ The collision object is first converted to a volume.
+ To identify the viable area for the tree to grow, the 
+\shape italic
+volume mix
+\shape default
+ node performs a subtraction operation between the two input volumes.
  The resulting volume is then used for the tree to grow.
- Another option allows the user to specify not the crown tree volume directly
- but calculates the viable space for growth from a given object.
+ Another option allows the user not to specify  tree crown volume directly,
+ but it instead calculates the viable space for growth from a given object.
  The input geometry is converted to volume twice: the first conversion replicate
 s the input geometry closely whilst the second one will inflate the volume
- with a user defined offset.
+ with a user-defined offset.
  The difference between the volumes will create a layer wrapped around the
  initial object.
  This option can convey the illusion of a plant clinging and growing finding
@@ -1245,10 +1511,37 @@ s the input geometry closely whilst the second one will inflate the volume
 
 \begin_layout Standard
 Unfortunately the conversion from polygon to volume can produce artefacts
- due to the conversion method used by the Isooffset node.
+ due to the conversion method used by the 
+\shape italic
+Isooffset
+\shape default
+ node.
  Different workarounds to this problem have been tried but none of them
  proved to be successful for all kinds of input geometry.
- IMMAGINE DEL PROBLEMA
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Collision Object
+\end_layout
+
+\end_inset
+
+side by side first with geo, then with volumes
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1257,72 +1550,178 @@ Attraction Points
 
 \begin_layout Standard
 At early stages of the production, the volume obtained from the tree crown
- shape was seeded with points with a uniform distribution.
- The resulting trees, as described by Runion (REFERENCEEEEE) shows a uniform
+ shape was seeded with uniformly distributed attraction points.
+ The resulting trees, as described by Runions (REFERENCEEEEE) shows a uniform
  density in the branches distribution.
- In many trees and shrubs however, the density increases near the crown
+ In many real trees and shrubs however the density increases near the crown
  surface due to better light exposure.
- To achieve the same result, following Runion suggestion, the network implements
- a custom scattering distribution.
- As a first step, the tree crown is still seeded with attraction points
- using a uniform distribution.
- A wrangle node 
+ To achieve the same result, following Runions suggestion, the attraction
+ points in the network are seeded using a user-defined density profile,
+ function of the distance from the outer surface of the tree crown.
+ The steps to achieve such behaviour are explained below.
+\end_layout
+
+\begin_layout Standard
+As a first step, the tree crown is seeded with attraction points using a
+ uniform distribution.
+ A 
+\shape italic
+Wrangle
+\shape default
+ node 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 distance_from_bounding_object
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
  evaluates, for each attraction point, the distance from the bounding object
  provided as a second input to the node.
- The resulting value is stored to an attribute named @dist.
- The promote Houdini node is used twice to find respectively the maximum
- distance @max_dist and the minimum distance @min_dist for the @dist attribute.
- These information feed a second wrangle node 
+ The resulting value is stored to an attribute named 
+\family typewriter
+@dist
+\family default
+.
+ The 
+\shape italic
+promote
+\shape default
+ Houdini node is used twice to find respectively the maximum  
+\family typewriter
+@max_dist
+\family default
+ and the minimum value 
+\family typewriter
+@min_dist
+\family default
+ for the 
+\family typewriter
+@dist
+\family default
+ attribute.
+ This information feeds a second 
+\shape italic
+Wrangle
+\shape default
+ node 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 radial_distribution
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
-: each node @dist value is taken from its original range (@min_dist, @max_dist)
- and shifted to its corresponding value in the new range (0, 1).
- The resulting variable is linked to a user customizable ramp.
- The value from the ramp represents the probability for the attraction point
- to survive.
- A random number based on the @ptnum of the current attraction point is
- calculated and compared to the probability value.
+: each node's 
+\family typewriter
+@dist
+\family default
+ value is taken from its original range (
+\family typewriter
+@min_dist
+\family default
+, 
+\family typewriter
+@max_dist
+\family default
+) and re-scaled to its corresponding value in the new range 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+.
+ The resulting variable is linked to a user-customizable ramp.
+ The 
+\begin_inset Formula $y-$
+\end_inset
+
+value of the ramp represents the probability for the attraction point to
+ survive.
+ A random number based on the 
+\family typewriter
+@ptnum
+\family default
+ of the current attraction point is calculated and compared to the probability
+ value.
  If it results to be less, the attraction point gets removed.
- The ramp extends the potential of Runion idea by giving the users not only
- control over the density near the crown surface but providing them with
- a greater art directability over the branches density from the centroid
- of the shape to its boundaries.
+ The ramp extends the potential of Runions idea by giving the users not
+ only control over the density near the crown surface but providing them
+ with a greater art-directability over the density of branches from the
+ centroid of the tree crown shape to its boundaries.
 \end_layout
 
 \begin_layout Standard
 The same principles are used to define a second custom distribution that
- uses the Y coordinate of the point position is used instead of the distance
- from the object (
+ uses the 
+\begin_inset Formula $Y$
+\end_inset
+
+ coordinate of the point position instead of the distance from the object
+ (in this case the nodes involved are called 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 AP_height
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
-, 
+ and 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 vertical_distribution
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
 ).
  The newly generated attraction points are then initialized.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Attraction Points density distribution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1339,17 +1738,39 @@ name "subsec:Roots"
 \begin_layout Standard
 The network provides three different ways to specify the roots for the growth
  algorithm.
- An user can either create single root points by specifying the coordinates,
- input a premade set of points or a trunk and branches curves structure.
+ A user can either create single root points by specifying the coordinates,
+ input a pre-made set of points, or a trunk-and-branches curves structure.
 \end_layout
 
 \begin_layout Standard
-For the first two option the initialization of the nodes attributes follows
+For the first two options the initialization of the nodes attributes follows
  the same process.
- All the root points @parent is set to -1 to signal that they do not have
- any parent.
- As said before, the colour @Cd is initialized to yellow {1, 0.5, 0} and
- the @kids is declared as an empty array, the @type to 
+ All the root points' 
+\family typewriter
+@parent
+\family default
+ is set to 
+\begin_inset Formula $-1$
+\end_inset
+
+ to signal that they do not have any parent.
+ As said before, the colour 
+\family typewriter
+@Cd
+\family default
+ is initialized to yellow 
+\begin_inset Formula ${1,0.5,0}$
+\end_inset
+
+,  
+\family typewriter
+@kids
+\family default
+ is declared as an empty array, and 
+\family typewriter
+@type
+\family default
+ is initialized to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1358,77 +1779,212 @@ node
 \end_inset
 
 .
- Space will be allocated for for the @growdir @n_dead and @attr_dead.
- The initial values for these parameters are respectively {0, 0, 0}, 0 meaning
- that the node is alive and -1 to signal a default value.
+ The parameters 
+\family typewriter
+@growdir
+\family default
+, 
+\family typewriter
+@n_dead
+\family default
+, and 
+\family typewriter
+@attr_dead
+\family default
+ are initialized to their default values, respectively 
+\begin_inset Formula ${0,0,0}$
+\end_inset
+
+, 
+\begin_inset Formula $0$
+\end_inset
+
+ (meaning that the node is alive) and 
+\begin_inset Formula $-1$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-The initialization of some attributes such as @parent, @kids and @type differs
- in the case of a custom trunk structure is fed in the system.
+The initialization of some attributes such as 
+\family typewriter
+@parent
+\family default
+, 
+\family typewriter
+@kids
+\family default
+ and 
+\family typewriter
+@type
+\family default
+ differs in the case where a custom trunk structure is fed in the system.
  This kind of structure already contains primitive information that link
  together points in a precise hierarchy.
  The most likely scenario is that each branch is represented as a curve
  primitive.
- The fork points of the structure will then belong to two different primitive
+ The fork points of the structure will then belong to two different primitives
  at once, for example to both the trunk and a branch.
- The first attribute to be initialized is the @kids array using the 
+ The first attribute to be initialized is the 
+\family typewriter
+@kids
+\family default
+ array using the 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 trunk_kids
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
  snippet.
- This wrangle node is encapsulated in a for loop nodes block that will iterate
- on each primitive of the input geometry.
- The wrangle will therefore process the points of one primitive at the time.
- In the wrangle interface, the snippet is set to run over details so that
- the iteration process over the points is explicitly declared in in the
- code.
- The snippet starts by retrieving an ordered array of the current primitive
- points.
- A for loop then iterates over this array reading the point value and assigning
- the next point in the array to itself as @kids element.
- By using this approach, the snippet successfully handles specific cases
- in which the children to the point belong to different primitives.
- After having initialized the @kids attribute, the @parent comes straightforward
-: the 
+ This 
+\shape italic
+Wrangle
+\shape default
+ node is encapsulated in a 
+\family typewriter
+for
+\family default
+ loop nodes block that will iterate on each primitive of the input geometry.
+ The 
+\shape italic
+Wrangle
+\shape default
+ will therefore process the points of one primitive at a time.
+ In the 
+\shape italic
+Wrangle
+\shape default
+ interface, the snippet is set to 
 \begin_inset Quotes eld
 \end_inset
 
-trunk_parent
+run over details
 \begin_inset Quotes erd
 \end_inset
 
- wrangle iterates over each point of the input geometry regardless the primitive
+ so that the iteration process over the points is explicitly declared in
+ in the code.
+ The snippet starts by retrieving an ordered array of the current primitive
+ points.
+ A 
+\family typewriter
+for
+\family default
+ loop then iterates over this array reading the point's
+\family typewriter
+ @ptnum
+\family default
+ value and assigning the next point in the array to itself as 
+\family typewriter
+@kids
+\family default
+ element.
+ By using this approach, the snippet successfully handles specific cases
+ in which the children to the point belong to different primitives.
+ After having initialized the 
+\family typewriter
+@kids
+\family default
+ attribute, the 
+\family typewriter
+@parent
+\family default
+ is straightforward: the 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+trunk_parent
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\shape italic
+Wrangle
+\shape default
+ iterates over each point of the input geometry regardless of the primitive
  they belong to.
- Each point will read its own @kids list and proceeds to set itself as @parent
+ Each point will read its own 
+\family typewriter
+@kids
+\family default
+ list and proceeds to set itself as 
+\family typewriter
+@parent
+\family default
  attribute to these points.
- One can refer to this process as parent injection.
- It is important to highlight that at this stage the @id attribute described
- in 
+ One can refer to this process as 
+\begin_inset Quotes eld
+\end_inset
+
+parent injection
+\begin_inset Quotes erd
+\end_inset
+
+.
+ It is important to highlight that at this stage the 
+\family typewriter
+@id
+\family default
+ attribute described in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Data-structure"
 
 \end_inset
 
- has still not been initialized.
- The parent-children relation is built on the @ptnum.
+ has still not been initialized, and the parent-children relation is still
+ built on the 
+\family typewriter
+@ptnum
+\family default
+.
  It is also important to understand that in this particular part of the
  network all the geometry being processed belongs to the tree structure.
- The @id can be therefore initialized as a plain copy of the @ptnum.
- Being @ptnum and @id coincident at this stage, the initialization process
- described results to be correct.
- As a next step, the @type has to be set.
+ The 
+\family typewriter
+@id
+\family default
+ can be therefore initialized as a plain copy of the 
+\family typewriter
+@ptnum
+\family default
+.
+ Being 
+\family typewriter
+@ptnum
+\family default
+ and 
+\family typewriter
+@id
+\family default
+ coincident at this stage, the initialization process described results
+ to be correct.
+ As a next step, the 
+\family typewriter
+@type
+\family default
+ has to be set.
  The implementation process makes sure that the user is given a certain
  extent of controls over the choice of root points for the growth algorithm.
  The network highlights as candidate roots all the points contained within
  the volume of the tree crown shape.
  The user can then decide which of them to keep.
- For the selected points, the @type is set to 
+ For the selected points, the 
+\family typewriter
+@type
+\family default
+ is set to 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1447,10 +2003,45 @@ trunk
 .
  During the growth algorithm, only the nodes will interact while the others
  will be lifeless.
- A final attribute @generation is initialized for all root points regardless
- whether they are single points or points being selected from a custom structure.
+ A final attribute 
+\family typewriter
+@generation
+\family default
+ is initialized for all root points regardless of whether they are single
+ points or points selected from a custom structure.
  This attribute plays a key role in a later part of the network to set and
  scale the cross section of the branches according to their age.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Roots initialization
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+pic of the network
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1462,13 +2053,20 @@ The growth main algorithm lies inside a dedicated subnetwork
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 growing_alg
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
 .
- This subnetwork mainly consists of a for loop that determines the number
- of time the geometry is processed.
+ This subnetwork mainly consists of a 
+\family typewriter
+for
+\family default
+ loop that determines the number of time the geometry is processed.
  Contrary to the stop conditions presented in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1476,8 +2074,8 @@ reference "subsec:Overview"
 
 \end_inset
 
-, the loop will only terminate after an user defined number of iterations.
- It can happen that the user require the algorithm to run more times than
+, the loop will only terminate after a user-defined number of iterations.
+ It can happen that the user requires the algorithm to run more times than
  the ones required to meet the stop condition.
  In this case, even though the network will continue iterating, no new geometry
  is created.
@@ -1498,17 +2096,33 @@ reference "subsec:Overview"
 \end_layout
 
 \begin_layout Standard
-Before delving in the growth loop, the wrangle 
+Before delving in the growth loop, the 
+\shape italic
+Wrangle
+\shape default
+ 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 AD_treepts
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
  sets a detail attribute over the geometry that specifies the total number
- of treepoints based on the @type attribute of the points.
- This is later used to produce the @id for the new born nodes.
+ of tree nodes based on the 
+\family typewriter
+@type
+\family default
+ attribute of the points.
+ This is later used to produce the 
+\family typewriter
+@id
+\family default
+ for the newborn nodes.
 \end_layout
 
 \begin_layout Standard
@@ -1522,6 +2136,13 @@ trunk
 
  are filtered out of the growth process and rejoined with the rest of the
  geometry when the process ends.
+\end_layout
+
+\begin_layout Standard
+Shortly, at each iteration the growth algorithm needs to first find the
+ set of attraction points (if any) that influence each fertile tree node,
+ create new nodes in the direction determined by the influencing attraction
+ points, and decide which attraction points will survive to the next iteration.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2456,6 +3077,41 @@ The IsoOffset node converts the user input crown shape to a volume that
  lines exceeding or carving the original geometry.
  Different solution have been tried such as changing the volume conversion
  method but none of them proved to be succesfull for more than a few cases.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Artefacts caused by the 
+\shape italic
+IsoOffset
+\shape default
+ node
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
