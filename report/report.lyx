@@ -2594,19 +2594,116 @@ L-System
 \end_layout
 
 \begin_layout Standard
-Lindenmayer systems — or L-systems for short — were conceived as a mathematical
- theory of plant development [82].The central concept of L-systems is that
- of rewriting.
- In general, rewriting is a technique for defining complex objects by successive
-ly replacing parts of a simple initial object using a set of rewriting rules
- or productions
+L-Systems (Lyndenmayer systems) were conceived as a theory for plant development.
+ The key idea of L-System is rewriting.
+ An L-System is a rewriting system and a formal grammar.
+ A formal grammar (REFERENCE WWIKIPEDIA) is a set of rules for rewriting
+ strings in a formal language.
+ A rewriting system defines, in this case, methods for replacing substrings
+ with other symbols.
+ An L-System consists of:
+\end_layout
+
+\begin_layout Itemize
+Alphabet: set of symbols used to create strings.
+ These symbols can either be replaceable or constant
+\end_layout
+
+\begin_layout Itemize
+Axiom: string or symbol to start the production, made of elements of the
+ alphabet
+\end_layout
+
+\begin_layout Itemize
+Production rules: rules to replace and expand symbols or substrings with
+ other sequences of symbols
+\end_layout
+
+\begin_layout Standard
+In L-Systems, production rules are applied in parallel and simultaneously
+ in each generation.
+ In this sense, L-System differ from formal languages in which only one
+ rule is applied per iteration.
+\end_layout
+
+\begin_layout Standard
+L-System can be divided in:
+\end_layout
+
+\begin_layout Itemize
+context-free: if every production rule only refer to an individual symbol
+\end_layout
+
+\begin_layout Itemize
+context sensitive: production rules refer not only on individual symbols
+ but also to groups of symbols
+\end_layout
+
+\begin_layout Itemize
+deterministic L-System: the production set provides one and one only production
+ rule for each symbol.
+ An L-System that is deterministic and context-free is usually referred
+ as D0L System
+\end_layout
+
+\begin_layout Itemize
+stochastic: several production rules are given for each symbol, each iteration
+ one of them is chosen based on a certain probability value
+\end_layout
+
+\begin_layout Standard
+The turtle interpretation translates strings in graphical commands to achieve
+ a visual representation of the produced string.
+ The turtle interpretation is based on the following commands:
+\end_layout
+
+\begin_layout Itemize
+F: move forward a step of length 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ Draw a line between current and previous positions
+\end_layout
+
+\begin_layout Itemize
+f: move forward a step of length 
+\begin_inset Formula $d$
+\end_inset
+
+ without drawing a line
+\end_layout
+
+\begin_layout Itemize
++: turn left by an angle of 
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+-: turn right by an angle of 
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Given their recursive nature, L-Systems can be used to generate self-similar
+ fractals.
+\end_layout
+
+\begin_layout Standard
+REFERENCEEEEEEEEEE
 \end_layout
 
 \begin_layout Section*
 Fractals
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Fractals-(100-words)"
+name "sec:Fractals"
 
 \end_inset
 
@@ -2672,26 +2769,6 @@ fine structure at small scale
 
 \begin_layout Itemize
 recursive definition
-\end_layout
-
-\begin_layout Standard
-The Brownian motion is an example of a stochastic fractal, meaning that,
- unlike the deterministic tree-branching structure, it is self-similar within
- a range of probabilities 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[par:Witten1982]{(Witten, 1982)}
-\end_layout
-
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Section*
