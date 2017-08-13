@@ -10,6 +10,9 @@
 \usepackage{graphicx}
 \newcommand{\terminaltext}[1]{{\footnotesize \colorbox{black}{\color{green}\texttt{#1}}}}
 \graphicspath{ {images/} }
+\usepackage{harvard}
+\usepackage{url}
+\usepackage{hyperref}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -2566,8 +2569,361 @@ For scene populated by a large number of plants, the current geometry might
  viewport more responsive and the rendering quicker.
 \end_layout
 
+\begin_layout Part*
+Appendix
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{part}{Appendix}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+L-System
+\end_layout
+
+\begin_layout Standard
+Lindenmayer systems — or L-systems for short — were conceived as a mathematical
+ theory of plant development [82].The central concept of L-systems is that
+ of rewriting.
+ In general, rewriting is a technique for defining complex objects by successive
+ly replacing parts of a simple initial object using a set of rewriting rules
+ or productions
+\end_layout
+
+\begin_layout Section*
+Fractals
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Fractals-(100-words)"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The term 
+\begin_inset Quotes eld
+\end_inset
+
+fractal
+\begin_inset Quotes erd
+\end_inset
+
+ derives from the latin 
+\emph on
+fractus
+\emph default
+, which means 
+\begin_inset Quotes eld
+\end_inset
+
+broken
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The word was firstly introduced by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:Mendelbrot1982]{Mandelbrot (1982)}
+\end_layout
+
+\end_inset
+
+.
+ In Mandelbrot's words, a fractal is 
+\end_layout
+
+\begin_layout Quote
+a rough or fragmented geometric shape that can be split into parts, each
+ of which is (at least approximately) a reduced-size copy of the whole
+\end_layout
+
+\begin_layout Standard
+The definition can be therefore divided such as follows to emphasise the
+ main features of a fractal:
+\end_layout
+
+\begin_layout Itemize
+self-similarity: each part is a scaled size copy of the whole 
+\end_layout
+
+\begin_layout Itemize
+fine structure at small scale
+\end_layout
+
+\begin_layout Itemize
+recursive definition
+\end_layout
+
+\begin_layout Standard
+The Brownian motion is an example of a stochastic fractal, meaning that,
+ unlike the deterministic tree-branching structure, it is self-similar within
+ a range of probabilities 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:Witten1982]{(Witten, 1982)}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section*
+Angle correction
+\end_layout
+
+\begin_layout Standard
+Whenever two sibling branches grow too close together, the network provides
+ a way of moving the youngest one from the sibling so that the angle between
+ them is bigger or equal than a certain user defined value.
+ We call 
+\begin_inset Formula $\hat{a}$
+\end_inset
+
+ the moving vector and 
+\begin_inset Formula $\hat{b}$
+\end_inset
+
+ the still vector.
+ 
+\begin_inset Formula $\hat{a}$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{b}$
+\end_inset
+
+ are defined as follows.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{a}=(a_{x},a_{y},a_{z})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{b}=(b_{x},b_{y},b_{z})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mid\hat{a}\mid=\mid\hat{b}\mid=1
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is known that 
+\begin_inset Formula $cos\vartheta=\frac{\hat{a}\cdot\hat{b}}{\mid\hat{a}\mid\mid\hat{b}\mid}=\hat{a}\cdot\hat{b}$
+\end_inset
+
+ from which follows that 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\vartheta=cos^{-1}(\hat{a}\cdot\hat{b})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One can now decompose 
+\begin_inset Formula $\hat{a}$
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+a_{//}=cos\vartheta\hat{b}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+a_{\bot}=\hat{a}-a_{//}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is also known that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+tan\vartheta=\frac{\mid a_{//}\mid}{\mid a_{\bot}\mid}\label{eq:tan_theta}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The user defines the new angle between the two vector as 
+\begin_inset Formula $\vartheta_{0}$
+\end_inset
+
+.
+ One can therefore calculate a new 
+\begin_inset Formula $\mid a_{\bot}^{\prime}\mid$
+\end_inset
+
+ that satisfies the following equation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mid a_{\bot}^{\prime}\mid=\mid a_{//}\mid tan\vartheta_{0}\label{eq:new_perp}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By combining 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:tan_theta"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:new_perp"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+a_{\bot}^{\prime}=a_{\bot}(\frac{\mid a_{//}\mid tan\vartheta_{0}}{\mid a_{\bot}\mid})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One can therefore define the new position 
+\begin_inset Formula $\hat{a}^{\prime}$
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+a^{\prime}=a_{//}+a_{\bot}^{\prime}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and its unit vector as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{a}^{\prime}=\frac{a^{\prime}}{\mid a^{\prime}\mid}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 Acknowledgements
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{part}{Acknowledgments}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
