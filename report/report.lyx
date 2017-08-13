@@ -1468,6 +1468,13 @@ trunk
 
 \begin_layout Subsubsection
 Finding neighbours
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Finding-neighbours"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1686,6 +1693,13 @@ reference "eq:newborn_dir_normal"
 
 \begin_layout Subsubsection
 Creation of the new node
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Creation-of-the-new-node"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2405,7 +2419,75 @@ Performances
 \end_layout
 
 \begin_layout Standard
-blablabla
+An iterative system that handles huge amount of geometry can result to be
+ considerately slow.
+ Even though the performances were not the primary focus of this project,
+ a considerable effort has been made to make the network as fast as possible.
+ The reason for investing in the performances relies in the nature of the
+ tool.
+ The project presented aims to be an easy and quick to setup tool to create
+ procedural and art-directable trees.
+ If the tool were to require several minutes to produce a result, the user
+ will find it hard to compare two successive attempts at tuning the parameters
+ to get the desired look.
+ At very early stages of development, cooking a 30 iteration tree took up
+ to 40 minutes.
+ Dividing the geometry throughout the space colonization algorithm between
+ nodes and attraction points helped speeding up the execution time.
+\end_layout
+
+\begin_layout Standard
+Even tough this change improved the performances, the network still spent
+ an excessive amount of time processing the find_neighbours 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Finding-neighbours"
+
+\end_inset
+
+ algorithm and the setting id process 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Creation-of-the-new-node"
+
+\end_inset
+
+.
+ Dividing the tree points respectively between newborns, parents and old
+ tree nodes improved the performances dramatically since the search loop
+ was only to iterate over a few hundred points instead of a few thousand.
+\end_layout
+
+\begin_layout Standard
+As a final speedup, the original algorithm for the search of neighbour dragged
+ down the overall performances of the network because, in order to update
+ the geometry, it cooked the same node over 20 thousand times per iteration
+ of the growth algorithm.
+ The new approach presented in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Finding-neighbours"
+
+\end_inset
+
+ made the real difference in terms of the final execution time.
+\end_layout
+
+\begin_layout Standard
+Even though the execution time still heavily depends on parameters such
+ as the total number of attraction points, iterations, 
+\begin_inset Formula $D$
+\end_inset
+
+, 
+\begin_inset Formula $di$
+\end_inset
+
+, 
+\begin_inset Formula $dk$
+\end_inset
+
+, the average cooking time stabilized around 15 s for 40 iteration trees.
 \end_layout
 
 \begin_layout Section
