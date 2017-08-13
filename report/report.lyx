@@ -3183,13 +3183,13 @@ name "subsec:Extra-controls"
 
 \begin_layout Standard
 Even though the overall algorithm can produce a wide range of different
- branching structures, the project provides some controls:
+ branching structures, the project provides some additional controls:
 \end_layout
 
 \begin_layout Itemize
-pruning probability: starting from a user defined generation and killing
+pruning probability: starting from a user-defined generation and killing
  probability threshold value, a random number is calculated for each tree
- point and compared to the killing probability.
+ node and compared to the killing probability.
  If the random number is smaller than the threshold, the node is set to
  non fertile.
  This small check gives more controls over the density of the branches.
@@ -3198,7 +3198,7 @@ pruning probability: starting from a user defined generation and killing
 \begin_layout Itemize
 pruning by distance: the user can define a minimum distance from the tree
  crown geometry.
- Whenever the distance of a tree point from the crown shape is less than
+ Whenever the distance of a tree node from the crown shape is less than
  that value, the node is set to dead.
 \end_layout
 
@@ -3206,8 +3206,39 @@ pruning by distance: the user can define a minimum distance from the tree
 fix growing angles: it may happen that siblings branches grow too close
  one to each other.
  A new control checks the angle between siblings branches and modifies the
- younger sibling position if the angle is less than the specified threshold.
+ younger sibling's position if the angle is less than the specified threshold.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Extra controls network
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3215,19 +3246,31 @@ Linking the points
 \end_layout
 
 \begin_layout Standard
-The relationship between parent and children created during the creation
- of new points makes it trivial to link the point together to create the
- tree skeleton.
- The wrangle 
+The relation between parent and children created during the creation of
+ new points makes it trivial to link the point together to create the tree
+ skeleton.
+ The 
+\shape italic
+Wrangle
+\shape default
+ 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 connect_points
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
- fetches for each point its parent.
- Using the addprim() VEX function a new empty primitive is created.
+ fetches each point's parent.
+ Using the 
+\family typewriter
+addprim()
+\family default
+ VEX function a new empty primitive is created.
  The two points are added to that primitive and the link between them is
  created.
 \end_layout
@@ -3246,7 +3289,38 @@ name "subsec:Cross-section-evaluation"
 \begin_layout Standard
 In order to create a polygonal mesh around the tree skeleton, the cross
  section has to be evaluated on a per point basis.
- The network implements two different algorithm to fulfil this purpose.
+ The network implements two different algorithms to fulfil this purpose.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Width setup network
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -3255,18 +3329,30 @@ Ramp scale
 
 \begin_layout Standard
 The user is provided with a ramp and a multiplier slider.
- The multiplier scales the amplitude for the ramp while the curve on the
- ramp represent the scaling factor for each generation of tree points.
+ The multiplier scales the amplitude for the whole ramp while the curve
+ on the ramp controls the scaling factor for each generation of tree nodes.
  The 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 ramp_scale
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
- relies on the fit() function to convert the generation value for the current
- point to a value in the range (0, 1).
+ relies on the 
+\family typewriter
+fit()
+\family default
+ function to rescale the generation value for the current point to a value
+ in the range 
+\begin_inset Formula $(0,1)$
+\end_inset
+
+.
  The new width is then computed as the product between the ramp value and
  the multiplier.
 \end_layout
@@ -3276,33 +3362,66 @@ Eulerian Scale
 \end_layout
 
 \begin_layout Standard
-In his research, Runion relies on FIND REFERENCE to determine the cross-section
+In his research, Runions relies on FIND REFERENCE to determine the cross-section
  of the limbs.
  In this model, known as Eulerian Scale CHECK!!!!, the diameter of a limb
  below a branching point is determined by the combined cross-section of
  the limbs above.
- The process assumes that all tip points share the same radius r0 and proceeds
- assigning the radii for the other points from the tip branches towards
- the tree base.
- When two branches with different radius r1, r2 join in a branching point,
- the radius r of the supporting limb is given by 
+ The process assumes that all tip points share the same radius 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+ and proceeds assigning the radii for the other points from the branches'
+ tip towards the tree base.
+ When two branches with different radius 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $r_{2}$
+\end_inset
+
+ join at a branching point, the radius 
+\begin_inset Formula $r$
+\end_inset
+
+ of the supporting limb is given by 
 \begin_inset Formula $r^{n}=r_{1}^{n}+r_{2}^{n}$
 \end_inset
 
- where n varies between 2 and 3.
- This implementation, however, tries to implement the same main formula
- by processing the tree limbs from the root to the tip branches.
+ where 
+\begin_inset Formula $n$
+\end_inset
+
+ varies between 
+\begin_inset Formula $2$
+\end_inset
+
+ and 
+\begin_inset Formula $3$
+\end_inset
+
+.
+ This work  tries instead to implement the same main formula by processing
+ the tree limbs from the root to the tip branches.
  The user can choose the initial value for the root thickness.
- Having the first node width set, the algorithm iterates over every point,
- in order, finding the children of the node and setting the width on them
- based on its own width and the total count of children.
- This approach works in this specific implementation because the tree points
- have been created in order with increasing @id numbers.
- Therefore, when iterating on them, it never happens that the node does
- not find its own width to be already set by a previous node.
- Once again, the nature for the wrangle node does not allow to easily propagate
- the width from parents to children due to the cooking and updating issue
- explained in 
+ Having the first node's width set, the algorithm iterates over every point,
+ in order, finding the children of the node and setting their width based
+ on its own width and the total count of children.
+ This approach works in this specific implementation because the tree nodes
+ have been created in order with increasing 
+\family typewriter
+@id
+\family default
+ numbers.
+ Therefore, when iterating on them, each node's width has always already
+ been set by a previous node.
+ Once again, the nature of the 
+\shape italic
+Wrangle
+\shape default
+ node does not allow to easily propagate the width from parents to children
+ due to the cooking and updating issue explained in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Wrangle-Node"
@@ -3310,11 +3429,17 @@ reference "subsec:Wrangle-Node"
 \end_inset
 
 .
- To overcome this problem, the wrangle node only processes one point at
- the time while the iteration is implemented with the loop blocks native
- in Houdini.
- Since the blocks are in charge of the iteration, the wrangle gets cooked
- and the geometry updated.
+ To overcome this problem, the 
+\shape italic
+Wrangle
+\shape default
+ node only processes one point at the time while the iteration is implemented
+ with the loop blocks native in Houdini.
+ Since the blocks are in charge of the iteration, the 
+\family typewriter
+Wrangle
+\family default
+ gets cooked and the geometry updated.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3332,7 +3457,8 @@ name "subsec:Special-case:-trunk"
 For a custom trunk input the original ramp algorithm cannot be used as the
  scaling factor is calculated based on the generation number populated during
  the growth algorithm.
- Unfortunately, the trunk points do not have a generation to rely onto.
+ Unfortunately, the trunk points do not have a generation number to rely
+ onto.
  Furthermore, the user might want to have a better control over the main
  branches structure as they play a key role in the final appearance of the
  tree.
@@ -3343,63 +3469,160 @@ For a custom trunk input the original ramp algorithm cannot be used as the
 \end_layout
 
 \begin_layout Standard
-As for initializing the @kids attribute as discussed in 
+As for initializing the 
+\family typewriter
+@kids
+\family default
+ attribute as discussed in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Roots"
 
 \end_inset
 
- the wrangle node works on the points of each primitive at the time.
+ the 
+\shape italic
+Wrangle
+\shape default
+ node works on the points of each primitive at the time.
  The Houdini loop blocks are in charge of iterating over the primitives
  of the trunk structure.
- The wrangle creates a ramp and a multiplier for the user to manipulate
- the width at will.
- Before assigning the width value, a control is performed to check what
- is the @width value for the first point of the primitive.
- If the @width value is -1 (the default one), the primitive being processed
- is the main trunk.
- The algorithm can assign the width for the next points of the primitive
- simply by multiplying the ramp value and the multiplier factor.
- If the @width is different than -1, the primitive represents a secondary
- branch and its first point is the branching joint between the current branch
- and its supporting limb.
- Its width is therefore been already set as part of the oother branch.
+ The 
+\shape italic
+Wrangle
+\shape default
+ creates a ramp and a multiplier for the user to manipulate the width at
+ will.
+ Before assigning the 
+\family typewriter
+@width
+\family default
+ value, a check is performed on the 
+\family typewriter
+@width
+\family default
+ value for the first point of the primitive.
+ If the 
+\family typewriter
+@width
+\family default
+ value is 
+\begin_inset Formula $-1$
+\end_inset
+
+ (the default one), the primitive being processed is the main trunk.
+ The algorithm can assign the 
+\family typewriter
+@width
+\family default
+ for the next points of the primitive simply by multiplying the ramp value
+ and the multiplier factor.
+ If the 
+\family typewriter
+@width
+\family default
+ is different than 
+\begin_inset Formula $-1$
+\end_inset
+
+, the primitive represents a secondary branch and its first point is the
+ branching joint between the current branch and its supporting limb.
+ Its width is therefore been already set as part of the other branch.
  To blend one branch into its secondary one, the next nodes in the primitive
- are set similarly to the main trunk except that the user defined multiplier
- is substituted by the first node width.
+ are set similarly to the main trunk except that the user-defined multiplier
+ is substituted by the first node's width.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Trunk 
+\family typewriter
+@width
+\family default
+ initialization
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 As next step the width for the branches generated by the growth algorithm
  has to be set.
- For the ramp scale, the main idea of the artistic directable ramp is maintained
+ For the ramp scale, the main idea of the artistic-directable ramp is maintained
  although blending the branches with the trunk structure requires some further
  manipulation.
- If for the previous case all the root points shared the same user defined
- width, in this case the width of each node acting as a root has already
- been set.
+ If for the previous case all the root points shared the same user-defined
+ 
+\family typewriter
+@width
+\family default
+, in this case the width of each node acting as a root has already been
+ set.
  The initial condition for this algorithm is represented by a set of tree
- structures for which the roots are the trunk points.
- Each tree has to scale the width of the branches according to the ramp
- but each of them should use the width of its own root point as a multiplier
- to achieve the desired blending effect.
- This is textbook for recursive algorithm: ideally one should iterate on
- each child of the root and set the width.
- Each child then acts as root of its own sub-tree and the operation repeated.
+ structures with trunk points as roots.
+ Each tree has to scale the 
+\family typewriter
+@width
+\family default
+ of the branches according to the ramp but each of them should use the 
+\family typewriter
+@width
+\family default
+ of its own root point as a multiplier to achieve the desired blending effect.
+ This would be trivial with a recursive algorithm: ideally one should iterate
+ on each child of the root and set the 
+\family typewriter
+@width
+\family default
+.
+ Each child then acts as root of its own sub-tree and the operation is repeated.
  Unfortunately Houdini VEX does not support recursive function calls at
  the current time.
  The algorithm has therefore been converted from recursive to iterative
  by using a stack data structure as a support.
  The root node stores its children in the stack.
- A while loop iterates over the stack.
+ A 
+\family typewriter
+while
+\family default
+ loop iterates over the stack.
  For each iteration, the last added node is removed from the stack and is
  processed.
- After setting its own @width value, the node pushes its children in the
- stack and a new iteration begins.
- The while loop only stops when the stack is empty.
+ After setting its own 
+\family typewriter
+@width
+\family default
+ value, the node pushes its children in the stack and a new iteration begins.
+ The 
+\family typewriter
+while
+\family default
+ loop only stops when the stack is empty.
  Using the stack as support data structure, the described process successfully
- simulates a depth first recursive algorithm and overcomes the updating
+ simulates a depth-first recursive algorithm and overcomes the updating
  geometry problem explained in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3408,6 +3631,41 @@ reference "subsec:Wrangle-Node"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Trunk 
+\family typewriter
+@width
+\family default
+ non-recursive initialization
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3422,7 +3680,7 @@ After building the tree structure, each branch is re-sampled to gain more
  Its effect gets easily out of control causing the geometry to change too
  drastically.
  To counterbalance the sharp angles generated by the jitter, the smooth
- SOP inteerpolates these angles and achieve a more natural look.
+ SOP interpolates these angles and achieve a more natural look.
  The polywire SOP creates the polygonal mesh around the tree skeleton using
  the @width attribute set in 
 \begin_inset CommandInset ref
