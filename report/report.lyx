@@ -2146,7 +2146,7 @@ Shortly, at each iteration the growth algorithm needs to first find the
 \end_layout
 
 \begin_layout Subsubsection
-Finding neighbours
+Finding influencing attraction points
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Finding-neighbours"
@@ -2157,18 +2157,30 @@ name "subsec:Finding-neighbours"
 \end_layout
 
 \begin_layout Standard
-The nodes and the attraction points are divided based on the @type value.
+The tree nodes and the attraction points are divided based on their 
+\family typewriter
+@type
+\family default
+ value.
  In order to keep the calculation as light as possible, a preparation step
  is undertaken using the 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 find_influencing_attr
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
  before finding the closest tree node of each attraction point.
- The wrangle receives as first input geometry the set 
+ The 
+\shape italic
+Wrangle
+\shape default
+ receives as first input geometry the set 
 \begin_inset Formula $N$
 \end_inset
 
@@ -2179,43 +2191,110 @@ find_influencing_attr
  of tree nodes.
  The node purpose is to isolate the attraction points that will influence
  the tree growth for the current iteration from the inert ones.
- The snippet is set to run over details.
- Iterating over each tree node, a function _setInfluencing() is invoked.
- The function takes as an input a the position of the tree node.
+ The snippet is set to 
+\begin_inset Quotes eld
+\end_inset
+
+run over details
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Iterating over each tree node, a function 
+\family typewriter
+_setInfluencing()
+\family default
+ is invoked.
+ The function takes as an input 
+\family typewriter
+a
+\family default
+ the position of the tree node.
  Based on that position, the function retrieves all the attraction points
- that are closer than the user defined 
+ that are closer than the user-defined 
 \begin_inset Formula $di$
 \end_inset
 
  distance.
- Every attraction point that satisfies this condition is flagged as influence
- node.
- The set of influence node is therefore a subset of the set 
+ Every attraction point that satisfies this condition is flagged as an influenci
+ng node.
+ The set of influencing nodes is therefore a subset of the set 
 \begin_inset Formula $N$
 \end_inset
 
  of all the attraction points.
- Using the blast node, the influencing nodes are separated from the other
- inactive attraction points.
- The tree nodes and the influencing nodes are wired into the 
+ Using the 
+\shape italic
+blast
+\shape default
+ node, the influencing nodes are separated from the other inactive attraction
+ points.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Visualization of the influencing nodes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+sia viewport che il wiring dei nodi
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+The tree nodes and the influencing nodes are wired into the 
 \begin_inset Quotes eld
 \end_inset
 
-find_neighbour
+f
+\family typewriter
+ind_neighbour
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
  subnetwork.
+ Each attraction point only influences the tree node closest to it.
  The search for the closest tree node is implemented in 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 fast_search
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
-: the wrangle takes as first input geometry the tree nodes and as a second
- input geometry the influencing points.
+: the 
+\family typewriter
+wrangle
+\family default
+ takes as a first input geometry the tree nodes and as a second input geometry
+ the influencing points.
  At this stage not only each influencing point will look for its closest
  tree point but the sets 
 \begin_inset Formula $S(v)$
@@ -2223,60 +2302,254 @@ fast_search
 
  are populated as well.
  In this implementation the set is stored as a tree node array attribute
- @nbrs and will contain the @ptnum for all the influencing points for which
- the node is the closest of the tree nodes.
+ 
+\family typewriter
+@nbrs
+\family default
+ and will contain the 
+\family typewriter
+@ptnum
+\family default
+ for all the influencing points for which the node is the closest of the
+ tree nodes.
  This operation can be computationally heavy, therefore the following algorithm
  has been developed aiming to optimize such operations.
- The algorithm is divided in three parts:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\family typewriter
+fast_search
+\family default
+ algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+disegno dei due arraye di cosa arriva nel nodo
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+The algorithm is divided in three parts:
 \end_layout
 
 \begin_layout Itemize
-an array closest[] is declared to have the same size as the total count
- of influencing points.
- Starting from the index 0, the influencing point with @ptnum 0 is processed.
- The point will search for the closest tree node and will store its value
- in the array.
- The process moves to index 1 and processes the influencing point with @ptnum
- 1 and so on until the closest[] array is completely populated.
- Given the population process, the indices of the closest[] array represent
- the influencing points.
+an array 
+\family typewriter
+closest[]
+\family default
+ is declared to have the same size as the total count of influencing points.
+ Starting from the index 
+\begin_inset Formula $0$
+\end_inset
+
+, the influencing point with 
+\family typewriter
+@ptnum
+\family default
+ 
+\begin_inset Formula $0$
+\end_inset
+
+ is processed.
+ The point will search for the closest tree node and will store its 
+\family typewriter
+@ptnum
+\family default
+ value in the array.
+ The process moves to index 
+\begin_inset Formula $1$
+\end_inset
+
+ and processes the influencing point with 
+\family typewriter
+@ptnum
+\family default
+ 
+\begin_inset Formula $1$
+\end_inset
+
+ and so on until the 
+\family typewriter
+closest[]
+\family default
+ array is completely populated.
+ Given how the array was populated,  the indices of the 
+\family typewriter
+closest[]
+\family default
+ array univocally identify the influencing points.
 \end_layout
 
 \begin_layout Itemize
-two new array are created:
+two new arrays, 
+\family typewriter
+ordered_attr[]
+\family default
+ and 
+\family typewriter
+ordered_closest[]
+\family default
+, are created:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-the argsort function applied to the closest[] array will return a list of
- indices that, if applied to the closest[] will give a sorted sequence in
- an increasing order.
+the 
+\family typewriter
+argsort
+\family default
+ function applied to the 
+\family typewriter
+closest[]
+\family default
+ array will return a list of indices that, if applied to the 
+\family typewriter
+closest[]
+\family default
+ will give a sorted sequence in an increasing order.
  In this particular case, the indices represent the influencing points.
- The newly created ordered_attr[] array holds therefore a sorted sequence
- for the influencing points.
+ The newly created 
+\family typewriter
+ordered_attr[]
+\family default
+ array holds therefore a sorted sequence for the influencing points.
 \end_layout
 
 \begin_layout Itemize
-the sort function applied to the closest[] will return a sorted array in
- increasing order.
- This new array is the ordered_closest[]
+the 
+\family typewriter
+sort
+\family default
+ function applied to the 
+\family typewriter
+closest[]
+\family default
+ will return a sorted array in increasing order.
+ This new array is  
+\family typewriter
+ordered_closest[]
+\family default
+.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-using the newly created arrays, the algorithm proceeds to locate the sets
- S(v) and store them in the proper tree nodes.
- The sets are consecutive chunks of the ordered_attr[] array.
- To tokenize it properly, the ordered_closest[] is used.
- A for loop iterates over the length of the array.
- The value of ordered_attr[i] is stored in a new temporary array nbrs[].
- A check is performed to compare the current element for ordered_closest
+
+\family typewriter
+ordered_attr[]
+\family default
+ now stores the influencing points, sorted by increasing 
+\family typewriter
+@id
+\family default
+ of the tree node they influence (stored in 
+\family typewriter
+ordered_closest[]
+\family default
+).
+ The algorithm now proceeds to locate the sets 
+\begin_inset Formula $S(v)$
+\end_inset
+
+ and store them in the proper tree nodes.
+ The sets are consecutive chunks of the 
+\family typewriter
+ordered_attr[]
+\family default
+ array.
+ To tokenize it properly, the 
+\family typewriter
+ordered_closest[]
+\family default
+ is used.
+ A 
+\family typewriter
+for
+\family default
+ loop iterates over the length of the array.
+ The value of 
+\family typewriter
+ordered_attr[i]
+\family default
+ is stored in a new temporary array 
+\family typewriter
+nbrs[]
+\family default
+.
+ A check is performed to compare the current element for 
+\family typewriter
+ordered_closest[]
+\family default
  and its consecutive one.
- It the two do not match, it means that the end of the current set S(v)
+ If the two do not match, it means that the end of the current set 
+\begin_inset Formula $S(v)$
+\end_inset
+
  has been reached.
- The temporary array is assigned as @nbrs attribute to the tree node specified
- in ordered_closest[i].
+ The temporary array is assigned as 
+\family typewriter
+@nbrs
+\family default
+ attribute to the tree node specified in 
+\family typewriter
+ordered_closest[i]
+\family default
+.
  The temporary array is cleared for the next set.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\family typewriter
+fast_search
+\family default
+ pseudo-code
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2287,14 +2560,17 @@ ion.
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 grow_alg/find_neighbour
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
  subnetwork.
- The approach undertaken here also improved Runion algorithm by reducing
+ The approach undertaken here also improved Runions algorithm by reducing
  the number of computation required to achieve the result.
- IMMAGINE ALGORITMO, IMMAGINE NETWORK
 \end_layout
 
 \begin_layout Subsubsection
@@ -2302,18 +2578,26 @@ Set fertility for the tree nodes
 \end_layout
 
 \begin_layout Standard
-Extending Runion's algorithm further, the user can specify the maximum count
- of branches that a node can generate and from which generation the nodes
- can begin the branching process.
+Extending Runions' algorithm further, the user can specify the maximum count
+ of branches that a node can generate, and from which generation to start
+ the branching process.
  This node gives a better control over the final tree structure as it allows
  to achieve a sparser result when reducing the count of children per node.
  By choosing the generation from which to start branching, the user can
  enhance the visual impact of the main trunk structure.
- The wrangle 
+ The 
+\shape italic
+Wrangle
+\shape default
+ 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 set_fertility
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -2333,16 +2617,30 @@ The
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 newborn_dir
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
- wrangle runs over each tree point that is fed as a first input geometry.
+ 
+\shape italic
+Wrangle
+\shape default
+ runs over each tree point that is fed as a first input geometry.
  If the node results to be fertile, the snippet proceeds to retrieve the
- identifiers of the influencing points to that tree node stored in the @nbrs
+ identifiers of the influencing points to that tree node stored in the 
+\family typewriter
+@nbrs
+\family default
  array attribute.
- The set of all the influencing points is fed to the wrangle as a second
- input geometry.
+ The set of all the influencing points is fed to the 
+\shape italic
+Wrangle
+\shape default
+ as a second input geometry.
  Having the identifiers for the influencing points and the influencing points
  geometry as input, the algorithm can use the identifiers as lookup keys
  to retrieve the position of the influencing points.
@@ -2361,13 +2659,63 @@ reference "eq:newborn_dir_normal"
 
 \end_inset
 
- result is stored in the vector attribute @dir of the tree node.
+ result is stored in the vector attribute 
+\family typewriter
+@dir
+\family default
+ of the tree node.
  This way, the parent node is in charge of holding all the information needed
- to later create and initialize correctly the new born nodes.
+ to later create and initialize correctly the newborn nodes.
  Before moving on to the next step of the network, the snippet checks for
- degenerated cases for which the magnitude of the @dir vector is 0, which
- happens whenever the @nbrs list of influencing points is empty.
- These nodes are declared dead and their fertility flag reset to 0.
+ degenerate cases for which the magnitude of the 
+\family typewriter
+@dir
+\family default
+ vector is 
+\begin_inset Formula $0$
+\end_inset
+
+, which happens whenever the 
+\family typewriter
+@nbrs
+\family default
+ list of influencing points is empty.
+ These nodes are declared dead and their fertility flag reset to 
+\begin_inset Formula $0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Newborn direction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2384,38 +2732,66 @@ name "subsec:Creation-of-the-new-node"
 \begin_layout Standard
 At this stage, the network has gathered all the information needed to create
  the new generation of tree nodes.
- The wrangle 
+ The 
+\shape italic
+Wrangle
+\shape default
+ 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 create_new_node
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
  runs over each fertile node of the tree structure.
  The position of the new tree node is determined and the point created using
- the addpoint() Houdini VEX function.
- The _initializeAttribute() function is then invoked to take care of all
- the parameters of the new born that will make it a viable new tree node.
- The function takes as parameters the @ptnum of the newborn and the @ptnum,
- @dir and @gen of the parent node.
- With these information it proceeds populating the attributes for the newborn
- as described in 
+ the 
+\family typewriter
+addpoint()
+\family default
+ Houdini VEX function.
+ The 
+\family typewriter
+_initializeAttribute()
+\family default
+ function is then invoked to take care of all the parameters of the newborn
+ that will make it a viable new tree node.
+ The function takes as parameters the 
+\family typewriter
+@ptnum
+\family default
+ of the newborn and the 
+\family typewriter
+@ptnum
+\family default
+, 
+\family typewriter
+@dir
+\family default
+ and 
+\family typewriter
+@gen
+\family default
+ of the parent node.
+ With these information it populates the attributes for the newborn as described
+ in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:Initialization-of-newborn"
 
 \end_inset
 
+.
  
 \begin_inset Float algorithm
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -2491,41 +2867,53 @@ id = -1;
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 The colour is initialized as green because the new node does not have any
  children yet.
  This information is later used in the network to find the points on which
  to scatter leaves.
- The @id is temporarily set to a default value and set to its proper value
- later on in the network.
- Compared to Runion's algorithm, the project offers a new approach.
- The original algorithm kept the distance D between consecutive tree nodes
- as a constant, in nature, though, younger shrubs grow shorter than the
- previous ones.
+ The 
+\family typewriter
+@id
+\family default
+ is temporarily set to a default value and set to its proper value later
+ on in the network.
+ Compared to Runions' algorithm, the project offers a new approach.
+ The original algorithm kept the distance 
+\begin_inset Formula $D$
+\end_inset
+
+ between consecutive tree nodes as a constant, but in nature younger shrubs
+ grow shorter than the previous ones.
  In an attempt to reproduce this natural phenomena, this projects implements
- a scaling algorithm that progressively reduces the D length value across
- generations.
+ a scaling algorithm that progressively reduces the 
+\begin_inset Formula $D$
+\end_inset
+
+ length value across generations.
  The scaling factor is represented as a ramp that the user can manipulate
  to achieve the desired look.
 \end_layout
 
 \begin_layout Standard
-To set the newborns id correctly, these points are separated from the other
- tree nodes.
- To set the @id, the network relies on the total count of tree points as
- showed in 
+To set the newborns' 
+\family typewriter
+@id
+\family default
+ correctly, these points are separated from the other tree nodes.
+ To set the 
+\family typewriter
+@id
+\family default
+, the network relies on the total count of tree points as showed in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "alg:Set-newborn-id"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -2533,10 +2921,6 @@ reference "alg:Set-newborn-id"
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -2584,6 +2968,10 @@ foreach newborn
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 The reason behind this particular implementation can be found in the peculiar
  nature of the Houdini wrangle nodes.
  The geometry the snippet can access is only the one that is wired in as
@@ -2598,45 +2986,110 @@ reference "subsec:Wrangle-Node"
 , any changes the snippet produces to the geometry will not be reflected
  on the geometry until the node is cooked and fed as input to the next node
  in the network.
- Following this logic, the update of the tree point count, even if it get
+ Following this logic, the update of the tree point count, even if it gets
  changed every iteration, will only be written on the geometry when the
  snippet has iterated over all the points.
- The tree point count value used to assign the new id is therefore the same
- for each newborn.
+ The tree point count value used to assign the new 
+\family typewriter
+@id
+\family default
+ is therefore the same for each newborn.
 \end_layout
 
 \begin_layout Standard
-As a final step, the parents @kid list attribute has to be updated with
- the newborns @id.
+As a final step, the parents' 
+\family typewriter
+@kids
+\family default
+ list attribute has to be updated with the newborns' 
+\family typewriter
+@id
+\family default
+.
  The separated tree nodes are fed as first input geometry to the 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 update_parent
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
- wrangle.
- The wrangle will also take as a second input geometry the newborn points.
- For each of the newborns, the snippet will retrieve the @parent id value.
- Given the parent @id, the _findPt() function returns the a handle to the
- parent node for which the currently processed newborn is appended to the
- list of children.
+ 
+\shape italic
+Wrangle
+\shape default
+.
+ The 
+\shape italic
+Wrangle
+\shape default
+ will also take as a second input geometry the newborn points.
+ For each of the newborns, the snippet will retrieve the @parent (which
+ is the @id of that point) value.
+ Given the parent's 
+\family typewriter
+@id
+\family default
+, the 
+\family typewriter
+_findPt()
+\family default
+ function returns a handle to the parent node for which the currently processed
+ newborn is appended to the list of children.
  Since the parent now has at least one child, its colour is set to yellow.
  To speed up the performances further, the old tree points are divided further
  so that only the fertile ones, therefore the parents, are fed in the 
 \begin_inset Quotes eld
 \end_inset
 
+
+\family typewriter
 update_parent
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
- wrangle.
+ 
+\family typewriter
+Wrangle
+\family default
+.
 \end_layout
 
 \begin_layout Standard
 Once this setup is completed, the tree nodes are joined back together.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Newborn network
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+blabla
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -2657,15 +3110,15 @@ reference "subsec:Steps"
 \end_inset
 
 .
- Runion explains that greater values for this parameter yield to increasingly
+ Runions explains that greater values for this parameter yield to increasingly
  sparse crowns.
  In his algorithm, the 
 \begin_inset Formula $dk$
 \end_inset
 
- is a constant of the whole groth process.
- The tree branching structure presented in his research always result to
- be too sparse when it comes to small twigs closer to the tree crown shape.
+ is a constant of the whole growth process.
+ The tree branching structure presented in his research always resulted
+ to be too sparse when it comes to small twigs close to the tree crown shape.
  In an attempt to improve the appearance of such small twigs, the algorithm
  presented in this project scales the value for 
 \begin_inset Formula $dk$
@@ -2686,15 +3139,35 @@ Some attributes of the tree nodes have to be reset to default values in
 \end_layout
 
 \begin_layout Itemize
-@dir is set back to {0, 0, 0}
+
+\family typewriter
+@dir
+\family default
+ is set back to 
+\begin_inset Formula ${0,0,0}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-@nbrs is emptied
+
+\family typewriter
+@nbrs
+\family default
+ is emptied
 \end_layout
 
 \begin_layout Itemize
-@fertile flag is set to 0
+
+\family typewriter
+@fertile
+\family default
+ flag is set to 
+\begin_inset Formula $0$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
