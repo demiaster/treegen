@@ -2006,6 +2006,13 @@ Some attributes of the tree nodes have to be reset to default values in
 
 \begin_layout Subsubsection
 Extra controls
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Extra-controls"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2303,6 +2310,105 @@ The user can choose whether to use a plain color or apply a custom shader.
 \end_layout
 
 \begin_layout Section
+Problems and attempted solutions
+\end_layout
+
+\begin_layout Subsection
+Determine S(v) set
+\end_layout
+
+\begin_layout Standard
+At very early stages of production, the 
+\begin_inset Formula $S(v)$
+\end_inset
+
+ set has been implemented as a Houdini group.
+ Groups in Houdini are similar to a boolean variable associated to each
+ point of the geometry that specifies the membership of the point to the
+ group.
+ Having n tree nodes, the system would have to store n groups.
+ After a few couple of iteration however, the number of different groups
+ resulted to be inefficient to use.
+ At this stage as well, the sets were processed in a for_each subnetwork
+ that unfortunately caused issues of duplicated geometry which lead to frequent
+ crashes of the scene.
+ As a solution, the current data system relying on the attribute @nbrs instead
+ of the groups was adopted.
+\end_layout
+
+\begin_layout Subsection
+Branching collisions
+\end_layout
+
+\begin_layout Standard
+For some cases, especially for the very first generations, it may happen
+ that branches tend to grow too clustered together.
+ The 
+\family typewriter
+fix_newborn_dir
+\family default
+, as explained in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Extra-controls"
+
+\end_inset
+
+, takes care of these particular scenarios moving the newborn to a minimum
+ distance angle from its closest sibling.
+ To achieve this result, the algorithm presented in CROSSREF ALLA APPENDIX
+ was used.
+\end_layout
+
+\begin_layout Subsubsection
+IsoOffset: from polygons to volumes
+\end_layout
+
+\begin_layout Standard
+The IsoOffset node converts the user input crown shape to a volume that
+ can be seeded with attraction points.
+ Unfortunately the conversion leads to some artefacts such as horizontal
+ lines exceeding or carving the original geometry.
+ Different solution have been tried such as changing the volume conversion
+ method but none of them proved to be succesfull for more than a few cases.
+\end_layout
+
+\begin_layout Subsubsection
+Scaling
+\end_layout
+
+\begin_layout Standard
+As it concerned the Eulerian scaling system, the newly proposed approach,
+ even though it results easier to implement, can lead to chopped branches.
+ Starting from the roots and proceding to the top from a user defined initial
+ width value, whenever a branch dies due to the lack of space or the pruning
+ system, it looks truncated.
+ Similar issue arises for the ramp scaling system.
+ Again, if a branch dies in an early generation, its width will be the same
+ as the other branches that kept scaling down along the new generated branches.
+\end_layout
+
+\begin_layout Standard
+A solution may be found for the first algorithm with a careful manipulation
+ of the tree points to process them backwards from the tips to the root
+ as suggested originally by Runion.
+ Such solution would most likely not work properly for a custom trunk with
+ custom thickness.
+ The blending between automatically generated branches and user input ones
+ would probably have to be achieved manually.
+ As far as it concerns the ramp scale, a solution could not be found during
+ this project and the problem remains open for future work.
+\end_layout
+
+\begin_layout Section
+Performances
+\end_layout
+
+\begin_layout Standard
+blablabla
+\end_layout
+
+\begin_layout Section
 Conclusions
 \end_layout
 
@@ -2314,24 +2420,22 @@ based on the paper does the same things.
 \end_layout
 
 \begin_layout Subsection
-Encountered Problems and attempted solutions
-\end_layout
-
-\begin_layout Standard
-blablabla
-\end_layout
-
-\begin_layout Subsection
 Future work
 \end_layout
 
 \begin_layout Standard
 fixing the scale.
- interacting with light.
- simulate the growth not just the final product.
  move in the wind.
  procedural LOD.
  leaves as proxy to be expanded at rendertime.
+\end_layout
+
+\begin_layout Section*
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+blablabla
 \end_layout
 
 \begin_layout Part*
