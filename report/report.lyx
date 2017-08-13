@@ -168,13 +168,12 @@ LatexCommand lstlistoflistings
 
 \lang english
 Vegetation modelling plays a key role in shots composition.
- Achieving a belieavable and true result has proven to be a tedious and
- time consuming task for artists.
- To overcome this issue we present a Houdini toolset for trees and flowers
- modelling.
- Through specifying different parameters values the toolset will generate
- a variety of tree and flowers species.
- Trees structures are achieved using the space colonization algorithm by
+ Achieving a believable and nature-like result has proven to be a tedious
+ and time consuming task for artists.
+ To overcome this issue we present a Houdini tool for trees modelling.
+ Through specifying different parameters' values the tool will generate
+ a variety of tree species.
+ Tree structures are achieved using the space colonization algorithm by
 \lang british
 
 \begin_inset ERT
@@ -190,10 +189,10 @@ hyperref[par:runions2007]{Runions et al (2007)}
 \end_inset
 
 .
- Model parameters are meaningful to visual characteristics and offer an
- appropriate control over the silhouette and branching structure.
- Experiments show that the toolset can produce a reasonable variety of trees
- and flower species.
+ Model parameters are directly mapped onto visual characteristics and offer
+ an appropriate control over the silhouette and branching structure.
+ This project shows that the toolset can produce a reasonable variety of
+ trees.
 \end_layout
 
 \begin_layout Standard
@@ -310,24 +309,77 @@ Related Works
 \end_layout
 
 \begin_layout Standard
-The modelling of natural shapes such as trees is difficult because of the
- richness of small details.
- The history of trees 3D modelling starts with a recursive algorithm proposed
+Modelling natural shapes such as trees is difficult because of the richness
+ of small details.
+ The history of 3D tree modelling starts with a recursive algorithm proposed
  by Honda (1971) REFERENCE!!!.
  The recursive structure relies on a few geometrical attributes such as
  branching angles and length ratio between consecutive segments.
- Honda also studies the nature of trees branching addressing the monopodial
- branching pattern as a special case for the dichotomous branching for structure
-s that are parallel to the gravity.
+ Honda also studies the nature of tree branching addressing the monopodial
+ branching pattern shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Branching-pattern"
+
+\end_inset
+
+as a special case for the dichotomous branching for structures that are
+ parallel to the gravity.
  Honda's recursive approach has been at the core of many later modelling
  algorithms.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Branching pattern
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Branching-pattern"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Lindenmayer (anno) REFERENCE!!!! introduced a string rewriting system know
- as L-System to describe the cellular interaction.
- An L-System is a formal grammar that consists of an alphabet, production
- rules and an axiom.
+ as L-System to describe cellular interactions.
+ An L-System (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:L-Systems"
+
+\end_inset
+
+) is a formal grammar that consists of an alphabet, production rules and
+ an axiom.
  The alphabet is a collection of symbols that can be used to produce strings.
  Production rules expand each symbol or string into some larger string.
  The axiom is used as starting point for the production.
@@ -335,25 +387,29 @@ Lindenmayer (anno) REFERENCE!!!! introduced a string rewriting system know
  as geometric commands.
  Prusinkiewicz applies Lindenmayer rewriting system to plants structures
  adding few extensions such as context sensitivity and random variations.
-\end_layout
-
-\begin_layout Standard
-L-Systems produce good results but the self similarity and the production
+ L-Systems produce good results but the self similarity and the production
  patterns remain clearly visible in the final model.
  To overcome the pattern visibility, literature (REFERENCE) has introduced
  stochastic L-System which involves the selection of a production rule from
  the set based on a probability value.
  Other improvements on L-Systems involve the definition of a container volume
- for the L-System to grow into.
- Given the volume and an initial segment, the system will set the depth
- for the recursion.
+ for the L-System to grow into REFERENCE.
+ Given the volume and an initial segment, the system will automatically
+ set the depth for the recursion.
 \end_layout
 
 \begin_layout Standard
 Oppenheimer (anno) REFERENCE also relies on Honda recursive approach by
- developing natural patterns using fractals.
+ developing natural patterns using fractals 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Fractals"
+
+\end_inset
+
+.
  The fractal specification is based on parameters such as branching angles,
- branch-to-prent ratio and branch-per-stem number.
+ branch-to-parent size-ratio and branch-per-stem number.
  The fractal method by Oppenheimer was found to be affected by severe self
  similarity pattern visibility which gave the final shape a machine-made
  look.
@@ -377,26 +433,25 @@ hyperref[par:weber1995]{Weber and Penn (1995)}
 \begin_layout Standard
 The interpretation of a tree as a recursive structure is justified by the
  process of tree development but plays a smaller role for fully grown trees.
- Buds may have different fate such as grown to major limbs, be shed or remain
- small twigs.
+ Buds may have different fate such as growing to major limbs, being shed
+ or remaining small twigs.
  In the architecture of a mature tree, therefore, the regularity of the
  recursive branching is mainly lost, overridden by subsequent development.
  Furthermore, finding rules and fitting parameters for recursive structures
  is a non trivial task.
  A small variation on the initial conditions will propagate exponentially
- through the generations becoming more and more evident.
- Once we managed to define the rules for a tree species, they often result
- to have nothing in common with other tree species.
- Even trying to tweak the existing rules to produce small variation on the
- produced model will drastically affect the whole new structure.
+ through the generations becoming more and more evident, to the point that
+ trying to tweak the existing rules to produce small variations on the produced
+ model will often lead to a drastically different whole new structure.
  Given the recursive nature of both L-System and fractals, even the use
  of random variables cannot completely overcome self-similarity issue and
  the resulting architectures give the machine-made impression.
+ CONTROLLA CHI HA FATTO STA COSA
 \end_layout
 
 \begin_layout Standard
-New models for 3D tree modelling find common ground in the Runion et al
- REFERENCE approach developed for leaves venation.
+New techniques for 3D tree modelling find common ground in the Runions et
+ al REFERENCE approach developed for leaves venation.
  
 \begin_inset ERT
 status open
@@ -410,7 +465,7 @@ hyperref[par:weber1995]{Rodkaev et al (2003)}
 
 \end_inset
 
- inherit Runion approach and apply it to a new algorithm based on particles
+ inherit Runions approach and apply it to a new algorithm based on particles
  that produces realistic leaves venation on a 2D space or a branching structure
  in a 3D space.
  Rodkaev populates a shape or a volume with particles.
@@ -452,11 +507,11 @@ hyperref[par:runions2007]{Runions et al (2007)}
 
  suggest a space colonization algorithm as an extension of the 3D leaves
  venation by Runion et al REFERENCE.
- Unlike Rodkaev, Runions branching structure is formed in a base-to-leaves
+ Unlike Rodkaev's, Runions' branching structure is formed in a base-to-leaves
  order.
  Each iteration of the algorithm produces new elements that expand the tree
  structure formed in the previous steps.
- This approach results not only to be adaptive to obstacle and neighbour
+ This approach results not only to be adaptive to obstacles and neighbour
  plants, but also provides controls over the growth process that results
  in a wide variety of tree structures.
 \end_layout
@@ -2603,7 +2658,14 @@ addcontentsline{toc}{part}{Appendix}
 \end_layout
 
 \begin_layout Section*
-L-System
+L-Systems
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:L-Systems"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
