@@ -2170,6 +2170,13 @@ reference "subsec:Wrangle-Node"
 
 \begin_layout Subsubsection
 Special case: trunk
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Special-case:-trunk"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2373,7 +2380,13 @@ reference "subsec:Extra-controls"
 
 , takes care of these particular scenarios moving the newborn to a minimum
  distance angle from its closest sibling.
- To achieve this result, the algorithm presented in CROSSREF ALLA APPENDIX
+ To achieve this result, the algorithm presented in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Angle-correction"
+
+\end_inset
+
  was used.
 \end_layout
 
@@ -2594,7 +2607,36 @@ L-System
 \end_layout
 
 \begin_layout Standard
-L-Systems (Lyndenmayer systems) were conceived as a theory for plant development.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{L-System}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:lindenmayer1996]{L-Systems}
+\end_layout
+
+\end_inset
+
+ (Lindenmayer systems) were conceived as a theory for plant development.
  The key idea of L-System is rewriting.
  An L-System is a rewriting system and a formal grammar.
  A formal grammar (REFERENCE WWIKIPEDIA) is a set of rules for rewriting
@@ -2695,10 +2737,6 @@ Given their recursive nature, L-Systems can be used to generate self-similar
  fractals.
 \end_layout
 
-\begin_layout Standard
-REFERENCEEEEEEEEEE
-\end_layout
-
 \begin_layout Section*
 Fractals
 \begin_inset CommandInset label
@@ -2711,6 +2749,23 @@ name "sec:Fractals"
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Fractals}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
 The term 
 \begin_inset Quotes eld
 \end_inset
@@ -2755,7 +2810,7 @@ a rough or fragmented geometric shape that can be split into parts, each
 \end_layout
 
 \begin_layout Standard
-The definition can be therefore divided such as follows to emphasise the
+The definition can be therefore divided such as follows to emphasize the
  main features of a fractal:
 \end_layout
 
@@ -2773,9 +2828,33 @@ recursive definition
 
 \begin_layout Section*
 Angle correction
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Angle-correction"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Angle correction}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
 Whenever two sibling branches grow too close together, the network provides
  a way of moving the youngest one from the sibling so that the angle between
  them is bigger or equal than a certain user defined value.
@@ -2984,6 +3063,202 @@ and its unit vector as
 \end_layout
 
 \begin_layout Section*
+Flowers
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Flowers}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+To enhance the skill set of this project, another small and simple tool
+ has been developed to create procedural flowers.
+ The network is divided in three big areas respectively for the stem, the
+ petals and the stamen.
+ The tool is inspired by REFERENCEEE work and MYWORK on fern plants and
+ ROHAN DALVI on vines.
+\end_layout
+
+\begin_layout Subsection*
+Stem
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{subsection}{Stem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The network provides a full customization on the stem geometry.
+ The user can either modify the default line geometry that act as a skeleton
+ for the stem or input his own line.
+ The jitter node is used to manipulate the stem points adding custom noise
+ on their position so that the final artefacts looks more natural.
+ Since the jitter displacement is based on a randon seed, that seed can
+ be used to create different models for the same flower specie when populating
+ a scene.
+ A control is given so that the stem can be bent at will.
+ In a process similar to the one described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Special-case:-trunk"
+
+\end_inset
+
+: the cross section of the stem is function of the @ptnum, a ramp then determine
+s the value for the cross section of the specific point.
+ The polyreduce node can change the total count of polygon for the stem
+ geometry.
+ In a future, that node can be used to generate procedural LOD based on
+ the distance from the camera looking at the scene.
+ As a final refinement, the user can benefit from a sculpt tool to add more
+ refinement to the stem polygonal mesh.
+\end_layout
+
+\begin_layout Subsection*
+Stamen Base
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{subsection}{Stamen Base}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The stamen base has been modelled as a general shape that can produce visually
+ appealing results for a wide variety of flower species.
+ If in need of more refinement, the user can either sculpt more subtitle
+ details with the sculpt tool or use a custom geometry.
+ As for the stem, a polyreduce node is provided to allow for a future procedural
+ LOD.
+\end_layout
+
+\begin_layout Subsection*
+Stamen Filaments
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{subsection}{Stamen Filaments}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The anatomy of flowers can vary greatly if we compare, for example, a sunflower
+ with a lily.
+ Whereas a sunflower model can be easily achieved using the modelling of
+ the stamen base discussed in the previous paragraph, a lily like flower
+ has very long stamens at the centre of the petal crown.
+ To reproduce such feature, alongside the stamen base, the stamen filaments
+ have been modelled.
+ The geometry, as for the stem, starts from a simple curve.
+ Again custom bending is available to the user to change the stamen appearance
+ at will.
+ Some copy_stamping expression manage to create slightly different instances
+ of such filament for a total amount defined by the user.
+\end_layout
+
+\begin_layout Subsection*
+Petals
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{subsection}{Petals}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+As for every part of the network, the user can decide to either use the
+ default geometry or select a custom model.
+ Petals are scattered on top of the stamen base.
+ The user, based on the stamen base geometry, can decide a minimum level
+ and a maximum level for the petals to be scattered on based on the angles
+ as follows.
+ A value 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ on a per point basis is calculated as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\vartheta=tan^{-1}(\frac{p_{y}}{\sqrt{p_{x}^{2}+p_{z}^{2}}})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The angle is compared to a min and max value the user defines.
+ The points that fit the range are used as sources for the petals.
+\end_layout
+
+\begin_layout Section*
 Acknowledgements
 \end_layout
 
@@ -3004,6 +3279,7 @@ addcontentsline{toc}{part}{Acknowledgments}
 \end_layout
 
 \begin_layout Standard
+\noindent
 blablabla
 \end_layout
 
@@ -3325,6 +3601,79 @@ s
 \shape default
 , 6 - 11 August 1995 Los Angeles.
  New York: ACM, 119 - 128.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset label
+LatexCommand label
+name "par:lindenmayer1996"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Prusinkiewicz, P., Lindenmayer, A., 1990.
+ 
+\shape italic
+The Algorithmic Beauty of Plants
+\shape default
+.
+ New York: Springer-Verlag.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset label
+LatexCommand label
+name "par:formal-grammar"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Wikipedia, 2017.
+ 
+\shape italic
+Formal Grammar
+\shape default
+.
+ wikipedia.org, Wikipedia.
+ Available from: https://en.wikipedia.org/wiki/Formal_grammar [Accessed 13
+ August 2017].
+\end_layout
+
+\begin_layout Paragraph*
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "par:Mandelbrot1982"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Mandelbrot, B.
+ B., 1982.
+ 
+\shape italic
+The fractal geometry of nature
+\shape default
+.
+ W.
+ H.
+ Freeman and Company.
 \end_layout
 
 \end_body
