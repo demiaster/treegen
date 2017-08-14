@@ -3477,37 +3477,6 @@ fix growing angles: it may happen that siblings branches grow too close
  
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Extra controls network
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Linking the points
 \end_layout
@@ -3540,6 +3509,29 @@ addprim()
  VEX function a new empty primitive is created.
  The two points are added to that primitive and the link between them is
  created.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Skeleton creation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3975,6 +3967,29 @@ reference "subsec:Cross-section-evaluation"
  color SOP or input a custom shader.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tree skinning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Leaves
 \end_layout
@@ -4017,6 +4032,29 @@ The user can choose whether to use a plain color or apply a custom shader.
  While the default geometry is ready to shade, the user has to make sure
  to prepare the custom geometry for the shading process using the UV_project
  Houdini node before feeding the leaf object as input to the network.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tree skinning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -5058,7 +5096,7 @@ addcontentsline{toc}{part}{Acknowledgments}
 
 \begin_layout Standard
 \noindent
-blablabla
+blablabla3
 \end_layout
 
 \begin_layout Part*
