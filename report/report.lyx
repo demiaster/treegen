@@ -227,7 +227,125 @@ hyperref[par:fearing]{Fearing (2000)}
 \end_layout
 
 \begin_layout Standard
-related works, motivation to do it in houdini
+Vegetation plays a key role in the composition of a shot.
+ Arrangement of trees and the choice of specific species can help conveying
+ a particular mood and help defining the staging of a particular scene.
+ The aim set for vegetation can vary greatly between different movies.
+ For The Jungle Book, for example, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:fchwank2016]{MPC (2016)}
+\end_layout
+
+\end_inset
+
+ built a sophisticated pipeline to build visually rich and realistic environment
+s relying on both photogrammetry and 3D software as SpeedTree and Maya.
+ Even though the aim was high quality realistic look, the pipeline also
+ integrates tools 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:melson2016]{Melson et al 2016}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:cieri2016]{Cieri et al 2016}
+\end_layout
+
+\end_inset
+
+ that allow for art-directing such vegetation.
+ The final look achieves both goals of realism and artistic staging of vegetatio
+n.
+\end_layout
+
+\begin_layout Standard
+Sometimes, for animated movies, realism is not such as a primary target
+ as the possibility of art-directability is.
+ For the Last Bastion animated short by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:houdini2017]{Blizzard Animation (2017)}
+\end_layout
+
+\end_inset
+
+, the studio designed a complete toolset to handle vegetation scattering
+ and simulations using plant models created in Maya.
+\end_layout
+
+\begin_layout Standard
+In many animated movies from Disney, as well, vegetation plays a key role
+ throughout the story.
+ Zootopia mesmerizing landscapes were built with Disney in-house procedural
+ vegetation modelling tool 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:keim2016]{Bonsai (Keim, 2016)}
+\end_layout
+
+\end_inset
+
+.
+ Their tool managed to produce variation not just across species but within
+ the same tree or bush specie as well.
+ All vegetation models are also able to interact with the main characters
+ or with external forces such as wind.
+\end_layout
+
+\begin_layout Standard
+Being the aim of this project the sole modelling of procedural vegetation,
+ in particular trees and with a specific preference for art-directability
+ over realism, the main inspiration was found in Tangled 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:shek2010]{(Shek, 2010)}
+\end_layout
+
+\end_inset
+
+.
+ For the production of this animated movie, Disney developed a whole new
+ engine that uses an artist sketched branches hierarchy and a rough shape
+ for the crown to produce procedural tree modules.
+ Unfortunately no further details are given about how Dendro inner algorithm
+ calculates new branches.
+ This project aims to reproduce a tool that offers similar feature to Disney
+ Dendro Engine.
 \end_layout
 
 \begin_layout Standard
@@ -300,10 +418,6 @@ hyperref[par:stomakhin]{Stomakhin et al (2013)}
 
 \end_layout
 
-\begin_layout Part
-Trees
-\end_layout
-
 \begin_layout Section
 Related Works
 \end_layout
@@ -312,7 +426,20 @@ Related Works
 Modelling natural shapes such as trees is difficult because of the richness
  of small details.
  The history of 3D tree modelling starts with a recursive algorithm proposed
- by Honda (1971) REFERENCE!!!.
+ by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:honda1971]{Honda (1971)}
+\end_layout
+
+\end_inset
+
+.
  The recursive structure relies on a few geometrical attributes such as
  branching angles and length ratio between consecutive segments.
  Honda also studies the nature of tree branching addressing the monopodial
@@ -369,8 +496,20 @@ name "fig:Branching-pattern"
 \end_layout
 
 \begin_layout Standard
-Lindenmayer (anno) REFERENCE!!!! introduced a string rewriting system know
- as L-System to describe cellular interactions.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:lindenmayer1996]{Lindenmayer (1996)}
+\end_layout
+
+\end_inset
+
+ introduced a string rewriting system know as L-System to describe cellular
+ interactions.
  An L-System (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -385,22 +524,72 @@ reference "sec:L-Systems"
  The axiom is used as starting point for the production.
  The string produced by iterating over the axiom can be later interpreted
  as geometric commands.
- Prusinkiewicz applies Lindenmayer rewriting system to plants structures
- adding few extensions such as context sensitivity and random variations.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:lindenmayer1996]{Prusinkiewicz (1996)}
+\end_layout
+
+\end_inset
+
+ applies Lindenmayer rewriting system to plants structures adding few extensions
+ such as context sensitivity and random variations.
  L-Systems produce good results but the self similarity and the production
  patterns remain clearly visible in the final model.
- To overcome the pattern visibility, literature (REFERENCE) has introduced
- stochastic L-System which involves the selection of a production rule from
- the set based on a probability value.
+ To overcome the pattern visibility, literature 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:lindenmayer1996]{(Prusinkiewicz, Lindenmayer (1996)}
+\end_layout
+
+\end_inset
+
+ has introduced stochastic L-System which involves the selection of a production
+ rule from the set based on a probability value.
  Other improvements on L-Systems involve the definition of a container volume
- for the L-System to grow into REFERENCE.
+ for the L-System to grow into 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:ijiri2006]{(Ijiri et al, 2006)}
+\end_layout
+
+\end_inset
+
+.
  Given the volume and an initial segment, the system will automatically
  set the depth for the recursion.
 \end_layout
 
 \begin_layout Standard
-Oppenheimer (anno) REFERENCE also relies on Honda recursive approach by
- developing natural patterns using fractals 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:oppenheimer1986]{Oppenheimer (1986)}
+\end_layout
+
+\end_inset
+
+also relies on Honda recursive approach by developing natural patterns using
+ fractals 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Fractals"
@@ -436,7 +625,21 @@ The interpretation of a tree as a recursive structure is justified by the
  Buds may have different fate such as growing to major limbs, being shed
  or remaining small twigs.
  In the architecture of a mature tree, therefore, the regularity of the
- recursive branching is mainly lost, overridden by subsequent development.
+ recursive branching is mainly lost, overridden by subsequent development
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:weber1995]{(Weber and Penn 1995)}
+\end_layout
+
+\end_inset
+
+.
  Furthermore, finding rules and fitting parameters for recursive structures
  is a non trivial task.
  A small variation on the initial conditions will propagate exponentially
@@ -445,13 +648,38 @@ The interpretation of a tree as a recursive structure is justified by the
  model will often lead to a drastically different whole new structure.
  Given the recursive nature of both L-System and fractals, even the use
  of random variables cannot completely overcome self-similarity issue and
- the resulting architectures give the machine-made impression.
- CONTROLLA CHI HA FATTO STA COSA
+ the resulting architectures give the machine-made impression (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:rodkaew2003]{Rodkaev et al, 2003}
+\end_layout
+
+\end_inset
+
+).
+ 
 \end_layout
 
 \begin_layout Standard
-New techniques for 3D tree modelling find common ground in the Runions et
- al REFERENCE approach developed for leaves venation.
+New techniques for 3D tree modelling find common ground in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:runions2005]{Runions et al (2005)}
+\end_layout
+
+\end_inset
+
+ approach developed for leaves venation.
  
 \begin_inset ERT
 status open
@@ -506,7 +734,20 @@ hyperref[par:runions2007]{Runions et al (2007)}
 \end_inset
 
  suggest a space colonization algorithm as an extension of the 3D leaves
- venation by Runion et al REFERENCE.
+ venation by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:runions2005]{Runions et al (2005)}
+\end_layout
+
+\end_inset
+
+.
  Unlike Rodkaev's, Runions' branching structure is formed in a base-to-leaves
  order.
  Each iteration of the algorithm produces new elements that expand the tree
@@ -1109,8 +1350,21 @@ The
 \family typewriter
 Wrangle
 \family default
- node REFERENCEEEEE is the most present node type in the network therefore
- it seemed only natural to give a brief explanation of how it works.
+ node 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:wrangle]{(SideFX, 2017)}
+\end_layout
+
+\end_inset
+
+ is the most present node type in the network therefore it seemed only natural
+ to give a brief explanation of how it works.
 \end_layout
 
 \begin_layout Standard
@@ -1251,7 +1505,20 @@ The aim of the algorithm is to create a believable branching structure to
 \end_layout
 
 \begin_layout Standard
-A graph REFERENCE is a finite collection of vertices and edges.
+A 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:graph]{graph}
+\end_layout
+
+\end_inset
+
+ is a finite collection of vertices and edges.
  Graphs are used to model pairwise relations between object.
  The vertices, or nodes, represent the objects while the edges are the relations.
  The different nature of the relations leads to different kinds of graphs.
@@ -1551,8 +1818,8 @@ Attraction Points
 \begin_layout Standard
 At early stages of the production, the volume obtained from the tree crown
  shape was seeded with uniformly distributed attraction points.
- The resulting trees, as described by Runions (REFERENCEEEEE) shows a uniform
- density in the branches distribution.
+ The resulting trees, as described by Runions  shows a uniform density in
+ the branches distribution.
  In many real trees and shrubs however the density increases near the crown
  surface due to better light exposure.
  To achieve the same result, following Runions suggestion, the attraction
@@ -3358,15 +3625,27 @@ fit()
 \end_layout
 
 \begin_layout Subsubsection
-Eulerian Scale
+Leonardo's Rule
 \end_layout
 
 \begin_layout Standard
-In his research, Runions relies on FIND REFERENCE to determine the cross-section
- of the limbs.
- In this model, known as Eulerian Scale CHECK!!!!, the diameter of a limb
- below a branching point is determined by the combined cross-section of
- the limbs above.
+In his research, Runions relies on 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:shinozaki1964]{Shinozaki et al (1964)}
+\end_layout
+
+\end_inset
+
+ to determine the cross-section of the limbs.
+ In this model, known as Leonardo's Rule, the diameter of a limb below a
+ branching point is determined by the combined cross-section of the limbs
+ above.
  The process assumes that all tip points share the same radius 
 \begin_inset Formula $r_{0}$
 \end_inset
@@ -3850,7 +4129,7 @@ Scaling
 \end_layout
 
 \begin_layout Standard
-As it concerned the Eulerian scaling system, the newly proposed approach,
+As it concerned the Leonardo's scaling system, the newly proposed approach,
  even though it results easier to implement, can lead to chopped branches.
  Starting from the roots and proceding to the top from a user defined initial
  width value, whenever a branch dies due to the lack of space or the pruning
@@ -4088,8 +4367,20 @@ hyperref[par:lindenmayer1996]{L-Systems}
  (Lindenmayer systems) were conceived as a theory for plant development.
  The key idea of L-System is rewriting.
  An L-System is a rewriting system and a formal grammar.
- A formal grammar (REFERENCE WWIKIPEDIA) is a set of rules for rewriting
- strings in a formal language.
+ A 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:fgrammar]{formal grammar}
+\end_layout
+
+\end_inset
+
+ is a set of rules for rewriting strings in a formal language.
  A rewriting system defines, in this case, methods for replacing substrings
  with other symbols.
  An L-System consists of:
@@ -4187,7 +4478,20 @@ Given their recursive nature, L-Systems can be used to generate self-similar
 \end_layout
 
 \begin_layout Section*
-Fractals
+F 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:ferianiCGI]{ractals}
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Fractals"
@@ -4537,8 +4841,33 @@ To enhance the skill set of this project, another small and simple tool
  has been developed to create procedural flowers.
  The network is divided in three big areas respectively for the stem, the
  petals and the stamen.
- The tool is inspired by REFERENCEEE work and MYWORK on fern plants and
- ROHAN DALVI on vines.
+ The tool is inspired by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:perez2017]{Perez (2017)}
+\end_layout
+
+\end_inset
+
+ work on fern plants and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:dalvi2015]{Dalvi (2015)}
+\end_layout
+
+\end_inset
+
+ work on vines.
 \end_layout
 
 \begin_layout Subsection*
@@ -4760,6 +5089,151 @@ addcontentsline{toc}{part}{References}
 \begin_layout Paragraph*
 \begin_inset CommandInset label
 LatexCommand label
+name "par:cieri2016"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cieri, S., Muraca, A., Schwank, A., Preti, F., Micilotta, T., 2016.
+ The Jungle Book: Art-Directing Procedural Scatters in Rich Environments.
+ 
+\shape italic
+DigiPro ’16
+\shape default
+, 23 - 23 July Anaheim, CA.
+ New York: ACM, 57-59.
+\end_layout
+
+\begin_layout Paragraph*
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "par:dalvi2015"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+Dalvi, R., 2015.
+ 
+\shape italic
+Creating animated ivy in Houdini - Tutorial 001
+\shape default
+.
+ Video.
+ youtube.
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+Available from: https://www.youtube.com/watch?v=Uhr3HjHW_oU
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+[Accessed 21 May 2017].
+\end_layout
+
+\begin_layout Paragraph*
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "par:ferianiCGI"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Feriani, M., 2017, 
+\shape italic
+Background Research for Ice Growth Simulation CGI Technologies
+\shape default
+, MSc CGITools Report.
+\end_layout
+
+\begin_layout Paragraph*
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "par:perez2017"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+Filmmakerperez, 2017.
+
+\shape italic
+ Houdini Tutorial - Procedurally Modeling 3D Plants
+\shape default
+.
+ Video.
+ youtube.
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+Available from: https://www.youtube.com/watch?v=K0qKWRBgwCY&t=1198s
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+[Accessed 16 May 2017].
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset label
+LatexCommand label
+name "par:honda1971"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Honda, H., 1971.
+ Description of the form of trees by the parameters of the tree-like body
+ : effects of the branching angle and the branch length on the shape of
+ the tree-like body.
+ J.
+ Theoret.
+ Biol, 31, 331-338.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
 name "par:houdini2017"
 
 \end_inset
@@ -4782,9 +5256,11 @@ ssuu [Accessed 24 July 2017].
 \end_layout
 
 \begin_layout Paragraph*
+
+\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "par:schwank2016"
+name "par:ijiri2006"
 
 \end_inset
 
@@ -4792,15 +5268,16 @@ name "par:schwank2016"
 \end_layout
 
 \begin_layout Standard
-Schwank, A., James, C.
- J., Milciotta, T., 2016.
- The Trees of The Jungle Book.
+
+\lang english
+Ijiri, T., Owada, S., Igarashi, T., 2006.
+ The Sketch L-System: Global Control of Tree Modeling Using Free-form Strokes.
  
 \shape italic
-SIGGRAPH ’16 Talks
+6th International Symposium Smart Graphics
 \shape default
-, 24-28 July 2016.
- Anaheim, CA: ACM
+, 23-25 July, Vancouver, Canada.
+ 138-146.
 \end_layout
 
 \begin_layout Paragraph*
@@ -4822,280 +5299,6 @@ SIGGRAPH ’16
 \shape default
 , 24-28 July 2016.
  Anaheim, CA: ACM
-\end_layout
-
-\begin_layout Paragraph*
-\begin_inset CommandInset label
-LatexCommand label
-name "par:basalla2005"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Basalla, D., 2005.
- 
-\shape italic
-Forest Generation with Maya and Renderman
-\shape default
-.
- Thesis (MSc).
- Bournemouth University.
-\end_layout
-
-\begin_layout Paragraph*
-\begin_inset CommandInset label
-LatexCommand label
-name "par:smurfs2017"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-SideFX, 2017.
- 
-\shape italic
-Smurfs: The Lost Village
-\shape default
-.
- sidefx.com, SideFx.
- Available from: https://www.sidefx.com/community/sony-imageworks-smurfs-the-lost-
-village/ [Accessed 24 July 2017].
-\end_layout
-
-\begin_layout Paragraph*
-\begin_inset CommandInset label
-LatexCommand label
-name "par:shek2010"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Shek, A., Lacewell, D., Selle, A., Teece, D., Thompson, T., 2010.
- Art-directing Disney's Tangled procedural trees.
- 
-\shape italic
-SIGGRAPH 2010 Talks
-\shape default
-, 26 - 30 July Los Angeles.
- New York: ACM, 53.
-\end_layout
-
-\begin_layout Paragraph*
-\begin_inset CommandInset label
-LatexCommand label
-name "par:melson2016"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Melson, T., 2016.
- Can’t See The Jungle For The Trees.
- 
-\shape italic
-SIGGRAPH ’16 Talks
-\shape default
-, 24 - 28 July Anaheim, CA.
- New York: ACM
-\end_layout
-
-\begin_layout Paragraph*
-\begin_inset CommandInset label
-LatexCommand label
-name "par:soares2016"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Soares, O., Moser, M., Aalbers, F., 2016.
- Vegetation Choreography in The Good Dinosaur.
- 
-\shape italic
-SIGGRAPH ’16 Talks
-\shape default
-, 24 - 28 July Anaheim, CA.
- New York: ACM
-\end_layout
-
-\begin_layout Paragraph*
-\begin_inset CommandInset label
-LatexCommand label
-name "par:cieri2016"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Cieri, S., Muraca, A., Schwank, A., Preti, F., Micilotta, T., 2016.
- The Jungle Book: Art-Directing Procedural Scatters in Rich Environments.
- 
-\shape italic
-DigiPro ’16
-\shape default
-, 23 - 23 July Anaheim, CA.
- New York: ACM, 57-59.
-\end_layout
-
-\begin_layout Paragraph*
-\begin_inset CommandInset label
-LatexCommand label
-name "par:runions2007"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Runions, A., Lane, B., Prusinkiewicz, P., 2007.
- Modeling Trees with a Space Colonization Algorithm.
- In: Ebert, D., Mérillou, S., 
-\shape italic
-NPH'07 Proceedings of the Third Eurographics conference on Natural Phenomena
-\shape default
-, 4 September 2007, Prague.
- Aire-la-Ville: Eurographics Association, 63-70.
-\end_layout
-
-\begin_layout Paragraph*
-\begin_inset CommandInset label
-LatexCommand label
-name "par:camilleri2016"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Camilleri, E., 2016.
- 
-\shape italic
-Path Planning for Natural Phenomena
-\shape default
-.
- Thesis (MSc).
- Bournemouth University.
-\end_layout
-
-\begin_layout Paragraph*
-\begin_inset CommandInset label
-LatexCommand label
-name "par:wang2008"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Wang, C., Yang, K., Han, D., 2008.
- New Modeling Method for Trees.
- 
-\shape italic
-2008 International Conference on Advanced Computer Theory and Engineering
-\shape default
-, 20-22 December 2008 Phuket.
- Los Vaqueros Circle: Institute of Electrical and Electronics Engineers
- ( IEEE ), 633-637.
-\end_layout
-
-\begin_layout Paragraph*
-\begin_inset CommandInset label
-LatexCommand label
-name "par:rodkaew2003"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Rodkaew, Y., Chongstitvatana, P., Siripani, S., Lursinsap, S., 2003.
- Particle Systems for Plant Modeling.
-\end_layout
-
-\begin_layout Paragraph*
-\begin_inset CommandInset label
-LatexCommand label
-name "par:weber1995"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Weber, J., Penn, J., 1995.
- Creation and Rendering of Realistic Trees.
- 
-\shape italic
-22nd International ACM Conference on Computer Graphics and Interactive Technique
-s
-\shape default
-, 6 - 11 August 1995 Los Angeles.
- New York: ACM, 119 - 128.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset CommandInset label
-LatexCommand label
-name "par:lindenmayer1996"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Prusinkiewicz, P., Lindenmayer, A., 1990.
- 
-\shape italic
-The Algorithmic Beauty of Plants
-\shape default
-.
- New York: Springer-Verlag.
-\end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset CommandInset label
-LatexCommand label
-name "par:formal-grammar"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Wikipedia, 2017.
- 
-\shape italic
-Formal Grammar
-\shape default
-.
- wikipedia.org, Wikipedia.
- Available from: https://en.wikipedia.org/wiki/Formal_grammar [Accessed 13
- August 2017].
 \end_layout
 
 \begin_layout Paragraph*
@@ -5123,6 +5326,339 @@ The fractal geometry of nature
  W.
  H.
  Freeman and Company.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:melson2016"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Melson, T., 2016.
+ Can’t See The Jungle For The Trees.
+ 
+\shape italic
+SIGGRAPH ’16 Talks
+\shape default
+, 24 - 28 July Anaheim, CA.
+ New York: ACM
+\end_layout
+
+\begin_layout Paragraph*
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "par:oppenheimer1986"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Oppenheimer, P., 1986.
+ Real Time Design and Animation of Fractal Plants and Trees.
+ Computer Graphics Proceedings, Annual Conference Series, 18-22 August,
+ Dallas.
+ Dallas, Texas: ACM SIGGRAPH, 55-64.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset CommandInset label
+LatexCommand label
+name "par:lindenmayer1996"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Prusinkiewicz, P., Lindenmayer, A., 1990.
+ 
+\shape italic
+The Algorithmic Beauty of Plants
+\shape default
+.
+ New York: Springer-Verlag.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:rodkaew2003"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rodkaew, Y., Chongstitvatana, P., Siripani, S., Lursinsap, S., 2003.
+ Particle Systems for Plant Modeling.
+\end_layout
+
+\begin_layout Paragraph*
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "par:runions2005"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Runions A., Fuhrer M., Lane B., Federl P., Rolland-Lagan A.-G., Prusinkiewicz
+ P., 2005.
+ Modeling and visualization of leaf venation patterns.
+ 
+\shape italic
+ACM Transactions on Graphics
+\shape default
+, 24(3), 705-711.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:runions2007"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Runions, A., Lane, B., Prusinkiewicz, P., 2007.
+ Modeling Trees with a Space Colonization Algorithm.
+ In: Ebert, D., Mérillou, S., 
+\shape italic
+NPH'07 Proceedings of the Third Eurographics conference on Natural Phenomena
+\shape default
+, 4 September 2007, Prague.
+ Aire-la-Ville: Eurographics Association, 63-70.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:schwank2016"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Schwank, A., James, C.
+ J., Milciotta, T., 2016.
+ The Trees of The Jungle Book.
+ 
+\shape italic
+SIGGRAPH ’16 Talks
+\shape default
+, 24-28 July 2016.
+ Anaheim, CA: ACM
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:shek2010"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Shek, A., Lacewell, D., Selle, A., Teece, D., Thompson, T., 2010.
+ Art-directing Disney's Tangled procedural trees.
+ 
+\shape italic
+SIGGRAPH 2010 Talks
+\shape default
+, 26 - 30 July Los Angeles.
+ New York: ACM, 53.
+\end_layout
+
+\begin_layout Paragraph*
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "par:shinozaki1964"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Shinozaki, K., Yoda, K., Hozumi, K., Kira, T., 1964.
+ A quantitative analysis of plant form — the pipe model theory.
+ 
+\shape italic
+Japanese Journal of Ecology
+\shape default
+, 14 (3), 97–104.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:soares2016"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Soares, O., Moser, M., Aalbers, F., 2016.
+ Vegetation Choreography in The Good Dinosaur.
+ 
+\shape italic
+SIGGRAPH ’16 Talks
+\shape default
+, 24 - 28 July Anaheim, CA.
+ New York: ACM
+\end_layout
+
+\begin_layout Paragraph*
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "par:wrangle"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+SideFX, 2017.
+ 
+\shape italic
+Attribute Wrangle
+\shape default
+.
+ sidefx.com, Available from: http://www.sidefx.com/docs/houdini/nodes/sop/attribwra
+ngle [Accessed 14 August 2017].
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:wang2008"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wang, C., Yang, K., Han, D., 2008.
+ New Modeling Method for Trees.
+ 
+\shape italic
+2008 International Conference on Advanced Computer Theory and Engineering
+\shape default
+, 20-22 December 2008 Phuket.
+ Los Vaqueros Circle: Institute of Electrical and Electronics Engineers
+ ( IEEE ), 633-637.
+\end_layout
+
+\begin_layout Paragraph*
+\begin_inset CommandInset label
+LatexCommand label
+name "par:weber1995"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Weber, J., Penn, J., 1995.
+ Creation and Rendering of Realistic Trees.
+ 
+\shape italic
+22nd International ACM Conference on Computer Graphics and Interactive Technique
+s
+\shape default
+, 6 - 11 August 1995 Los Angeles.
+ New York: ACM, 119 - 128.
+\end_layout
+
+\begin_layout Paragraph*
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "par:graph"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Wikipedia, 2017.
+ 
+\shape italic
+Graph theory
+\shape default
+.
+ wikipedia.org, Available from: https://en.wikipedia.org/wiki/Graph_theory
+ [Accessed 14 August 2017].
+\end_layout
+
+\begin_layout Paragraph*
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "par:fgrammar"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Wikipedia, 2017.
+ 
+\shape italic
+Formal grammar
+\shape default
+.
+ wikipedia.org, Available from: https://en.wikipedia.org/wiki/Formal_grammar
+ [Accessed 14 August 2017].
 \end_layout
 
 \end_body
