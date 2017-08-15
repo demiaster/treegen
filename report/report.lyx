@@ -4124,14 +4124,28 @@ At very early stages of production, the
  Groups in Houdini are similar to a boolean variable associated to each
  point of the geometry that specifies the membership of the point to the
  group.
- Having n tree nodes, the system would have to store n groups.
+ Having 
+\begin_inset Formula $n$
+\end_inset
+
+ tree nodes, the system would have to store 
+\begin_inset Formula $n$
+\end_inset
+
+ groups.
  After a few couple of iteration however, the number of different groups
  resulted to be inefficient to use.
- At this stage as well, the sets were processed in a for_each subnetwork
- that unfortunately caused issues of duplicated geometry which lead to frequent
- crashes of the scene.
- As a solution, the current data system relying on the attribute @nbrs instead
- of the groups was adopted.
+ At this stage the sets were also processed in a 
+\emph on
+for_each
+\emph default
+ subnetwork that unfortunately caused issues of duplicated geometry which
+ lead to frequent crashes of the scene.
+ As a solution, the current data system relying on the attribute 
+\family typewriter
+@nbrs
+\family default
+ instead of the groups was adopted.
 \end_layout
 
 \begin_layout Subsection
@@ -4152,8 +4166,8 @@ reference "subsec:Extra-controls"
 
 \end_inset
 
-, takes care of these particular scenarios moving the newborn to a minimum
- distance angle from its closest sibling.
+, takes care of these particular scenario moving the newborns to a minimum
+ distance angle from their closest sibling.
  To achieve this result, the algorithm presented in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4165,16 +4179,24 @@ reference "sec:Angle-correction"
 \end_layout
 
 \begin_layout Subsubsection
-IsoOffset: from polygons to volumes
+
+\emph on
+IsoOffset
+\emph default
+: from polygons to volumes
 \end_layout
 
 \begin_layout Standard
-The IsoOffset node converts the user input crown shape to a volume that
- can be seeded with attraction points.
+The 
+\emph on
+IsoOffset
+\emph default
+ node converts the user-input crown shape to a volume that can be seeded
+ with attraction points.
  Unfortunately the conversion leads to some artefacts such as horizontal
  lines exceeding or carving the original geometry.
  Different solution have been tried such as changing the volume conversion
- method but none of them proved to be succesfull for more than a few cases.
+ method but none of them proved to be universally successful.
 \end_layout
 
 \begin_layout Standard
@@ -4182,10 +4204,6 @@ The IsoOffset node converts the user input crown shape to a volume that
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -4203,10 +4221,6 @@ IsoOffset
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -4217,25 +4231,30 @@ Scaling
 \end_layout
 
 \begin_layout Standard
-As it concerned the Leonardo's scaling system, the newly proposed approach,
- even though it results easier to implement, can lead to chopped branches.
- Starting from the roots and proceding to the top from a user defined initial
- width value, whenever a branch dies due to the lack of space or the pruning
- system, it looks truncated.
- Similar issue arises for the ramp scaling system.
- Again, if a branch dies in an early generation, its width will be the same
- as the other branches that kept scaling down along the new generated branches.
+The approach to Leonardo's scaling system adopted in this work, albeit simpler
+ to implement, can lead to chopped branches.
+ With the scaling algorithm starting from the roots and proceeding to the
+ top from a user-defined initial 
+\family typewriter
+width
+\family default
+ value, branches can looked truncated when they die due to lack of space
+ or because of the pruning system.
+ Similar issue arises for the ramp scaling system: as each branch within
+ a generation will have the same cross-section, the terminal segment of
+ branches dying in early generations will be of the same width as non-terminal
+ segments of more long-lived branches.
 \end_layout
 
 \begin_layout Standard
 A solution may be found for the first algorithm with a careful manipulation
- of the tree points to process them backwards from the tips to the root
- as suggested originally by Runion.
+ of the tree nodes to process them backwards from the tips to the root as
+ suggested originally by Runions.
  Such solution would most likely not work properly for a custom trunk with
  custom thickness.
- The blending between automatically generated branches and user input ones
+ The blending between automatically generated branches and user-input ones
  would probably have to be achieved manually.
- As far as it concerns the ramp scale, a solution could not be found during
+ As far as the ramp scale is concerned, a solution could not be found during
  this project and the problem remains open for future work.
 \end_layout
 
