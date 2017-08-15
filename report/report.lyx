@@ -4875,11 +4875,8 @@ addcontentsline{toc}{section}{Flowers}
 
 \begin_layout Standard
 \noindent
-To enhance the skill set of this project, another small and simple tool
- has been developed to create procedural flowers.
- The network is divided in three big areas respectively for the stem, the
- petals and the stamen.
- The tool is inspired by 
+To enrich this project another small and simple tool has been developed
+ to create procedural flowers., taking inspiration by the 
 \begin_inset ERT
 status open
 
@@ -4892,7 +4889,7 @@ hyperref[par:perez2017]{Perez (2017)}
 
 \end_inset
 
- work on fern plants and 
+ work on fern plants and the 
 \begin_inset ERT
 status open
 
@@ -4906,6 +4903,8 @@ hyperref[par:dalvi2015]{Dalvi (2015)}
 \end_inset
 
  work on vines.
+ The network for this tool is divided in three big areas, respectively for
+ the stem, the petals and the stamen.
 \end_layout
 
 \begin_layout Subsection*
@@ -4931,13 +4930,20 @@ addcontentsline{toc}{subsection}{Stem}
 \begin_layout Standard
 \noindent
 The network provides a full customization on the stem geometry.
- The user can either modify the default line geometry that act as a skeleton
+ The user can either modify the default line geometry that acts as a skeleton
  for the stem or input his own line.
- The jitter node is used to manipulate the stem points adding custom noise
- on their position so that the final artefacts looks more natural.
- Since the jitter displacement is based on a randon seed, that seed can
- be used to create different models for the same flower specie when populating
- a scene.
+ The 
+\emph on
+jitter
+\emph default
+ node is used to manipulate the stem points by adding custom noise on their
+ position so that the final artefacts looks more natural.
+ Since the 
+\shape italic
+jitter
+\shape default
+ displacement is based on a random seed, that seed can be used to create
+ different models for the same flower specie when populating a scene.
  A control is given so that the stem can be bent at will.
  In a process similar to the one described in 
 \begin_inset CommandInset ref
@@ -4946,14 +4952,24 @@ reference "subsec:Special-case:-trunk"
 
 \end_inset
 
-: the cross section of the stem is function of the @ptnum, a ramp then determine
-s the value for the cross section of the specific point.
- The polyreduce node can change the total count of polygon for the stem
- geometry.
- In a future, that node can be used to generate procedural LOD based on
+ the cross-section of the stem is function of the 
+\family typewriter
+@ptnum
+\family default
+, a ramp then determines the value for the cross-section of the specific
+ point.
+ The 
+\emph on
+polyreduce
+\emph default
+ node can change the total count of polygon for the stem geometry.
+ In a future, that node could be used to generate procedural LOD based on
  the distance from the camera looking at the scene.
- As a final refinement, the user can benefit from a sculpt tool to add more
- refinement to the stem polygonal mesh.
+ As a final refinement, the user can benefit from a 
+\emph on
+sculpt
+\emph default
+ tool to add more refinement to the stem polygonal mesh.
 \end_layout
 
 \begin_layout Subsection*
@@ -4981,9 +4997,16 @@ addcontentsline{toc}{subsection}{Stamen Base}
 The stamen base has been modelled as a general shape that can produce visually
  appealing results for a wide variety of flower species.
  If in need of more refinement, the user can either sculpt more subtitle
- details with the sculpt tool or use a custom geometry.
- As for the stem, a polyreduce node is provided to allow for a future procedural
- LOD.
+ details with the 
+\emph on
+sculpt
+\emph default
+ tool or use a custom geometry.
+ As for the stem, a 
+\emph on
+polyreduce
+\emph default
+ node is provided to allow for a future procedural LOD.
 \end_layout
 
 \begin_layout Subsection*
@@ -5011,15 +5034,19 @@ addcontentsline{toc}{subsection}{Stamen Filaments}
 The anatomy of flowers can vary greatly if we compare, for example, a sunflower
  with a lily.
  Whereas a sunflower model can be easily achieved using the modelling of
- the stamen base discussed in the previous paragraph, a lily like flower
+ the stamen base discussed in the previous paragraph, a lily-like flower
  has very long stamens at the centre of the petal crown.
- To reproduce such feature, alongside the stamen base, the stamen filaments
- have been modelled.
+ To reproduce such feature the stamen filaments have been modelled alongside
+ the stamen base.
  The geometry, as for the stem, starts from a simple curve.
- Again custom bending is available to the user to change the stamen appearance
+ Custom bending is also available to the user to change the stamen appearance
  at will.
- Some copy_stamping expression manage to create slightly different instances
- of such filament for a total amount defined by the user.
+ A 
+\emph on
+copy_stamping
+\emph default
+ expression manages to create slightly different instances of such filament
+ for a total amount defined by the user.
 \end_layout
 
 \begin_layout Subsection*
@@ -5060,7 +5087,7 @@ As for every part of the network, the user can decide to either use the
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\vartheta=tan^{-1}(\frac{p_{y}}{\sqrt{p_{x}^{2}+p_{z}^{2}}})
+\vartheta=tan^{-1}\frac{p_{y}}{\sqrt{p_{x}^{2}+p_{z}^{2}}}
 \end{equation}
 
 \end_inset
@@ -5070,8 +5097,12 @@ As for every part of the network, the user can decide to either use the
 
 \begin_layout Standard
 \noindent
-The angle is compared to a min and max value the user defines.
- The points that fit the range are used as sources for the petals.
+The angle is compared to a minimum and maximum value defined by the user.
+ The points with 
+\begin_inset Formula $\vartheta$
+\end_inset
+
+ falling in the specified range are used as sources for the petals.
 \end_layout
 
 \begin_layout Section*
