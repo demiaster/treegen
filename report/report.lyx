@@ -4194,50 +4194,66 @@ Performances
 \end_layout
 
 \begin_layout Standard
-An iterative system that handles huge amount of geometry can result to be
- considerately slow.
+An iterative system that handles a huge amount of geometries can result
+ to be extremely slow.
  Even though the performances were not the primary focus of this project,
  a considerable effort has been made to make the network as fast as possible.
  The reason for investing in the performances relies in the nature of the
- tool.
- The project presented aims to be an easy and quick to setup tool to create
- procedural and art-directable trees.
+ tool: The project presented aims to be an easy and quick-to-setup tool
+ to create procedural and art-directable trees.
  If the tool were to require several minutes to produce a result, the user
- will find it hard to compare two successive attempts at tuning the parameters
+ would find it hard to compare two successive attempts at tuning the parameters
  to get the desired look.
- At very early stages of development, cooking a 30 iteration tree took up
- to 40 minutes.
- Dividing the geometry throughout the space colonization algorithm between
- nodes and attraction points helped speeding up the execution time.
+ At very early stages of development, cooking a 30-iterations tree took
+ up to 40 minutes.
+ Grouping the geometry points involved in the space colonization algorithm
+ into nodes and attraction points helped speeding up the execution time.
 \end_layout
 
 \begin_layout Standard
-Even tough this change improved the performances, the network still spent
- an excessive amount of time processing the find_neighbours 
+Even though this change improved the performances, the network still spent
+ an excessive amount of time processing the 
+\family typewriter
+\shape italic
+\emph on
+find_neighbours
+\family default
+\shape default
+\emph default
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Finding-neighbours"
 
 \end_inset
 
- algorithm and the setting id process 
+ and the 
+\family typewriter
+\shape italic
+\emph on
+setting_id
+\family default
+\shape default
+\emph default
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Creation-of-the-new-node"
 
 \end_inset
 
-.
- Dividing the tree points respectively between newborns, parents and old
- tree nodes improved the performances dramatically since the search loop
- was only to iterate over a few hundred points instead of a few thousand.
+ algorithms.
+ Dividing the tree nodes respectively into newborns, parents and old tree
+ nodes improved the performances dramatically since the search loop was
+ only to iterate over a few hundred points instead of a few thousand.
 \end_layout
 
 \begin_layout Standard
-As a final speedup, the original algorithm for the search of neighbour dragged
- down the overall performances of the network because, in order to update
- the geometry, it cooked the same node over 20 thousand times per iteration
- of the growth algorithm.
+The biggest speedup was however achieved by optimizing the algorithm for
+ the research of neighbours.
+ In its first version, each iteration of the growth algorithm required the
+ same node to be cooked over 20000 times in order to update the geometry
+ points.
  The new approach presented in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4262,7 +4278,7 @@ Even though the execution time still heavily depends on parameters such
 \begin_inset Formula $dk$
 \end_inset
 
-, the average cooking time stabilized around 15 s for 40 iteration trees.
+, the average cooking time stabilized around 15 s for 40-iterations trees.
 \end_layout
 
 \begin_layout Section
