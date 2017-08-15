@@ -4402,7 +4402,7 @@ hyperref[par:lindenmayer1996]{L-Systems}
 
 \end_inset
 
- (Lindenmayer systems) were conceived as a theory for plant development.
+ (Lindenmayer Systems) were conceived as a theory for plant development.
  The key idea of L-System is rewriting.
  An L-System is a rewriting system and a formal grammar.
  A 
@@ -4426,17 +4426,17 @@ hyperref[par:fgrammar]{formal grammar}
 
 \begin_layout Itemize
 Alphabet: set of symbols used to create strings.
- These symbols can either be replaceable or constant
+ These symbols can either be replaceable or constant.
 \end_layout
 
 \begin_layout Itemize
 Axiom: string or symbol to start the production, made of elements of the
- alphabet
+ alphabet.
 \end_layout
 
 \begin_layout Itemize
 Production rules: rules to replace and expand symbols or substrings with
- other sequences of symbols
+ other sequences of symbols.
 \end_layout
 
 \begin_layout Standard
@@ -4447,34 +4447,42 @@ In L-Systems, production rules are applied in parallel and simultaneously
 \end_layout
 
 \begin_layout Standard
-L-System can be divided in:
+L-Systems can be classified as:
 \end_layout
 
 \begin_layout Itemize
-context-free: if every production rule only refer to an individual symbol
+Context-free: if every production rule only refer to an individual symbol.
 \end_layout
 
 \begin_layout Itemize
-context sensitive: production rules refer not only on individual symbols
- but also to groups of symbols
+Context sensitive: production rules refer not only on individual symbols
+ but also to groups of symbols.
 \end_layout
 
 \begin_layout Itemize
-deterministic L-System: the production set provides one and one only production
- rule for each symbol.
+Deterministic: the production set provides one and one only production rule
+ for each symbol.
  An L-System that is deterministic and context-free is usually referred
- as D0L System
+ as D0L System.
 \end_layout
 
 \begin_layout Itemize
-stochastic: several production rules are given for each symbol, each iteration
- one of them is chosen based on a certain probability value
+Stochastic: several production rules are given for each symbol, each iteration
+ one of them is chosen based on a certain probability value.
 \end_layout
 
 \begin_layout Standard
-The turtle interpretation translates strings in graphical commands to achieve
- a visual representation of the produced string.
- The turtle interpretation is based on the following commands:
+A visual representation of the produced string can be achieved by employing
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+turtle
+\begin_inset Quotes erd
+\end_inset
+
+ interpretation, that translates strings into graphical commands.The turtle
+ interpretation is based on the following commands:
 \end_layout
 
 \begin_layout Itemize
@@ -4483,7 +4491,7 @@ F: move forward a step of length
 \end_inset
 
 .
- Draw a line between current and previous positions
+ Draw a line between current and previous positions.
 \end_layout
 
 \begin_layout Itemize
@@ -4491,12 +4499,12 @@ f: move forward a step of length
 \begin_inset Formula $d$
 \end_inset
 
- without drawing a line
+ without drawing a line.
 \end_layout
 
 \begin_layout Itemize
 +: turn left by an angle of 
-\begin_inset Formula $\delta$
+\begin_inset Formula $\delta.$
 \end_inset
 
 
@@ -4504,7 +4512,7 @@ f: move forward a step of length
 
 \begin_layout Itemize
 -: turn right by an angle of 
-\begin_inset Formula $\delta$
+\begin_inset Formula $\delta.$
 \end_inset
 
 
