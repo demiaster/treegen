@@ -4282,26 +4282,26 @@ The described implementation successfully reproduces the approach presented
  Information of the hierarchy of branches offers control over their different
  sizes.
  The final result produced a realistic branching structure even without
- any post processing of the skeleton.
- In some cases, post processing operations such as resampling the branches
- or applying random noise to the tree points leads to a more natural look
- of the final artefact.
+ any post-processing of the skeleton.
+ In some cases, post-processing operations such as resampling the branches
+ or applying random noise to the tree points can lead to a more natural
+ look of the final artefact.
  The project builds on Runion's research to add more controls over the branching
- structure by varying the parameters value on the fly and introducing small
- correction such as the pruning system and the angle correction.
+ structure by varying the parameter values on-the-fly and introducing small
+ corrections such as the pruning system and the angle correction.
  A fully art-directable scaling system for the branch size has been developed
  alongside the one proposed in the original paper.
 \end_layout
 
 \begin_layout Standard
-The tool successfully integrates a user defined main skeleton with the geometry
+The tool successfully integrates a user-defined main skeleton with the geometry
  produced by the space colonization algorithm fulfilling the purpose of
  having a tool for art-directable procedural vegetation.
- The implementation also proved to be able to handle a wide range of scenario:
+ The implementation also proved to be able to handle a wide range of scenarios:
  it can grow trees from one or multiple sources at once, a custom trunk
- can be sued as starting point for the space colonization algorithm, the
- generated geometry reacts to the surrounding obstacles either avoiding
- them or using them as objects to crawl onto in a vines like behaviour.
+ can be used as starting point for the space colonization algorithm, the
+ generated geometry reacts to the surrounding obstacles by either avoiding
+ them or using them as objects to crawl onto in a vine-like behaviour.
  When tested for rendering, the produced mesh unwraps correctly.
 \end_layout
 
@@ -4312,7 +4312,7 @@ Future work
 \begin_layout Standard
 The system successfully simulates the competition for space that characterizes
  tree structures.
- As future enhancement, competition for light could be introduced as well.
+ As a future enhancement, competition for light could be introduced as well.
  The light influence could probably solve the issue of having a too sparse
  foliage.
  To address the same problem, the system could use a proxy or billboards
@@ -4321,7 +4321,7 @@ The system successfully simulates the competition for space that characterizes
 \end_layout
 
 \begin_layout Standard
-Other problems remain pleasantly open for future research.
+Other problems remain open for future research.
  The method proposed in this project creates a believable mature tree.
  The project could be significantly improved by being able to simulate the
  growth process that leads from young shrubs to the mature tree.
@@ -4330,14 +4330,18 @@ Other problems remain pleasantly open for future research.
 \begin_layout Standard
 A simulation of breeze through the leaves or wind interacting with the tree
  would improve the overall result and could be accomplished using the Houdini
- wire solver.
+ 
+\emph on
+Wire
+\emph default
+ solver.
 \end_layout
 
 \begin_layout Standard
-For scene populated by a large number of plants, the current geometry might
+For scenes populated by a large number of plants, the current geometry might
  be too heavy.
  Implementing a procedural LOD for the polygonal mesh and an automatic pruning
- of the small twigs based on the distance prom the camera could make the
+ of the small twigs based on the distance from the camera could make the
  viewport more responsive and the rendering quicker.
 \end_layout
 
