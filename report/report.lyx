@@ -4604,25 +4604,31 @@ hyperref[par:Mendelbrot1982]{Mandelbrot (1982)}
 \end_layout
 
 \begin_layout Quote
+\begin_inset Quotes eld
+\end_inset
+
 a rough or fragmented geometric shape that can be split into parts, each
- of which is (at least approximately) a reduced-size copy of the whole
+ of which is (at least approximately) a reduced-size copy of the whole.
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-The definition can be therefore divided such as follows to emphasize the
- main features of a fractal:
+The main features of a fractal are then, as per definition:
 \end_layout
 
 \begin_layout Itemize
-self-similarity: each part is a scaled size copy of the whole 
+Self-similarity: each part is a scaled size copy of the whole.
 \end_layout
 
 \begin_layout Itemize
-fine structure at small scale
+Fine structure at small scale.
 \end_layout
 
 \begin_layout Itemize
-recursive definition
+Recursive definition.
 \end_layout
 
 \begin_layout Section*
