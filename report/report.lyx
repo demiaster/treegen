@@ -73,6 +73,8 @@
 \shortcut idx
 \color #008000
 \end_index
+\paperwidth 16cm
+\paperheight 20cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -175,7 +177,7 @@ Vegetation modelling plays a key role in shots composition.
  a variety of tree species.
  Tree structures are achieved using the space colonization algorithm by
 \lang british
-
+ 
 \begin_inset ERT
 status open
 
@@ -211,27 +213,15 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-hyperref[par:fearing]{Fearing (2000)}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
 Vegetation plays a key role in the composition of a shot.
- Arrangement of trees and the choice of specific species can help conveying
+ The arrangement of trees and the choice of specific species can help conveying
  a particular mood and help defining the staging of a particular scene.
  The aim set for vegetation can vary greatly between different movies.
- For The Jungle Book, for example, 
+ For 
+\emph on
+The Jungle Book
+\emph default
+, for example, 
 \begin_inset ERT
 status open
 
@@ -247,7 +237,7 @@ hyperref[par:fchwank2016]{MPC (2016)}
  built a sophisticated pipeline to build visually rich and realistic environment
 s relying on both photogrammetry and 3D software as SpeedTree and Maya.
  Even though the aim was high quality realistic look, the pipeline also
- integrates tools 
+ integrates tools (
 \begin_inset ERT
 status open
 
@@ -255,7 +245,7 @@ status open
 
 
 \backslash
-hyperref[par:melson2016]{Melson et al 2016}
+hyperref[par:melson2016]{Melson et al (2016)}
 \end_layout
 
 \end_inset
@@ -268,20 +258,24 @@ status open
 
 
 \backslash
-hyperref[par:cieri2016]{Cieri et al 2016}
+hyperref[par:cieri2016]{Cieri et al (2016)}
 \end_layout
 
 \end_inset
 
- that allow for art-directing such vegetation.
+) that allow for art-directing such vegetation.
  The final look achieves both goals of realism and artistic staging of vegetatio
 n.
 \end_layout
 
 \begin_layout Standard
 Sometimes, for animated movies, realism is not such as a primary target
- as the possibility of art-directability is.
- For the Last Bastion animated short by 
+ as the art-directability is.
+ For the 
+\emph on
+Last Bastion
+\emph default
+ animated short by 
 \begin_inset ERT
 status open
 
@@ -301,8 +295,12 @@ hyperref[par:houdini2017]{Blizzard Animation (2017)}
 \begin_layout Standard
 In many animated movies from Disney, as well, vegetation plays a key role
  throughout the story.
- Zootopia mesmerizing landscapes were built with Disney in-house procedural
- vegetation modelling tool 
+ 
+\emph on
+Zootopia
+\emph default
+'s mesmerizing landscapes were built with Disney in-house procedural vegetation
+ modelling tool 
 \begin_inset ERT
 status open
 
@@ -316,7 +314,7 @@ hyperref[par:keim2016]{Bonsai (Keim, 2016)}
 \end_inset
 
 .
- Their tool managed to produce variation not just across species but within
+ Their tool managed to produce variety not just across species but within
  the same tree or bush specie as well.
  All vegetation models are also able to interact with the main characters
  or with external forces such as wind.
@@ -325,7 +323,11 @@ hyperref[par:keim2016]{Bonsai (Keim, 2016)}
 \begin_layout Standard
 Being the aim of this project the sole modelling of procedural vegetation,
  in particular trees and with a specific preference for art-directability
- over realism, the main inspiration was found in Tangled 
+ over realism, the main inspiration was found in 
+\emph on
+Tangled
+\emph default
+ 
 \begin_inset ERT
 status open
 
@@ -340,11 +342,11 @@ hyperref[par:shek2010]{(Shek, 2010)}
 
 .
  For the production of this animated movie, Disney developed a whole new
- engine that uses an artist sketched branches hierarchy and a rough shape
- for the crown to produce procedural tree modules.
- Unfortunately no further details are given about how Dendro inner algorithm
+ engine (Dendro Engine) that uses an artist sketched branches hierarchy
+ and a rough shape for the crown to produce procedural tree modules.
+ Unfortunately, no further details are given about how Dendro's inner algorithms
  calculates new branches.
- This project aims to reproduce a tool that offers similar feature to Disney
+ This project aims to reproduce a tool that offers similar features to Disney
  Dendro Engine.
 \end_layout
 
@@ -2811,6 +2813,100 @@ fast_search
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\small\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+foreach influencing point
+\end_layout
+
+\begin_layout Plain Layout
+
+  find closest tree node
+\end_layout
+
+\begin_layout Plain Layout
+
+  append the value in an array
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+//each tree node can appear more than once.
+\end_layout
+
+\begin_layout Plain Layout
+
+sorted[] = sorted array, contains the closest tree nodes
+\end_layout
+
+\begin_layout Plain Layout
+
+sorted_attr[] = get indices sorted sequence
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+for(int i = 0; i < len(sorted); i++)
+\end_layout
+
+\begin_layout Plain Layout
+
+  read i_th value of sorted_attr[]
+\end_layout
+
+\begin_layout Plain Layout
+
+  append to a support array
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+  if(sorted[i] != sorted[i+1])
+\end_layout
+
+\begin_layout Plain Layout
+
+    /the support array contains the full list
+\end_layout
+
+\begin_layout Plain Layout
+
+    //of influencing point for the sorted[i] tree node
+\end_layout
+
+\begin_layout Plain Layout
+
+    set support array as @nbrs list for sorted[i] tree node
+\end_layout
+
+\begin_layout Plain Layout
+
+    empty support array for next tree node
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -2977,6 +3073,48 @@ Newborn direction
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+foreach tree node
+\end_layout
+
+\begin_layout Plain Layout
+
+  if node is fertile
+\end_layout
+
+\begin_layout Plain Layout
+
+    fetch list of influencing points
+\end_layout
+
+\begin_layout Plain Layout
+
+    foreach influencing point
+\end_layout
+
+\begin_layout Plain Layout
+
+      direction += normalize(inf_point_pos - tree_node_pos)
+\end_layout
+
+\begin_layout Plain Layout
+
+      new_direction = normalize(direction)
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -3081,6 +3219,7 @@ name "alg:Initialization-of-newborn"
 
 \begin_layout Plain Layout
 \begin_inset listings
+lstparams "basicstyle={\small\ttfamily}"
 inline false
 status open
 
@@ -3210,6 +3349,7 @@ name "alg:Set-newborn-id"
 
 \begin_layout Plain Layout
 \begin_inset listings
+lstparams "basicstyle={\small\ttfamily}"
 inline false
 status open
 
@@ -3220,12 +3360,12 @@ foreach newborn
 
 \begin_layout Plain Layout
 
-	id = treepointcount + current iteration value
+  id = treepointcount + current iteration value
 \end_layout
 
 \begin_layout Plain Layout
 
-	update treepoint count as treepointcount + 1
+  update treepoint count as treepointcount + 1
 \end_layout
 
 \end_inset
@@ -3720,6 +3860,7 @@ Leonardo's Scale for loose roots
 
 \begin_layout Plain Layout
 \begin_inset listings
+lstparams "basicstyle={\small\ttfamily}"
 inline false
 status open
 
@@ -3730,7 +3871,7 @@ sort tree points based on @generation in an array
 
 \begin_layout Plain Layout
 
-reverse the array to have highest generation values for smaller indices
+reverse array to have highest gen values for smaller indices
 \end_layout
 
 \begin_layout Plain Layout
@@ -3740,22 +3881,22 @@ foreach point in array
 
 \begin_layout Plain Layout
 
-	if point has no children
+  if point has no children
 \end_layout
 
 \begin_layout Plain Layout
 
-		@width = user defined value for tip branches
+    @width = user defined value for tip branches
 \end_layout
 
 \begin_layout Plain Layout
 
-	else
+  else
 \end_layout
 
 \begin_layout Plain Layout
 
-		@width = sqrt(sum of pow(@width) of all children in @kids list)
+    @width = sqrt(sum pow(@width) of all children in @kids)
 \end_layout
 
 \end_inset
@@ -3902,6 +4043,62 @@ Trunk
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+foreach primitive of the user input trunk structure
+\end_layout
+
+\begin_layout Plain Layout
+
+  fetch all the points of the primitive
+\end_layout
+
+\begin_layout Plain Layout
+
+  if the primitive is the main trunk	
+\end_layout
+
+\begin_layout Plain Layout
+
+    foreach point in the primitive
+\end_layout
+
+\begin_layout Plain Layout
+
+      assign @width value based on user defined ramp
+\end_layout
+
+\begin_layout Plain Layout
+
+  else (is a branch)
+\end_layout
+
+\begin_layout Plain Layout
+
+    foreach point in the primitive
+\end_layout
+
+\begin_layout Plain Layout
+
+      //joint = point between curr branch and parent limb
+\end_layout
+
+\begin_layout Plain Layout
+
+      @width = ramp * @width_jointof the joint 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -4001,6 +4198,67 @@ Trunk
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+foreach root point
+\end_layout
+
+\begin_layout Plain Layout
+
+  set @width of root point based on user ramp
+\end_layout
+
+\begin_layout Plain Layout
+
+  find children of root point
+\end_layout
+
+\begin_layout Plain Layout
+
+  push children on the stack
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+  while(stack not empty)
+\end_layout
+
+\begin_layout Plain Layout
+
+    pop last element from the stack
+\end_layout
+
+\begin_layout Plain Layout
+
+    set its @width based on user defined ramp
+\end_layout
+
+\begin_layout Plain Layout
+
+    find its children
+\end_layout
+
+\begin_layout Plain Layout
+
+    push children on the stack
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -4079,6 +4337,52 @@ status open
 
 \begin_layout Plain Layout
 Leonardo's Scale for roots based on trunk structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "numbers=left,basicstyle={\small\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+foreach tree point
+\end_layout
+
+\begin_layout Plain Layout
+
+  //non root points
+\end_layout
+
+\begin_layout Plain Layout
+
+  if @width has not been set already
+\end_layout
+
+\begin_layout Plain Layout
+
+    find parent @width
+\end_layout
+
+\begin_layout Plain Layout
+
+    find total number of siblings
+\end_layout
+
+\begin_layout Plain Layout
+
+    calculate @width with Leonardo's formula
+\end_layout
+
+\begin_layout Plain Layout
+
+    set tree node @width	
 \end_layout
 
 \end_inset
@@ -4763,7 +5067,7 @@ Given their recursive nature, L-Systems can be used to generate self-similar
 \end_layout
 
 \begin_layout Section*
-F 
+F
 \begin_inset ERT
 status open
 
@@ -5374,6 +5678,15 @@ The angle is compared to a minimum and maximum value defined by the user.
  falling in the specified range are used as sources for the petals.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 Acknowledgements
 \end_layout
@@ -5415,8 +5728,8 @@ I would be eternally grateful to all my fellow students at MSc CAVE for
 \begin_layout Standard
 Last but not least I would like to thank my family: my mother for always
  being supportive and pushing me every day to become the better version
- of myself and my brother for always offering his time, knowledge and experience
- to help me succeed since we were children.
+ of myself and my brother who has always offered his time, knowledge and
+ experience to help me succeed since we were children.
  I hope that one day I will be able to reciprocate what you did for me through
  all these years.
 \end_layout
@@ -5611,8 +5924,21 @@ Power Up Your Houdini Skills with SideFX, 2017.
 \shape italic
 3D World Magazine
 \shape default
-, 20 June 2017, Available from: https://issuu.com/futurepublishing/docs/houdini_i
-ssuu [Accessed 24 July 2017].
+, 20 June 2017,
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+Available from: https://issuu.com/futurepublishing/docs/houdini_issuu
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+[Accessed 24 July 2017].
 \end_layout
 
 \begin_layout Paragraph*
@@ -5923,8 +6249,21 @@ SideFX, 2017.
 Attribute Wrangle
 \shape default
 .
- sidefx.com, Available from: http://www.sidefx.com/docs/houdini/nodes/sop/attribwra
-ngle [Accessed 14 August 2017].
+ sidefx.com,
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+Available from: http://www.sidefx.com/docs/houdini/nodes/sop/attribwrangle
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+[Accessed 14 August 2017].
 \end_layout
 
 \begin_layout Paragraph*
@@ -5992,8 +6331,21 @@ Wikipedia, 2017.
 Graph theory
 \shape default
 .
- wikipedia.org, Available from: https://en.wikipedia.org/wiki/Graph_theory
- [Accessed 14 August 2017].
+ wikipedia.org,
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+Available from: https://en.wikipedia.org/wiki/Graph_theory
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+[Accessed 14 August 2017].
 \end_layout
 
 \begin_layout Paragraph*
@@ -6017,8 +6369,21 @@ Wikipedia, 2017.
 Formal grammar
 \shape default
 .
- wikipedia.org, Available from: https://en.wikipedia.org/wiki/Formal_grammar
- [Accessed 14 August 2017].
+ wikipedia.org,
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+Available from: https://en.wikipedia.org/wiki/Formal_grammar
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+[Accessed 14 August 2017].
 \end_layout
 
 \end_body
