@@ -359,9 +359,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/MPM.png
+	filename images/dendro.png
 	lyxscale 50
-	width 90col%
+	width 80col%
 
 \end_inset
 
@@ -380,7 +380,7 @@ status open
 \begin_layout Plain Layout
 
 \lang english
-MPM
+Dendro
 \end_layout
 
 \end_inset
@@ -388,11 +388,11 @@ MPM
 
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:MPM"
+name "fig:dendro"
 
 \end_inset
 
-MPM method as implemented by 
+
 \lang british
 
 \begin_inset ERT
@@ -402,7 +402,7 @@ status open
 
 
 \backslash
-hyperref[par:stomakhin]{Stomakhin et al (2013)}
+hyperref[par:shek2010]{Dendro Engine}
 \end_layout
 
 \end_inset
@@ -466,6 +466,14 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/branching_pattern.png
+	lyxscale 50
+	width 80col%
+
+\end_inset
+
 
 \end_layout
 
@@ -480,12 +488,31 @@ name "fig:Branching-pattern"
 
 \end_inset
 
+ by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyperref[par:wang2008]{Wang et al (2008)}
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(a) sympodial branching (binary tree), (b) sympodial branching (trinary
+ tree), (c) monopodial branching
 \end_layout
 
 \begin_layout Plain Layout
@@ -1285,6 +1312,14 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/space_colonization_alg.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
 
 \end_layout
 
@@ -1427,6 +1462,14 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/wrangle_large.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
 
 \end_layout
 
@@ -1555,7 +1598,45 @@ acyclic
  Each node is therefore aware either of its parent, its children or both.
  In computer science relations between nodes are implemented by storing
  in each node a pointer to its connected ones.
- The network developed for this project provides each tree node with two
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/data_structure.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Data Structure (Geometry Spreadsheet)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The network developed for this project provides each tree node with two
  attributes, an integer and an array, to store references to the parent
  and the children respectively.
  Unfortunately, Houdini does not have pointers-like structures.
@@ -1702,33 +1783,6 @@ As the information needed on a per-node basis are quite important in terms
  from the geometry.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Data Structure (Geometry Spreadsheet)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Parameter initialization
 \end_layout
@@ -1793,6 +1847,14 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/collision.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
 
 \end_layout
 
@@ -1805,7 +1867,12 @@ Collision Object
 
 \end_inset
 
-side by side first with geo, then with volumes
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+Left side geometry objects, right side resulting volume.
 \end_layout
 
 \end_inset
@@ -1969,6 +2036,14 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/attr_distributions.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
 
 \end_layout
 
@@ -2289,6 +2364,14 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/root_setting.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
 
 \end_layout
 
@@ -2305,7 +2388,9 @@ Roots initialization
 \end_layout
 
 \begin_layout Plain Layout
-pic of the network
+\align center
+From left to right: custom trunk structure, root selection, conversion to
+ points.
 \end_layout
 
 \end_inset
@@ -2507,6 +2592,14 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/influencing_nodes.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
 
 \end_layout
 
@@ -2523,10 +2616,41 @@ Visualization of the influencing nodes
 \end_layout
 
 \begin_layout Plain Layout
-sia viewport che il wiring dei nodi
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/influencing_network.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influencing nodes network
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -3479,6 +3603,15 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/newborn_network.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -3488,10 +3621,6 @@ Newborn network
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-blabla
 \end_layout
 
 \end_inset
@@ -3617,6 +3746,41 @@ fix growing angles: it may happen that siblings branches grow too close
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/colonization.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Colonization status after 0, 5, 10, 15, 20, 30 iterations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Linking the points
 \end_layout
@@ -3656,6 +3820,18 @@ addprim()
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/skeleton.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -3698,10 +3874,15 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/width_network.png
+	lyxscale 50
+	width 100col%
 
-\end_layout
+\end_inset
 
-\begin_layout Plain Layout
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -3754,6 +3935,41 @@ fit()
 .
  The new width is then computed as the product between the ramp value and
  the multiplier.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/ramp_scale.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ramp scale
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -3919,6 +4135,41 @@ The implementation of the Leonardo's scale for the second scenario is addressed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Special-case:-trunk"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/leonardo_scale.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Leonardo's scale
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -4395,6 +4646,41 @@ foreach tree point
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/trunk_scales.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ramp scale and Leonardo's scale for custom trunk structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Trunk Skinning
 \end_layout
@@ -4446,29 +4732,6 @@ smooth
 color
 \emph default
  SOP or input a custom shader.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Tree skinning
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -4547,10 +4810,19 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/leaves.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Tree skinning
+Leaves scattering
 \end_layout
 
 \end_inset
@@ -4662,6 +4934,15 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/isooffset.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -4710,6 +4991,38 @@ A similar issue arises for the ramp scaling system: as each branch within
  segments of more long-lived branches.
  As far as the ramp scale is concerned, a solution could not be found during
  this project and the problem remains open for future work.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/chopped_branches.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Scaling chopped branches
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -4882,6 +5195,38 @@ For scenes populated by a large number of plants, the current geometry might
  Implementing a procedural LOD for the polygonal mesh and an automatic pruning
  of the small twigs based on the distance from the camera could make the
  viewport more responsive and the rendering quicker.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/wrap.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Vine-like growth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part*
