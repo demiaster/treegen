@@ -5,31 +5,33 @@
 
 @overview
 
-The asset can be used to easily produce natural tree structures.
-Different options are available to prepare the final layout:
-    * *Foliage* will create a simple tree.
-    * *Collision* allows to define a collision object for the tree to avoid.
-    * *Wrap* will give a vine-like final branching structure that wraps around a given geometry.
+The asset can be used to easily produce natural tree structures allowing control over the growth by
+shaping the roots, the foliage and the way the tree fills up the space.
 
 The asset implements the [space colonization algorithm|http://algorithmicbotany.org/papers/colonization.egwnp2007.large.pdf]
 by Runions et al (2005).
 The algorithm takes as input roots points and a geometry for the tree crown shape.
 The process works on a per point base: points are divided between attraction points and tree nodes.
 Tree nodes are points that, when linked together, will create the tree structure: the first tree nodes are the root points.
-Attraction points represent the free space and they will influence the growth direction of the tree nodes: attractions points 
+Attraction points represent the available space and they will influence the growth direction of the tree nodes: attractions points 
 are seeded in the volume of the tree crown geometry.
 Shortly, at each iteration the colonization algorithm needs to first find the set of attraction points
 (if any) that will influence each fertile tree node, create the new nodes in the direction determined 
 by the influencing attraction points, and decide which attraction points will survive to the next iteration.
 
-The parameters for the asset are divided in three section:
+The parameters for the asset are divided in three sections:
     * *Setup*: defines the roots, the tree crown shape and the distribution for the attraction points.
     * *Growth*: defines number of iteration for the colonization algorithm as well as parameters to find influencing attraction points.
     * *Post Processing*: controls leaves scattering, tree mesh geometry smooth and shading options.
-
+    
+Different options are available to prepare the final layout:
+    * *Foliage* will create a simple tree.
+    * *Collision* allows to define a collision object for the tree to avoid.
+    * *Wrap* will give a vine-like final branching structure that wraps around a given geometry.
 
 @inputs
-The Tree Generator node does not take any input. Custom geometry can be added by specifying the path to the object in the proper parameters.
+The Tree Generator node does not take any input.
+Custom geometry can be added by specifying the path to the object in the relevant fields.
 
 @parameters
 
@@ -42,11 +44,12 @@ The Tree Generator node does not take any input. Custom geometry can be added by
     
     NOTE:
         #display: magenta
-        :bubble:
+        :box:
             #dir: left
             #display: magenta      
             
-            The network requires time to cook. You might want to keep the toggle on while playing with the parameters and untoggle to see the whole tree.
+            The network requires time to cook. You might want to keep the toggle on
+            while tuning the parameters and untoggle to see the whole tree.
 
 ~~~
 ==Setup==
@@ -76,8 +79,9 @@ Alongside the roots, you can choose the tree crown shape, add a collision object
 
 ~~~
 ====Single Points====
-You can set the root points setting their total count in the *Number of Point* slot
+You can set the root points by setting their total count in the *Number of Point* slot
 and place them in different positions by specifying their coordinates.
+This tab is only available when *Root Type* is set to *Single Roots*.
 
 *Number of Points*:
     #id: internalname
@@ -88,6 +92,7 @@ and place them in different positions by specifying their coordinates.
 ====Group Points====
 
 Input a custom group of points: they will be the roots of the tree.
+This tab is only available when *Root Type* is set to *Group of Roots*.
 
 *Group*:
     #id: internalname
@@ -99,7 +104,7 @@ Input a custom group of points: they will be the roots of the tree.
 *Translate*:
     #id: internalname
     
-    Move the group to the specified coordinates position.
+    Amount of rotation about xyz axes.
     
 *Rotate*:
     #id: internalname
@@ -126,21 +131,17 @@ Input a custom group of points: they will be the roots of the tree.
     
     Scale the input geometry uniformly along the x, y, z axis.
 
-*Move Centroid to Origin*:
-    #id: internalname
-    
-    Move centroid of the group object to the origin of the axis.
-
 ~~~
 
 ====Trunk====
 
 You can decide to grow the tree from a pre-made base skeleton. Here you can specify the path to
 your basic shape for the tree and set some of their points as roots for the new branches to come.
+This tab is only available when *Root Type* is set to *Trunk Structure*.
 
 WARNING:
         #display: red
-        :bubble:
+        :box:
             #dir: left
             #display: red      
             
@@ -163,7 +164,7 @@ WARNING:
 *Translate*:
     #id: internalname
     
-    Move the geometry to the specified coordinates position.
+    Amount of rotation about xyz axes.
     
 *Rotate*:
     #id: internalname
@@ -190,17 +191,12 @@ WARNING:
     
     Scale the input geometry uniformly along the x, y, z axis.
 
-*Move Centroid to Origin*:
-    #id: internalname
-    
-    Move centroid of the group object to the origin of the axis.
-
 ~~~
 ~~~
 ===Foliage===
 
 You can specify a custom shape for tree crown, as well as a collision object.
-This way, you can produce a tree that grows being aware of surrounding obstacles.
+This way, you can produce a tree aware of surrounding obstacles.
 Its geometry will bend to avoid that object. If you aim for a vine-like final look, 
 the *Wrap* options creates a layer around an object of your choice where the plant will grow.
 
@@ -222,6 +218,8 @@ the *Wrap* options creates a layer around an object of your choice where the pla
 
 ~~~
 ====Foliage Shape====
+This tab is only available when *Grow Type* is set to either *Foliage* or *Collision Object*.
+
 *Custom Geometry*:
     #id: internalname
     
@@ -233,7 +231,7 @@ the *Wrap* options creates a layer around an object of your choice where the pla
 *Translate*:
     #id: internalname
     
-    Move the geometry to the specified coordinates position.
+    Amount of rotation about xyz axes.
     
 *Rotate*:
     #id: internalname
@@ -260,14 +258,10 @@ the *Wrap* options creates a layer around an object of your choice where the pla
     
     Scale the input geometry uniformly along the x, y, z axis.
 
-*Move Centroid to Origin*:
-    #id: internalname
-    
-    Move centroid of the input object to the origin of the axis.
-
 ~~~
 
 ====Collision====
+This tab is only available when *Grow Type* is set to *Collision Object*.
 
 *Custom Geometry*:
     #id: internalname
@@ -279,7 +273,7 @@ the *Wrap* options creates a layer around an object of your choice where the pla
 *Translate*:
     #id: internalname
     
-    Move the geometry to the specified coordinates position.
+    Amount of rotation about xyz axes.
     
 *Rotate*:
     #id: internalname
@@ -306,16 +300,22 @@ the *Wrap* options creates a layer around an object of your choice where the pla
     
     Scale the input geometry uniformly along the x, y, z axis.
 
-*Move Centroid to Origin*:
-    #id: internalname
-    
-    Move centroid of the object to the origin of the axis.
-
 ~~~
 
 ===Wrap===
 
 For a vine-like final look.
+This tab is only available when *Grow Type* is set to *Wrap Object*.
+
+WARNING:
+    #display: red
+    :box:
+        #dir: left
+        #display: red      
+        
+        If the toggle *Visualize Setup* is off and the geometry turns black,
+        the root points may be too far from the wrap object. Move them closer
+        and re cook the node.
 
 *Custom Geometry*:
     #id: internalname
@@ -327,7 +327,7 @@ For a vine-like final look.
 *Translate*:
     #id: internalname
     
-    Move the geometry to the specified coordinates position.
+    Amount of rotation about xyz axes.
     
 *Rotate*:
     #id: internalname
@@ -353,11 +353,6 @@ For a vine-like final look.
     #id: internalname
     
     Scale the input geometry uniformly along the x, y, z axis.
-
-*Move Centroid to Origin*:
-    #id: internalname
-    
-    Move centroid of the object to the origin of the axis.
     
 =====Bounds=====
 Create the tree crown shape as a thick layer wrapped around the input object.
@@ -365,7 +360,7 @@ The difference between the *Outside Bound* and the *Inside Bound* is the thickne
 
 WARNING:
     #display: red
-    :bubble:
+    :box:
         #dir: left
         #display: red      
         
@@ -425,6 +420,7 @@ The remaining points are the attraction points that will interact with the space
 ====Radial Distribution====
 
 Achieves a varying density for attraction points from the center of the tree crown object to its surface.
+This tab is only available when *Distribution Type* is set to *Radial*.
 
 *Probability*:
     #id: internalname
@@ -442,6 +438,7 @@ Achieves a varying density for attraction points from the center of the tree cro
 ====Vertical Distribution====
 
 Achieves a varying density for attraction points along the Y axis.
+This tab is only available when *Distribution Type* is set to *Vertical Axis*.
 
 *Probability*:
     #id: internalname
@@ -489,16 +486,11 @@ Set attraction points options. Attraction points influence the tree growth as th
 ~~~
 ====Kill Distance====
 Attraction points are removed when branches approach them meaning that the space is not empty anymore.
-
-*Radius of Influence*:
-    #id: internalname
-    
-    Minimum distance from the branches to declare the space as "occupied"
     
 *Constant Kill Distance*:
     #id: internalname    
 
-    The minimum distance from the branches to declare the space as "occupied" remains constant
+    The minimum distance from the branches to declare the space as "occupied", remains constant
     across successive iterations.
     
 *Enable Scaling*:
@@ -544,7 +536,7 @@ Set branching properties for the tree.
 ~~~
 ====Branch Length====
 
-*D*:
+*Initial Length*:
     #id: internalname
     
     Initial length of branches
@@ -554,7 +546,7 @@ Set branching properties for the tree.
     
     Scaling factor across generations. Branches of each generation will be as long as a fraction of their parent branches length.
     
-    For example, if the value is `0.75`, every new generation branch will measure `0.75` the length of the parent branches.
+    For example, if the value is `0.75`, every new generation branch will measure `0.75` times the length of the parent branches.
     
 *Enable Ramp Scaling*:
     #id: internalname
@@ -571,7 +563,7 @@ Set branching properties for the tree.
 ====Angle Correction====
 
 Sometimes, especially for low generation values, branches might grow too close too each other giving a cramped look.
-Here you can set a minimum angle between branches and a generation value for the correction to start affecting the tree.
+Here you can set a minimum angle between branches and at which generation to start applying this correction.
 
 *Enable*:
     #id: internalname
@@ -644,6 +636,13 @@ You can prune branches randomly or based on the distance from the tree crown sha
 Refine the created tree by choosing colors, adding shaders, smoothing the geometry or increasing/decreasing the resolution.
 Add leaves from default geometry or from a custom model.
 
+*Flip Normals*:
+    #id: internalname
+    
+    When the *Foliage Type* is set to *Collision Object* or *Wrap Object*,
+    it may happens that either the tree or the object appear with reversed normals
+    causing issues. Use the toggle *Flip Normals* to to have outward pointing normals.
+
 ~~~
 ~~~
 ===Tree Structure===
@@ -659,6 +658,7 @@ Add leaves from default geometry or from a custom model.
 
 ~~~    
 ====Color====
+This tab is only available when *Color Type* is set to *Simple Color*.
 
 *Color Type*:
     #id: internalname
@@ -667,6 +667,7 @@ Add leaves from default geometry or from a custom model.
     
 ~~~
 ====Shading====
+This tab is only available when *Color Type* is set to *Shading*.
 
 *Number of Materials*:
     #id: internalname
@@ -681,7 +682,7 @@ Add leaves from default geometry or from a custom model.
 *Width Type*:
     #id: internalname
     
-    Choose either plain color or select a shader from the shop.
+    Choose scaling method.
     
     *Ramp Scale*: uniform color for tree geometry.
     
@@ -695,8 +696,10 @@ In case of a custom trunk geometry, the thickness for the trunk
 and the newly generated branches have two different controls.
 Choose *From Trunk* parameters to manipulate the trunk width,
 *Trunk Branches* for the branches being born based on the trunk.
+This tab is only available when *Width Type* is set to *Ramp Scale*.
 
 ======Points======
+This tab is only available when *Root Type* is set to either *Single Roots* or "Group of Roots".
 
 *Mult*:
     #id: internalname
@@ -709,6 +712,7 @@ Choose *From Trunk* parameters to manipulate the trunk width,
     Change width of the branches across generations.
     
 ======Trunk Branches======
+This tab is only available when *Root Type* is set to either *Trunk Structure".
 
 *Scale*:
     #id: internalname
@@ -716,6 +720,7 @@ Choose *From Trunk* parameters to manipulate the trunk width,
     Scale width of the branches generated in the *Growth* part.
     
 ======From Trunk======
+This tab is only available when *Root Type* is set to either *Trunk Structure".
 
 *Mult*:
     #id: internalname
@@ -731,6 +736,7 @@ Choose *From Trunk* parameters to manipulate the trunk width,
 
 Scales branches width based on [Leonardo's rule|http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0093535].
 Each branch width is equal to the sum of the its children branches width.
+This tab is only available when *Width Type* is set to *Leonardo's Scale*.
 
 *Tips Width*:
     #id: internalname
@@ -738,72 +744,23 @@ Each branch width is equal to the sum of the its children branches width.
     Set width for tip branches. This will subsequently affect the parent branches until the root of the tree.
     The option is only available for *Single Points* or *Group Points* options.
 
-*Roots Width*:
-    #id: internalname
-    
-    Set width for the root. This will subsequently affect the width of children branches until the tree tips.
-    The option is only available for *Trunk* option.
-
 ~~~
 ====Resample====
 Increase the resolution on a per branch basis.
-
-*Level of Detail*:
-    #id: internalname
-    
-    Level of detail at which to convert non-polygonal inputs.
-    
-*Resample by Polygon Edge*:
-    #id: internalname
-    
-    Each edge of the polygon will be resampled independently. This option will preserve corners in the input.
-    
-*Method*:
-    #id: internalname
-    
-    *Even Length Segments*: measure the natural edge length.
-    
-    *Even X Segments*: measure the edges against the X axis.
-    
-    *Even Y Segments*: measure the edges against the Y axis.
-    
-    *Even Z Segments*: measure the edges against the Z axis.
-        
-*Measure*:
-    #id: internalname
-    
-    *Along Arc*: measure distance along the original curve between resampled points.
-    
-    *Along Chord*: measure distance between resampled points.
-        
-*Maximum Segment Length*:
-    #id: internalname
-    
-    Specify maximum length of resulting edges.
-    
-*Length*:
-    #id: internalname
-    
-    The maximum segment length of resulting edges.
-    If you are working in centimeters, the default is 10.
-    If you are working in meters, the default is 0.1.
-    
-*Maximum Segments*:
-    #id: internalname
-    
-    Specify the maximum number of edges.
-    
+Affects the skeleton of the tree.
     
 *Segments*:
     #id: internalname
     
-    The maximum number of edges.
+    The maximum number of edges in a branch.
     
 ~~~
 
 ====Variation====
 Applies a random offset, within a specified scale, to the points of the tree geometry.
-It achieves a more gnarly look for the final tree model.
+It achieves a more gnarled look for the final tree model.
+Affects the skeleton on the tree.
+
 TIP:
         #display: green
         :box:
@@ -856,6 +813,7 @@ Useful to counterbalance the effect of the *Variation* parameters.
     #id: internalname
     
     Lets you choose different smoothing models that have different effects on the point positions.
+    It affects the tree skeleton.
 
     *Uniform*: move points so they are evenly spaced.
     
@@ -868,21 +826,25 @@ Useful to counterbalance the effect of the *Variation* parameters.
     
     How much to smooth the selected points.
     Higher values move the points farther from their original positions.
+    It affects the tree skeleton.
     
 *Divisions*:
     #id: internalname
     
     This is the number of divisions in the circle which is
     to be swept over the polygon. It can vary on a point basis.
+    It affects the tree polygon mesh.
     
 *Segments*:
     #id: internalname
     
     The number of segments to divide each edge of the polygon into.
     It can vary on a point basis.
+    It affects the tree polygon mesh.
 
 =====Smooth Joints=====
 This section interpolates the thicknes of the branches at the junction points.
+It affects the tree polygon mesh.
 
 *Method*:
     #id: internalname
@@ -890,7 +852,9 @@ This section interpolates the thicknes of the branches at the junction points.
     Lets you choose different smoothing models that have different effects on the point positions.
 
     *Uniform*: move points so they are evenly spaced.
+    
     *Scale-Dominant*: move points trying to mainting their original relative distances from one another.
+    
     *Curvature-Dominant*: move points to smooth the curvature while trying to maintain their original arrangement.
         
 *Strength*:
@@ -909,12 +873,13 @@ This section interpolates the thicknes of the branches at the junction points.
     
     Choose either default geometry or custom one.
     
-    *Default Leaf*: specify tree crown shape.
+    *Default Leaf*: use the built-in leaf geometry.
     
-    *Custom Geometry*: select to specify an object for the tree to avoid.
+    *Custom Geometry*: select to use custom model for leaf geometry.
 
 ~~~
 ====Default Leaf====
+This tab is only available when *Leaf Type* is set to *Default Leaf*.
 
 *Uniform Scale*:
     #id: internalname
@@ -922,6 +887,7 @@ This section interpolates the thicknes of the branches at the junction points.
     Scale leaves along X, Y, Z axis at the same time.
     
 ====Custom Leaf====
+This tab is only available when *Leaf Type* is set to *Custom Geometry*.
 
 *Total Number*:
     #id: internalname
@@ -933,12 +899,12 @@ This section interpolates the thicknes of the branches at the junction points.
 *Translate*:
     #id: internalname
     
-    Move the geometry to the specified coordinates position.
+    Amount of rotation about xyz axes.
     
 *Rotate*:
     #id: internalname
     
-    Rotate the geometry while spreading it radially by the specified angle around the x, y, z axis.
+    Rotate the geometry by the specified angle around the x, y, z axis.
 
 *Scale*:
     #id: internalname
@@ -966,6 +932,7 @@ This section interpolates the thicknes of the branches at the junction points.
     *Shading*: provides shader options.
     
 ====Color====
+This tab is only available when *Color Type* is set to *Simple Color*.
 
 *Color Type*:
     #id: internalname
@@ -974,6 +941,7 @@ This section interpolates the thicknes of the branches at the junction points.
     
 
 ====Shading====
+This tab is only available when *Color Type* is set to *Shading*.
 
 *Number of Materials*:
     #id: internalname
