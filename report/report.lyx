@@ -99,7 +99,8 @@
 \begin_body
 
 \begin_layout Title
-Modelling of non-hero vegetation in Houdini
+Art-directing procedural vegetation in Houdini using a space colonization
+ algorithm
 \begin_inset Newline newline
 \end_inset
 
@@ -139,6 +140,62 @@ MSc Computer Animation and Visual Effects
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{part}{Acknowledgments}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+I would like to thank my supervisors Jon Macey and Phil Spicer for sharing
+ their knowledge and offering guidance during the development of this project.
+\end_layout
+
+\begin_layout Standard
+Another special thank comes to Yannis Ioannidis and Michail Agoulas for
+ being extremely patient and supportive during hours of troubleshooting
+ and brainstorming.
+\end_layout
+
+\begin_layout Standard
+I would be eternally grateful to all my fellow students at MSc CAVE for
+ the good advice, the honest feedback, the good food and the good time that
+ made this year unforgettable.
+\end_layout
+
+\begin_layout Standard
+Last but not least I would like to thank my family: my mother for always
+ being supportive and pushing me every day to become the better version
+ of myself and my brother who has always offered his time, knowledge and
+ experience to help me succeed since we were children.
+ I hope that one day I will be able to reciprocate what you did for me through
+ all these years.
 \end_layout
 
 \begin_layout Standard
@@ -193,7 +250,7 @@ Vegetation modelling plays a key role in shots composition.
  and time consuming task for artists.
  To overcome this issue we present a Houdini tool for trees modelling.
  Through specifying different parameters' values the tool will generate
- a variety of tree species.
+ a variety of tree shapes.
  Tree structures are achieved using the space colonization algorithm by
 \lang british
  
@@ -248,7 +305,7 @@ status open
 
 
 \backslash
-hyperref[par:fchwank2016]{MPC (2016)}
+hyperref[par:schwank2016]{MPC (2016)}
 \end_layout
 
 \end_inset
@@ -292,7 +349,7 @@ Sometimes, for animated movies, realism is not such as a primary target
  as the art-directability is.
  For the 
 \emph on
-Last Bastion
+Last Bastion,
 \emph default
  animated short by 
 \begin_inset ERT
@@ -363,7 +420,7 @@ hyperref[par:shek2010]{(Shek, 2010)}
  For the production of this animated movie, Disney developed a whole new
  engine (Dendro Engine) that uses an artist sketched branches hierarchy
  and a rough shape for the crown to produce procedural tree modules.
- Unfortunately, no further details are given about how Dendro's inner algorithms
+ Unfortunately, no further details are given about how Dendro's inner algorithm
  calculates new branches.
  This project aims to reproduce a tool that offers similar features to Disney
  Dendro Engine.
@@ -466,12 +523,12 @@ hyperref[par:honda1971]{Honda (1971)}
  Honda also studies the nature of tree branching addressing the monopodial
  branching pattern shown in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "fig:Branching-pattern"
 
 \end_inset
 
-as a special case for the dichotomous branching for structures that are
+ as a special case for the dichotomous branching for structures that are
  parallel to the gravity.
  Honda's recursive approach has been at the core of many later modelling
  algorithms.
@@ -560,7 +617,7 @@ hyperref[par:lindenmayer1996]{Lindenmayer (1996)}
  interactions.
  An L-System (
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "sec:L-Systems"
 
 \end_inset
@@ -597,7 +654,7 @@ status open
 
 
 \backslash
-hyperref[par:lindenmayer1996]{(Prusinkiewicz, Lindenmayer (1996)}
+hyperref[par:lindenmayer1996]{(Prusinkiewicz, Lindenmayer 1996)}
 \end_layout
 
 \end_inset
@@ -636,10 +693,10 @@ hyperref[par:oppenheimer1986]{Oppenheimer (1986)}
 
 \end_inset
 
-also relies on Honda recursive approach by developing natural patterns using
- fractals 
+ also relies on Honda recursive approach by developing natural patterns
+ using fractals 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "sec:Fractals"
 
 \end_inset
@@ -741,7 +798,7 @@ hyperref[par:weber1995]{Rodkaev et al (2003)}
 
 \end_inset
 
- inherit Runions approach and apply it to a new algorithm based on particles
+ inherit Runions approach and applies it to a new algorithm based on particles
  that produces realistic leaves venation on a 2D space or a branching structure
  in a 3D space.
  Rodkaev populates a shape or a volume with particles.
@@ -831,7 +888,7 @@ The algorithm proceeds as follows.
  If let running, the algorithm will either stop when there are no attraction
  points close enough to the tree to influence its growth (i.e.
  no tree points are within a threshold distance, called radius of influence,
- from the attraction points) or when all attraction points has been reached
+ from the attraction points) or when all attraction points have been reached
  by tree points.
 \end_layout
 
@@ -842,7 +899,7 @@ Further manipulation involves subdivision and smoothing of the internodes
 \end_layout
 
 \begin_layout Subsection
-Growth Algorithm
+Space Colonization Algorithm
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Growth-Algorithm"
@@ -1142,7 +1199,7 @@ For each tree node
 \begin_inset Formula $v^{\prime}$
 \end_inset
 
-is created.
+ is created.
  The new tree node lies at a distance 
 \begin_inset Formula $D$
 \end_inset
@@ -1314,7 +1371,7 @@ d(s,v)<dk
 \lang english
 repeat from steps 4 to 6 until the stopping conditions mentioned in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Overview"
 
 \end_inset
@@ -1396,7 +1453,7 @@ The network for the implementation of the growth algorithm relies on the
  between many DCC software, it might seem the most sensible choice.
  On the other hand, VEX scripting language is the Houdini native language.
  VEX gives direct access to geometry data and provides a wide variety of
- built-in function optimized for best performances on the Houdini geometry
+ built-in functions optimized for best performances on the Houdini geometry
  internal representation.
  In terms of performances, VEX has proven to be faster than Python because
  it implements automatic multithreading while Python does not have the same
@@ -1418,9 +1475,9 @@ name "subsec:Wrangle-Node"
 
 \begin_layout Standard
 The 
-\family typewriter
+\shape italic
 Wrangle
-\family default
+\shape default
  node 
 \begin_inset ERT
 status open
@@ -1454,7 +1511,7 @@ Attribute VOP SOP
 \shape italic
 Wrangle
 \shape default
- uses a a textual editor whilst the 
+ uses a textual editor whilst the 
 \shape italic
 Attribute VOP SOP
 \shape default
@@ -1483,9 +1540,9 @@ When the snippet affects the attributes of the geometry, these attribute
 Wrangle
 \shape default
  node.
- For this reason the implementation of particular parts of the growth algorithm
- might not seem the most straightforward or obvious way to approach the
- problem, but have been deliberately designed to overcome this particular
+ For this reason the implementation of particular parts of the colonization
+ algorithm might not seem the most straightforward or obvious way to approach
+ the problem, but have been deliberately designed to overcome this particular
  issue.
 \end_layout
 
@@ -1540,9 +1597,9 @@ name "subsec:Data-structure"
 \end_layout
 
 \begin_layout Standard
-The growth algorithm, as presented in 
+The colonization algorithm, as presented in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Growth-Algorithm"
 
 \end_inset
@@ -1691,9 +1748,8 @@ The network developed for this project provides each tree node with two
 @ptnum
 \family default
  ultimately just an index in an array, its value is not consistent through
- the network.
- Operations such as adding or removing points or merging together two geometries
- may shift or offset the 
+ the network: operations such as adding or removing points or merging together
+ two geometries may shift or offset the 
 \family typewriter
 @ptnum
 \family default
@@ -1742,10 +1798,10 @@ building parent/child relation upon it did not seem to be a suitable choice.
 @ptnum
 \family default
 .
- This greatly affects the performances of the whole algorithm because in
+ This greatly affects the performances of the whole algorithm because, in
  order to find a node with a specific 
 \family typewriter
-@id
+@id,
 \family default
  one has to cycle over each point of the geometry and check for a match.
  In order not to loose this convenient feature of direct access, every time
@@ -1770,7 +1826,7 @@ Sort
 Another important information about the tree nodes is the growth direction
  and the length of the internode (the distance between consecutive tree
  nodes).
- Storing this values make it possible for a  more detailed manipulation
+ Storing this values makes it possible for a  more detailed manipulation
  of branching angles at a later time.
  Each point therefore stores a 
 \family typewriter
@@ -1805,10 +1861,9 @@ fertile
 \family typewriter
 true
 \family default
- it determines an irreversible condition for the node.
- A node dies whenever it reaches the maximum amount of children or in degenerate
- cases such as the position of the child node being coincident with its
- own position.
+ it determines an irreversible condition for the node: a node dies whenever
+ it reaches the maximum amount of children or in degenerate cases such as
+ the position of the child node being coincident with its own position.
 \end_layout
 
 \begin_layout Standard
@@ -1822,9 +1877,9 @@ Parameter initialization
 \end_layout
 
 \begin_layout Standard
-In order for the growth algorithm to start, some parameters have to be set
- such as the tree crown envelope, the attraction points position and the
- roots points.
+In order for the colonization algorithm to start, some parameters have to
+ be set such as the tree crown envelope, the attraction points position
+ and the roots points.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1839,7 +1894,7 @@ The network provides up to three different ways to specify the crown volume
  In its very basic implementation, the user-specified tree crown is converted
  to a volume using the 
 \shape italic
-Isooffset
+IsoOffset
 \shape default
  node.
  The conversion is necessary in order to populate the tree crown volume
@@ -1870,7 +1925,7 @@ s the input geometry closely whilst the second one will inflate the volume
 Unfortunately the conversion from polygon to volume can produce artefacts
  due to the conversion method used by the 
 \shape italic
-Isooffset
+IsoOffset
 \shape default
  node.
  Different workarounds to this problem have been tried but none of them
@@ -1921,10 +1976,10 @@ Attraction Points
 \begin_layout Standard
 At early stages of the production, the volume obtained from the tree crown
  shape was seeded with uniformly distributed attraction points.
- The resulting trees, as described by Runions  shows a uniform density in
+ The resulting trees, as described by Runions,  show a uniform density in
  the branches distribution.
- In many real trees and shrubs however the density increases near the crown
- surface due to better light exposure.
+ In many real trees and shrubs, however, the density increases near the
+ crown surface due to better light exposure.
  To achieve the same result, following Runions suggestion, the attraction
  points in the network are seeded using a user-defined density profile,
  function of the distance from the outer surface of the tree crown.
@@ -1959,17 +2014,17 @@ distance_from_bounding_object
 .
  The 
 \shape italic
-promote
+Promote
 \shape default
  Houdini node is used twice to find respectively the maximum  
 \family typewriter
 @max_dist
 \family default
- and the minimum value 
+ and the minimum 
 \family typewriter
 @min_dist
 \family default
- for the 
+ value for the 
 \family typewriter
 @dist
 \family default
@@ -2114,8 +2169,8 @@ name "subsec:Roots"
 \end_layout
 
 \begin_layout Standard
-The network provides three different ways to specify the roots for the growth
- algorithm.
+The network provides three different ways to specify the roots for the colonizat
+ion algorithm.
  A user can either create single root points by specifying the coordinates,
  input a pre-made set of points, or a trunk-and-branches curves structure.
 \end_layout
@@ -2198,7 +2253,7 @@ The initialization of some attributes such as
 @type
 \family default
  differs in the case where a custom trunk structure is fed in the system.
- This kind of structure already contains primitive information that link
+ This kind of structure already contains primitive information that links
  together points in a precise hierarchy.
  The most likely scenario is that each branch is represented as a curve
  primitive.
@@ -2248,7 +2303,7 @@ run over details
 \end_inset
 
  so that the iteration process over the points is explicitly declared in
- in the code.
+ the code.
  The snippet starts by retrieving an ordered array of the current primitive
  points.
  A 
@@ -2266,7 +2321,10 @@ for
  element.
  By using this approach, the snippet successfully handles specific cases
  in which the children to the point belong to different primitives.
- After having initialized the 
+\end_layout
+
+\begin_layout Standard
+After having initialized the 
 \family typewriter
 @kids
 \family default
@@ -2316,7 +2374,7 @@ parent injection
 \family default
  attribute described in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Data-structure"
 
 \end_inset
@@ -2433,11 +2491,12 @@ From left to right: custom trunk structure, root selection, conversion to
 \end_layout
 
 \begin_layout Subsection
-Growth
+Space colonization
 \end_layout
 
 \begin_layout Standard
-The growth main algorithm lies inside a dedicated subnetwork 
+The space colonization main algorithm lies inside a dedicated subnetwork
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2457,7 +2516,7 @@ for
  loop that determines the number of time the geometry is processed.
  Contrary to the stop conditions presented in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Overview"
 
 \end_inset
@@ -2484,7 +2543,7 @@ reference "subsec:Overview"
 \end_layout
 
 \begin_layout Standard
-Before delving in the growth loop, the 
+Before delving in the colonization loop, the 
 \shape italic
 Wrangle
 \shape default
@@ -2527,10 +2586,10 @@ trunk
 \end_layout
 
 \begin_layout Standard
-Shortly, at each iteration the growth algorithm needs to first find the
- set of attraction points (if any) that influence each fertile tree node,
- create new nodes in the direction determined by the influencing attraction
- points, and decide which attraction points will survive to the next iteration.
+Shortly, at each iteration the colonization algorithm needs to first find
+ the set of attraction points (if any) that influence each fertile tree
+ node, create new nodes in the direction determined by the influencing attractio
+n points, and decide which attraction points will survive to the next iteration.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2613,10 +2672,45 @@ ng node.
  of all the attraction points.
  Using the 
 \shape italic
-blast
+Blast
 \shape default
  node, the influencing nodes are separated from the other inactive attraction
  points.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/influencing_network.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Influencing nodes network
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2659,37 +2753,6 @@ Visualization of the influencing nodes
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/influencing_network.png
-	lyxscale 50
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Influencing nodes network
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
 The tree nodes and the influencing nodes are wired into the 
 \begin_inset Quotes eld
 \end_inset
@@ -2717,9 +2780,9 @@ fast_search
 \end_inset
 
 : the 
-\family typewriter
-wrangle
-\family default
+\shape italic
+Wrangle
+\shape default
  takes as a first input geometry the tree nodes and as a second input geometry
  the influencing points.
  At this stage not only each influencing point will look for its closest
@@ -3091,7 +3154,7 @@ set_fertility
  a new tree node are flagged as fertile.
  Another check is here performed: in the case the node has already reached
  the maximum count of children allowed, the node is flagged as dead and
- becomes inactive for all the remaining iterations of the growth algorithm.
+ becomes inactive for all the remaining iterations of the colonization algorithm.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3132,7 +3195,7 @@ Wrangle
  to retrieve the position of the influencing points.
  The growth direction for the future newborn is then calculated using 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "eq:newborn_dir"
 
 \end_inset
@@ -3140,7 +3203,7 @@ reference "eq:newborn_dir"
 .
  The normalized 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "eq:newborn_dir_normal"
 
 \end_inset
@@ -3309,7 +3372,7 @@ _initializeAttribute()
  With these information it populates the attributes for the newborn as described
  in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "alg:Initialization-of-newborn"
 
 \end_inset
@@ -3508,7 +3571,7 @@ The reason behind this particular implementation can be found in the peculiar
  input to the node.
  As explained in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Wrangle-Node"
 
 \end_inset
@@ -3558,8 +3621,15 @@ Wrangle
 Wrangle
 \shape default
  will also take as a second input geometry the newborn points.
- For each of the newborns, the snippet will retrieve the @parent (which
- is the @id of that point) value.
+ For each of the newborns, the snippet will retrieve the 
+\family typewriter
+@parent
+\family default
+ (which is the 
+\family typewriter
+@id
+\family default
+ of that point) value.
  Given the parent's 
 \family typewriter
 @id
@@ -3585,9 +3655,9 @@ update_parent
 \end_inset
 
  
-\family typewriter
+\shape italic
 Wrangle
-\family default
+\shape default
 .
 \end_layout
 
@@ -3634,7 +3704,7 @@ Remove attraction points
 \begin_layout Standard
 As a final step of the growth algorithm, as described in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Steps"
 
 \end_inset
@@ -3652,8 +3722,8 @@ reference "subsec:Steps"
 \end_inset
 
  is a constant of the whole growth process.
- The tree branching structure presented in his research always resulted
- to be too sparse when it comes to small twigs close to the tree crown shape.
+ The tree branching structure presented in his research resulted to be too
+ sparse when it comes to small twigs close to the tree crown shape.
  In an attempt to improve the appearance of such small twigs, the algorithm
  presented in this project scales the value for 
 \begin_inset Formula $dk$
@@ -3722,24 +3792,34 @@ Even though the overall algorithm can produce a wide range of different
 \end_layout
 
 \begin_layout Itemize
-pruning probability: starting from a user-defined generation and killing
- probability threshold value, a random number is calculated for each tree
- node and compared to the killing probability.
+
+\series bold
+pruning probability
+\series default
+: starting from a user-defined generation and killing probability threshold
+ value, a random number is calculated for each tree node and compared to
+ the killing probability.
  If the random number is smaller than the threshold, the node is set to
  non fertile.
  This small check gives more controls over the density of the branches.
 \end_layout
 
 \begin_layout Itemize
-pruning by distance: the user can define a minimum distance from the tree
- crown geometry.
+
+\series bold
+pruning by distance
+\series default
+: the user can define a minimum distance from the tree crown geometry.
  Whenever the distance of a tree node from the crown shape is less than
  that value, the node is set to dead.
 \end_layout
 
 \begin_layout Itemize
-fix growing angles: it may happen that siblings branches grow too close
- one to each other.
+
+\series bold
+fix growing angles
+\series default
+: it may happen that siblings branches grow too close one to each other.
  A new control checks the angle between siblings branches and modifies the
  younger sibling's position if the angle is less than the specified threshold.
  
@@ -4208,7 +4288,7 @@ As for initializing the
 \family default
  attribute as discussed in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Roots"
 
 \end_inset
@@ -4417,7 +4497,7 @@ while
  simulates a depth-first recursive algorithm and overcomes the updating
  geometry problem explained in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Wrangle-Node"
 
 \end_inset
@@ -4527,7 +4607,7 @@ For the Leonardo's scale, traversing the tree from the tip branches to the
  This work  tries instead to implement the same main formula presented in
  
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Leonardo's-Rule"
 
 \end_inset
@@ -4557,7 +4637,7 @@ Wrangle
  node does not allow to easily propagate the width from parents to children
  due to the cooking and updating issue explained in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Wrangle-Node"
 
 \end_inset
@@ -4570,9 +4650,9 @@ Wrangle
  node only processes one point at the time while the iteration is implemented
  with the loop blocks native in Houdini.
  Since the blocks are in charge of the iteration, the 
-\family typewriter
+\shape italic
 Wrangle
-\family default
+\shape default
  gets cooked and the geometry updated.
 \end_layout
 
@@ -4689,24 +4769,24 @@ After building the tree structure, each branch is re-sampled to gain more
  control over the final look.
  The 
 \emph on
-point jitter
+PointJitter
 \emph default
- SOP helps moving from straight branches curves to a more gnarly and varied
+ SOP helps moving from straight branches curves to a more gnarled and varied
  silhouette.
  Its effect gets easily out of control causing the geometry to change too
  drastically.
  To counterbalance the sharp angles generated by the 
 \shape italic
-jitter
+Jitter
 \shape default
 , the 
 \emph on
-smooth
+Smooth
 \emph default
  SOP interpolates these angles and achieves a more natural look.
  The 
 \emph on
-polywire
+PolyWire
 \emph default
  SOP creates the polygonal mesh around the tree skeleton using the 
 \family typewriter
@@ -4714,7 +4794,7 @@ polywire
 \family default
  attribute set in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Cross-section-evaluation"
 
 \end_inset
@@ -4722,13 +4802,13 @@ reference "subsec:Cross-section-evaluation"
  as cross-section value.
  A second 
 \emph on
-smooth
+Smooth
 \emph default
  SOP interpolates the thickness values at the branching nodes.
  As a final step, the user can decide whether to color the trunk with a
  
 \emph on
-color
+Color
 \emph default
  SOP or input a custom shader.
 \end_layout
@@ -4743,17 +4823,17 @@ In nature, trees produce leaves only at the very tip of the branching structure.
  tree who do not have any children.
  The leaves are then copied on those points by using the 
 \emph on
-copy_stamp
+Copy_Stamp
 \emph default
  node.
  For 
 \emph on
-copy_stamp
+Copy_Stamp
 \emph default
  to work properly, the normal direction has to be set for the tree nodes.
  The 
 \emph on
-point
+Point
 \emph default
  SOP activates an edge force on these point.
  The edge force is directed along the edge direction which is stored in
@@ -4764,7 +4844,7 @@ edge_dir
  built-in variable for points in Houdini.
  With a 
 \shape italic
-VOP subnetwork
+VOP Subnetwork
 \shape default
  the 
 \family typewriter
@@ -4778,7 +4858,7 @@ The user can decide to either use the default geometry or to input a custom
  model for the leaves.
  For the default ones, some 
 \emph on
-copy_stamping
+Copy_Stamping
 \emph default
  expressions randomize the roll and pitch within a set range of values on
  a per instance basis.
@@ -4786,7 +4866,7 @@ copy_stamping
  of leaves per tree node.
  The 
 \emph on
-copy_and_transform
+Copy_and_Transform
 \emph default
  evenly spreads the leaves radially by dividing 360 degrees by the number
  of leaf instances specified by the user.
@@ -4797,7 +4877,7 @@ The user can choose whether to use a plain color or apply a custom shader.
  While the default geometry is ready to shade, the user has to make sure
  to prepare the custom geometry for the shading process using the 
 \emph on
-UV_project
+UV_Project
 \emph default
  Houdini node before feeding the leaf object as input to the network.
 \end_layout
@@ -4864,7 +4944,7 @@ At very early stages of production, the
  resulted to be inefficient to use.
  At this stage the sets were also processed in a 
 \emph on
-for_each
+ForEach
 \emph default
  subnetwork that unfortunately caused issues of duplicated geometry which
  lead to frequent crashes of the scene.
@@ -4888,7 +4968,7 @@ fix_newborn_dir
 \family default
 , as explained in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Extra-controls"
 
 \end_inset
@@ -4897,7 +4977,7 @@ reference "subsec:Extra-controls"
  distance angle from their closest sibling.
  To achieve this result, the algorithm presented in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "sec:Angle-correction"
 
 \end_inset
@@ -5034,7 +5114,7 @@ An iterative system that handles a huge amount of geometries can result
  Even though the performances were not the primary focus of this project,
  a considerable effort has been made to make the network as fast as possible.
  The reason for investing in the performances relies in the nature of the
- tool: The project presented aims to be an easy and quick-to-setup tool
+ tool: the project presented aims to be an easy and quick-to-setup tool
  to create procedural and art-directable trees.
  If the tool were to require several minutes to produce a result, the user
  would find it hard to compare two successive attempts at tuning the parameters
@@ -5057,7 +5137,7 @@ find_neighbours
 \emph default
  
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Finding-neighbours"
 
 \end_inset
@@ -5072,7 +5152,7 @@ setting_id
 \emph default
  
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Creation-of-the-new-node"
 
 \end_inset
@@ -5091,7 +5171,7 @@ The biggest speedup was however achieved by optimizing the algorithm for
  points.
  The new approach presented in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Finding-neighbours"
 
 \end_inset
@@ -5113,7 +5193,40 @@ Even though the execution time still heavily depends on parameters such
 \begin_inset Formula $dk$
 \end_inset
 
-, the average cooking time stabilized around 15 s for 40-iterations trees.
+, the average cooking time stabilized around 15 seconds for 40-iterations
+ trees.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/final_collision.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tree object avoidance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -5156,6 +5269,38 @@ The tool successfully integrates a user-defined main skeleton with the geometry
  When tested for rendering, the produced mesh unwraps correctly.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/pink.png
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tree with conical crown shape
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Future work
 \end_layout
@@ -5168,14 +5313,14 @@ The system successfully simulates the competition for space that characterizes
  foliage.
  To address the same problem, the system could use a proxy or billboards
  instead of actual geometry that expands only at render time.
- That would maintain the scene responsive while improving the final look.
+ That would maintain the viewport responsive while improving the final look.
 \end_layout
 
 \begin_layout Standard
 Other problems remain open for future research.
  The method proposed in this project creates a believable mature tree.
  The project could be significantly improved by being able to simulate the
- growth process that leads from young shrubs to the mature tree.
+ growth process that leads from young shrubs to the mature trees.
 \end_layout
 
 \begin_layout Standard
@@ -5368,8 +5513,8 @@ turtle
 \begin_inset Quotes erd
 \end_inset
 
- interpretation, that translates strings into graphical commands.The turtle
- interpretation is based on the following commands:
+ interpretation, that translates strings into graphical commands.
+ The turtle interpretation is based on the following commands:
 \end_layout
 
 \begin_layout Itemize
@@ -5710,14 +5855,14 @@ a_{\bot}^{\prime}=a_{\parallel}\tan\vartheta_{0}\label{eq:new_perp}
 \begin_layout Standard
 By combining 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "eq:tan_theta"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "eq:new_perp"
 
 \end_inset
@@ -5793,7 +5938,7 @@ addcontentsline{toc}{section}{Flowers}
 \begin_layout Standard
 \noindent
 To enrich this project another small and simple tool has been developed
- to create procedural flowers., taking inspiration by the 
+ to create procedural flowers., taking inspiration by 
 \begin_inset ERT
 status open
 
@@ -5806,7 +5951,7 @@ hyperref[par:perez2017]{Perez (2017)}
 
 \end_inset
 
- work on fern plants and the 
+ work on fern plants and 
 \begin_inset ERT
 status open
 
@@ -5851,20 +5996,20 @@ The network provides a full customization on the stem geometry.
  for the stem or input his own line.
  The 
 \emph on
-jitter
+Jitter
 \emph default
  node is used to manipulate the stem points by adding custom noise on their
  position so that the final artefacts looks more natural.
  Since the 
 \shape italic
-jitter
+Jitter
 \shape default
  displacement is based on a random seed, that seed can be used to create
  different models for the same flower specie when populating a scene.
  A control is given so that the stem can be bent at will.
  In a process similar to the one described in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand formatted
 reference "subsec:Special-case:-trunk"
 
 \end_inset
@@ -5877,14 +6022,14 @@ reference "subsec:Special-case:-trunk"
  point.
  The 
 \emph on
-polyreduce
+PolyReduce
 \emph default
  node can change the total count of polygon for the stem geometry.
  In a future, that node could be used to generate procedural LOD based on
  the distance from the camera looking at the scene.
  As a final refinement, the user can benefit from a 
 \emph on
-sculpt
+Sculpt
 \emph default
  tool to add more refinement to the stem polygonal mesh.
 \end_layout
@@ -5916,12 +6061,12 @@ The stamen base has been modelled as a general shape that can produce visually
  If in need of more refinement, the user can either sculpt more subtitle
  details with the 
 \emph on
-sculpt
+Sculpt
 \emph default
  tool or use a custom geometry.
  As for the stem, a 
 \emph on
-polyreduce
+PolyReduce
 \emph default
  node is provided to allow for a future procedural LOD.
 \end_layout
@@ -5960,7 +6105,7 @@ The anatomy of flowers can vary greatly if we compare, for example, a sunflower
  at will.
  A 
 \emph on
-copy_stamping
+Copy_Stamping
 \emph default
  expression manages to create slightly different instances of such filament
  for a total amount defined by the user.
@@ -6020,62 +6165,6 @@ The angle is compared to a minimum and maximum value defined by the user.
 \end_inset
 
  falling in the specified range are used as sources for the petals.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Newpage cleardoublepage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section*
-Acknowledgements
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-addcontentsline{toc}{part}{Acknowledgments}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-I would like to thank my supervisors Jon Macey and Phil Spicer for sharing
- their knowledge and offering guidance during the development of this project.
-\end_layout
-
-\begin_layout Standard
-Another special thank comes to Yannis Ioannidis and Michail Agoulas for
- being extremely patient and supportive during hours of troubleshooting
- and brainstorming.
-\end_layout
-
-\begin_layout Standard
-I would be eternally grateful to all my fellow students at MSc CAVE for
- the good advice, the honest feedback, the good food and the good time that
- made this year unforgettable.
-\end_layout
-
-\begin_layout Standard
-Last but not least I would like to thank my family: my mother for always
- being supportive and pushing me every day to become the better version
- of myself and my brother who has always offered his time, knowledge and
- experience to help me succeed since we were children.
- I hope that one day I will be able to reciprocate what you did for me through
- all these years.
 \end_layout
 
 \begin_layout Part*
