@@ -1,0 +1,21 @@
+// MAIN CODE ===============================================
+// trunk already has a @width set, this Leonardo proceeds 
+// from roots (the ones belonging to the trunk) 
+// to the tip branches
+
+int pt = detail(1, "iteration");
+float width;
+if(point(0, "generation", pt) >= 0)
+{
+  if (point(0, "generation", pt) == 0 &&
+      point(0, "width", pt) == -1.0)
+  {
+    width = ch("width");
+    setpointattrib(0, "width", pt, width, "set");
+  }
+  else
+  {
+    setpointattrib(0, "width",
+                   pt, _calculateWidth(pt), "set");
+  }
+}

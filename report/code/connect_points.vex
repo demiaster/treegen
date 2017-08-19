@@ -1,0 +1,11 @@
+// Create a line between the 2 points ======================
+void _createLine(int father; int son)
+{
+  int line = addprim(geoself(), "polyline");
+  addvertex(geoself(), line, father);
+  addvertex(geoself(), line, son);
+}
+
+// MAIN CODE ===============================================
+int parent_pt = point(0, "parent", @ptnum);
+_createLine(parent_pt, @ptnum);

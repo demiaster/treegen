@@ -1,0 +1,14 @@
+// density as function of the Y coordinate
+int min_Y = detail(0, "min_Y");
+int max_Y = detail(0, "max_Y");
+
+float fit = fit(@P.y, min_Y, max_Y, 0, 1);
+float probability = chramp("probability", fit);
+i@dead = 0;
+
+// if the rand number less than the user defined probability
+// node is set to dead and removed the next node
+if(rand(@ptnum) < probability)
+{
+  i@dead = 1;
+}

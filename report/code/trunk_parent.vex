@@ -1,0 +1,11 @@
+// find who the kids are for the current node
+// and set for them the current node as parent
+// PARENT INJECTION
+int kids[] = point(0, "kids", @ptnum);
+int child;
+
+for(int i = 0; i < len(kids); i++)
+{
+  child = kids[i];
+  setpointattrib(0, "parent", child, @ptnum, "set");
+}

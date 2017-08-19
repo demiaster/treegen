@@ -1,0 +1,41 @@
+// Set attr_dead based on fixed dk value ===================
+void _setDead(vector p)
+{
+  int dead[] = nearpoints(0, p, ch("dk"));    
+  foreach(int attr; dead)
+  {
+    setpointattrib(0, "attr_dead", attr, 1, "set");
+  }
+}
+
+// Set attr_dead to attractor based on ramp ================
+void _rampSetDead(vector p; int max_iteration, generation)
+{   
+  int dead[];
+  float fit = fit(generation, 0, max_iteration, 0, 1);
+  float dk = chramp("dk_ramp", fit) * ch("mult");
+  dead = nearpoints(0, p, dk);
+  foreach(int attr; dead)
+  {
+    setpointattrib(0, "attr_dead", attr, 1, "set");
+  }
+}
+
+// MAIN CODE ===============================================
+int nodes_count = npoints(1);
+vector p;
+int max_iteration = detail(2, "numiteration");
+int curr_iteration = detail(2, "iteration");
+
+for(int i = 0; i < nodes_count; i++)
+{
+  p = point(1, "P", i);
+  if(int(ch("enable_scaling")))
+  {
+    _rampSetDead(p, max_iteration, i@generation);
+  }
+  else
+  {
+    _setDead(p);
+  }
+}

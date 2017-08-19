@@ -1,0 +1,7 @@
+// @width as function of the @generation value of the node
+int gen_max;
+getattribute("opinput:0", gen_max,
+             "detail", "gen_max", 0, 0);
+
+float fit = fit(i@generation, 0, gen_max, 0, 1);
+f@width = chramp("scale", fit) * ch("mult");

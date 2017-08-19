@@ -1,0 +1,10 @@
+if(i@n_dead == 0)
+{
+  float distance = xyzdist(1, @P);
+  if(distance < ch("min_dist") && 
+     i@generation > ch("generation"))
+  {
+    i@n_dead = 1;
+    i@fertile = 0;
+  }
+}

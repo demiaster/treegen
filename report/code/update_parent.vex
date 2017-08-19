@@ -1,0 +1,42 @@
+// Find parent ptnum from id ===============================
+int _findPt(int id; int numpt)
+{
+  for(int i = 0; i < numpt; i++)
+  {
+    if(point(0, "id", i) == id)
+    {
+      return i;
+    }
+  }
+  return -1;
+}
+
+// Update father children ==================================
+void _updateKids(int parent; int child_id)
+{
+  int kids[] = point(0, "kids", parent);
+  append(kids, child_id);
+  setpointattrib(0, "kids", parent, kids, "set");   
+}
+
+// Update Parent ===========================================
+void _updateParent(int child_pt; int child_id; int numpt)
+{
+  int parent_id = point(1, "parent", child_pt);
+  int parent_pt = _findPt(parent_id, numpt);
+  _updateKids(parent_pt, child_id);
+  
+  //color to yellowish: node has now at least one child
+  setpointattrib(0, "Cd", parent_pt, {1, 0.5, 0});
+}
+
+// MAIN CODE ===============================================
+int newborns = detail(1, "newborns");
+int child_id;
+i@treepts = detail(1, "treepts");
+
+for(int i = 0; i < newborns; i++)
+{
+  child_id = point(1, "id", i);
+  _updateParent(i, child_id, @numpt);
+}

@@ -1,0 +1,925 @@
+//-----------------------------------------------------------------------------------------------
+//--------------------------------START ATTRACTORS DISTRIBUTION----------------------------------
+//-----------------------------------------------------------------------------------------------
+
+/////////////////////////////////////
+/// distance_from_bounding_object ///
+/////////////////////////////////////
+
+// calculate distance from input1 (bounding object)
+// assign to attribute @dist
+f@dist = xyzdist(1, @P);
+
+//-----------------------------------------------------------------------------------------------
+
+///////////////////////////
+/// radial_distribution ///
+///////////////////////////
+
+// density as function of the radial distance of bounding object
+int min_dist = detail(0, "min_dist");
+int max_dist = detail(0, "max_dist");
+
+float fit = fit(f@dist, min_dist, max_dist, 0, 1);
+float probability = chramp("probability", fit) * ch("mult");
+
+i@dead = 0;
+
+// if the rand number less than the user defined probability
+// node is set to dead and removed the next node
+if(rand(@ptnum) < probability)
+{
+    i@dead = 1;
+}
+
+//-----------------------------------------------------------------------------------------------
+
+/////////////////
+/// AP_heigth ///
+/////////////////
+
+// save y coordinate for the point to the @height attribute
+f@height = @P.y;
+
+//-----------------------------------------------------------------------------------------------
+
+/////////////////////////////
+/// vertical_distribution ///
+/////////////////////////////
+
+// density as function of the Y coordinate
+int min_Y = detail(0, "min_Y");
+int max_Y = detail(0, "max_Y");
+
+float fit = fit(@P.y, min_Y, max_Y, 0, 1);
+float probability = chramp("probability", fit) * ch("mult");
+i@dead = 0;
+
+// if the rand number less than the user defined probability
+// node is set to dead and removed the next node
+if(rand(@ptnum) < probability)
+{
+    i@dead = 1;
+}
+
+//-----------------------------------------------------------------------------------------------
+//----------------------------------END ATTRACTORS DISTRIBUTION----------------------------------
+//-----------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------
+//-----------------------------------------START ROOTS SETUP-------------------------------------
+//-----------------------------------------------------------------------------------------------
+
+//////////////////
+/// trunk_kids ///
+//////////////////
+
+// fetching info about what primitive are we working on
+int prim = detail(1, "iteration");
+int points[];
+int kids[];
+int pt;
+int child;
+
+points = primpoints(0, prim);
+// the last node will not have any children to set
+for(int i = 0; i < len(points) - 1; i++)
+{
+    // set as child for current node
+    // the next one in the list of points
+    pt = points[i];
+    child = points[i+1];
+    kids = point(0, "kids", pt);
+    append(kids, child);
+    setpointattrib(0, "kids", pt, kids, "set");
+}
+
+//-----------------------------------------------------------------------------------------------
+
+////////////////////
+/// trunk_parent ///
+////////////////////
+
+// find who the kids are for the current node
+// and set for them the current node as parent
+// PARENT INJECTION
+int kids[] = point(0, "kids", @ptnum);
+int child;
+
+for(int i = 0; i < len(kids); i++)
+{
+    child = kids[i];
+    setpointattrib(0, "parent", child, @ptnum, "set");
+}
+
+
+//-----------------------------------------------------------------------------------------------
+
+//////////////////
+/// trunk_type ///
+//////////////////
+
+// only choose some of the points in the "node" groups to be marked
+// as starting nodes for the space colonization algorithm
+// the remaining ones are marked as "trunk" meaning they will not
+// play any part in the space colonization algorithm
+if((inpointgroup(0, "nodes", @ptnum)) && !(@ptnum % int(ch("discretization"))))
+{
+    s@type = "node";
+}
+else
+{
+    s@type = "trunk";
+}
+
+//-----------------------------------------------------------------------------------------------
+
+////////////////////////
+/// trunk_generation ///
+////////////////////////
+
+if(s@type == "node")
+{
+    i@generation = 0;
+}
+else
+{
+    i@generation = -1;
+}
+
+
+//-----------------------------------------------------------------------------------------------
+
+////////////////
+/// trunk_id ///
+////////////////
+
+i@id = @ptnum;
+
+//-----------------------------------------------------------------------------------------------
+//-------------------------------------------END ROOTS SETUP-------------------------------------
+//-----------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------
+//------------------------------------------START GROWING ALG------------------------------------
+//-----------------------------------------------------------------------------------------------
+
+///////////////////////////
+/// create_AP_len_nodes ///
+///////////////////////////
+
+f@len = ch("D");
+
+//-----------------------------------------------------------------------------------------------
+
+//////////////////////////////////
+/// find_potential_influencing ///
+//////////////////////////////////
+
+// Set influencing inf attribute to attractors =====================
+void _setInfluencing(vector p)
+{
+    int influencing[];
+    int attr;
+    
+    influencing = nearpoints(0, p, ch("di"));
+    
+    for(int i = 0; i < len(influencing); i++)
+    {
+        attr = influencing[i];
+        setpointattrib(0, "inf", attr, 1, "set");
+        setpointattrib(0, "Cd", attr, {1, 0, 0}, "set");
+    }
+}
+
+// MAIN CODE =======================================================
+int nodes_count = npoints(1);
+int influencing[];
+vector p;
+
+for(int i = 0; i < nodes_count; i++)
+{
+    p = point(1, "P", i);
+    _setInfluencing(p);
+    
+}
+
+//-----------------------------------------------------------------------------------------------
+
+///////////////////
+/// fast_search ///
+///////////////////
+
+// find closest tree node to the given attr point and return it =======
+int _findClosestNode(int attr)
+{
+    vector p = point(1, "P", attr);
+    return nearpoint(0, p);
+}
+
+// MAIN CODE ===========================================================
+int influencing_count = npoints(1);
+int node_pt;
+int closest[];
+int ordered_attr[];
+int ordered_closest[];
+int nbrs[];
+
+for(int attr = 0; attr < influencing_count; attr++)
+{
+    node_pt = _findClosestNode(attr);
+    append(closest, node_pt);
+}
+
+ordered_attr = argsort(closest);
+ordered_closest = sort(closest);
+
+for(int i = 0; i < len(ordered_attr); i++)
+{
+    append(nbrs, ordered_attr[i]);
+    
+    // we have to update the whole list of nbrs at once or
+    // or the geometry will only see the last added point
+    // (cooking problem)
+    if((i == len(ordered_attr) - 1) || (ordered_closest[i] != ordered_closest[i + 1]))
+    {
+        setpointattrib(0, "nbrs", ordered_closest[i], nbrs, "set");
+        nbrs = {};
+    }
+}
+
+//-----------------------------------------------------------------------------------------------
+
+//////////////////////
+/// find_neighbour ///
+//////////////////////
+
+// find closest tree node to the given attr point and return it =======
+int _findClosestNode(int attr)
+{
+    vector p = point(1, "P", attr);
+    return nearpoint(0, p);
+}
+// append the attractor to the nbrs list for the given tree node ======
+void _addNearAttractor(int node; int attr)
+{
+    int nbrs[] = point(0, "nbrs", node);
+    append(nbrs, attr);
+    setpointattrib(0, "nbrs", node, nbrs, "set");
+}
+
+// MAIN CODE ==========================================================
+int node;
+int attr = detail(2, "iteration");
+
+node = _findClosestNode(attr);
+_addNearAttractor(node, attr);
+
+//-----------------------------------------------------------------------------------------------
+
+//////////////////////////////
+/// set_n_dead_probability ///
+//////////////////////////////
+
+if((i@n_dead == 0))
+{
+    if(i@generation > ch("kill_gen"))
+    {
+        if(rand(@ptnum) < ch("probability"))
+        {
+            i@n_dead = 1;
+        }
+    }
+}
+
+//-----------------------------------------------------------------------------------------------
+
+/////////////////////
+/// set_fertility ///
+/////////////////////
+
+if(i@n_dead == 0)
+{
+    int kids[] = point(0, "kids", @ptnum);
+    if(int(point(0, "generation", @ptnum)) < ch("branching_start"))
+    {
+        if(len(kids) == 0)
+        {
+            i@fertile = 1;
+        }
+        else
+        {
+            i@fertile = 0;
+        }
+    }
+    else if(len(kids) < ch("kids"))
+    {
+        i@fertile = 1;
+    }
+    else
+    {
+        i@fertile = 0;
+        i@n_dead = 1;
+    }
+}
+
+//-----------------------------------------------------------------------------------------------
+
+///////////////////////////
+/// set_n_dead_distance ///
+///////////////////////////
+
+if(i@n_dead == 0)
+{
+    float distance = xyzdist(1, @P);
+    if(distance < ch("min_dist") && i@generation > ch("generation"))
+    {
+        i@n_dead = 1;
+        i@fertile = 0;
+    }
+}
+
+//-----------------------------------------------------------------------------------------------
+
+///////////////////
+/// newborn_dir ///
+///////////////////
+
+// MAIN CODE ======================================================================================
+if(i@fertile == 1)
+{
+    int nbrs[] = point(0, "nbrs", @ptnum);
+    foreach(int pt; nbrs)
+    {
+        v@dir += normalize(point(1, "P", pt) - @P);
+    }
+    v@dir = normalize(v@dir);
+    
+    // check if dir == 0 then the point will not reproduce anymore
+    // it means that its @nbrs list was empty
+    if(length(v@dir) == 0)
+    {
+        i@fertile = 0;
+        i@n_dead = 0;
+    }
+}
+
+//-----------------------------------------------------------------------------------------------
+
+///////////////////////
+/// fix_newborn_dir ///
+///////////////////////
+
+// Find ptnum from id =================================================
+int _findPt(int id; int numpt)
+{
+    for(int pt = 0; pt < numpt; pt++)
+    {
+        if(point(0, "id", pt) == id)
+        {
+            return pt;
+        }
+    }
+    
+    return -1;
+}
+
+// Find sibling growdirection ========================================
+vector _getSibling(int pt; int numpt)
+{
+    int kids[] = point(0, "kids", pt);
+    int eldest_id = kids[0];
+    int eldest_pt = _findPt(eldest_id, numpt);
+    
+    return vector(point(0, "growdir", eldest_pt));
+}
+
+// Correct the angle between two siblings ============================
+// the function assumes dir and sib to be both normalized vectors
+vector _correctAngle(vector a; vector b; float theta; float n_theta)
+{
+     vector a_para = cos(theta) * b;
+     vector a_perp = a - a_para;
+     vector new_aperp = a_perp * ((length(a_para) * tan(n_theta)) / length(a_perp));
+     vector new_dir = a_para + new_aperp;
+     
+     return normalize(new_dir);
+}
+
+// MAIN CODE =========================================================
+int kids[];
+vector sibling;
+vector dir;
+float deg_angle;
+float rad_angle;
+if(i@fertile == 1)
+{
+    if(int(point(0, "generation", @ptnum)) < ch("gen_correction"))
+    {
+        kids = point(0, "kids", @ptnum);
+        if(len(kids) != 0)
+        {
+            sibling = vector(_getSibling(@ptnum, @numpt));
+            dir = vector(point(0, "dir", @ptnum));
+            rad_angle = acos(dot(dir, sibling));
+            deg_angle = degrees(rad_angle);
+            if(deg_angle < ch("angle"))
+            {
+                vector new_dir = _correctAngle(dir, sibling, rad_angle, radians(ch("angle")));
+                setpointattrib(0, "dir", @ptnum, new_dir, "set");
+            }
+        }
+    }   
+}
+
+//-----------------------------------------------------------------------------------------------
+
+///////////////////////
+/// create_new_node ///
+///////////////////////
+
+// Find parent id ==============================================================
+int _findId(int point)
+{
+    return point(0, "id", point);
+}
+
+// Initialize new point attributes =============================================
+void _initializeAttributes(int son; int father; vector dir; float len; int gen)
+{
+    setpointattrib(0, "attr_dead",  son, -1,              "set");
+    setpointattrib(0, "Cd",         son, {0, 1, 0},       "set");
+    setpointattrib(0, "fertile",    son, 0,               "set");
+    setpointattrib(0, "generation", son, gen,             "set");
+    setpointattrib(0, "growdir",    son, dir,             "set");
+    setpointattrib(0, "id",         son, -1,              "set");
+    setpointattrib(0, "len",        son, len,             "set");
+    setpointattrib(0, "n_dead",     son, 0,               "set");
+    setpointattrib(0, "parent",     son, _findId(father), "set");
+    setpointattrib(0, "type",       son, "node",          "set");  
+}
+
+// Main Code ==================================================================
+if(i@fertile == 1)
+{
+    int newpoint;
+    float len = point(0, "len", @ptnum);
+    int gen = point(0, "generation", @ptnum);
+    int max_gen = detail(1, "numiteration");
+    float new_len;
+    
+    // switch between user defined ramp for internodes length
+    // and constant length through all internodes
+    // create and place the new node, initialize its attribs
+    if(int(ch("enable_ramp_scaling")))
+    {
+        float fit = fit(i@generation, 0, max_gen, 0, 1);
+        new_len = chramp("D", fit) * ch("mult");
+        newpoint = addpoint(0, @P + vector(new_len * v@dir));
+        _initializeAttributes(newpoint, @ptnum, v@dir, new_len, ++gen);
+    }
+    else
+    {
+        if(gen == 0)
+        {
+            newpoint = addpoint(0, @P + vector(len * v@dir));
+            _initializeAttributes(newpoint, @ptnum, v@dir, len, ++gen);
+        }
+        else
+        {
+            newpoint = addpoint(0, @P + vector(len * ch("scaling") * v@dir));
+            _initializeAttributes(newpoint, @ptnum, v@dir, len * ch("scaling"), ++gen);
+        }
+    }
+}
+
+//-----------------------------------------------------------------------------------------------
+
+//////////////
+/// set_id ///
+//////////////
+
+// MAIN CODE ===================================================================
+int treecount = detail(0, "treepts");
+int newid = 0;
+
+// cycles over all the newborns, set the @id
+// using the previously created @treepts
+// then updates the @treepts value for next
+// iteration of the space colonization algorithm
+for(int i = 0; i < @numpt; i++)
+{
+    newid = treecount + i;
+    setpointattrib(0, "id", i, newid, "set");
+    setdetailattrib(0, "treepts", 1, "add");
+}
+
+//-----------------------------------------------------------------------------------------------
+
+/////////////////////
+/// update_parent ///
+/////////////////////
+
+// Find parent ptnum from id ====================================================
+int _findPt(int id; int numpt)
+{
+    for(int i = 0; i < numpt; i++)
+    {
+        if(point(0, "id", i) == id)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+// Update father children ======================================================
+void _updateKids(int parent; int child_id)
+{
+    int kids[] = point(0, "kids", parent);
+    append(kids, child_id);
+    setpointattrib(0, "kids", parent, kids, "set");   
+}
+
+// Update Parent ===============================================================
+void _updateParent(int child_pt; int child_id; int numpt)
+{
+    int parent_id = point(1, "parent", child_pt);
+    int parent_pt = _findPt(parent_id, numpt);
+    _updateKids(parent_pt, child_id);
+    
+    //update color to yellowish because node now has at least one child
+    setpointattrib(0, "Cd", parent_pt, {1, 0.5, 0});
+}
+
+// MAIN CODE ===================================================================
+int newborns = detail(1, "newborns");
+int child_id;
+i@treepts = detail(1, "treepts");
+
+for(int i = 0; i < newborns; i++)
+{
+    child_id = point(1, "id", i);
+    _updateParent(i, child_id, @numpt);
+}
+
+//-----------------------------------------------------------------------------------------------
+
+/////////////////////
+/// det_attr_dead ///
+/////////////////////
+
+// Set attr_dead based on fixed dk value ============================
+void _setDead(vector p)
+{
+    int dead[] = nearpoints(0, p, ch("dk"));    
+    foreach(int attr; dead)
+    {
+        setpointattrib(0, "attr_dead", attr, 1, "set");
+    }
+}
+
+// Set attr_dead to attractor based on ramp =========================
+void _rampSetDead(vector p; int max_iteration; int generation)
+{
+    
+    int dead[];
+    float fit = fit(generation, 0, max_iteration, 0, 1);
+    float dk = chramp("dk_ramp", fit) * ch("mult");
+    dead = nearpoints(0, p, dk);
+    foreach(int attr; dead)
+    {
+        setpointattrib(0, "attr_dead", attr, 1, "set");
+    }
+}
+
+// MAIN CODE =======================================================
+int nodes_count = npoints(1);
+vector p;
+int max_iteration = detail(2, "numiteration");
+int curr_iteration = detail(2, "iteration");
+
+for(int i = 0; i < nodes_count; i++)
+{
+    p = point(1, "P", i);
+    if(int(ch("enable_scaling")))
+    {
+        _rampSetDead(p, max_iteration, i@generation);
+    }
+    else
+    {
+        _setDead(p);
+    }
+}
+
+//-----------------------------------------------------------------------------------------------
+
+////////////////////////////
+/// reset_AP_dir_fertile ///
+////////////////////////////
+
+v@dir = {0, 0, 0};
+i@fertile = 0;
+
+//-----------------------------------------------------------------------------------------------
+//--------------------------------------------END GROWING ALG------------------------------------
+//-----------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------
+//------------------------------------------START CREATE SKELETON--------------------------------
+//-----------------------------------------------------------------------------------------------
+
+//////////////////////
+/// connect_points ///
+//////////////////////
+
+// Create a line between the 2 points =========================================
+void _createLine(int father; int son)
+{
+    int line = addprim(geoself(), "polyline");
+    addvertex(geoself(), line, father);
+    addvertex(geoself(), line, son);
+
+}
+
+// MAIN CODE ==================================================================
+int parent_pt = point(0, "parent", @ptnum);
+_createLine(parent_pt, @ptnum);
+
+//-----------------------------------------------------------------------------------------------
+//--------------------------------------------END CREATE SKELETON--------------------------------
+//-----------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------
+//--------------------------------------------------WIDTH----------------------------------------
+//-----------------------------------------------------------------------------------------------
+
+///////////////////
+/// trunk_width ///
+///////////////////
+
+// fetching info about primitives
+int prim = detail(1, "iteration");
+int points[];
+int pt;
+float width;
+float fit;
+
+points = primpoints(0, prim);
+if(point(0, "width", points[0]) == -1)
+{
+    // main trunk case
+    for(int i = 0; i < len(points); i++)
+    {
+        pt = points[i];
+        fit = fit(i, 0, len(points), 0, 1);
+        width = chramp("scale", fit)* ch("multip");
+        setpointattrib(0, "width", pt, width, "set");
+    }
+}
+else
+{
+    // other branches case
+    float mult = point(0, "width", points[0]);
+    for(int i = 1; i < len(points); i++)
+    {
+        pt = points[i];
+        fit = fit(i, 0, len(points), 0, 1);
+        width = chramp("scale", fit) * mult;
+        setpointattrib(0, "width", pt, width, "set");
+    }
+}
+
+//-----------------------------------------------------------------------------------------------
+
+//////////////////////
+/// transfer_width ///
+//////////////////////
+
+int numpt = npoints(1);
+float width;
+
+for(int i = 0; i < numpt; i++)
+{
+    width = point(1, "width", i);
+    setpointattrib(0, "width", i, width, "set");
+}
+
+//-----------------------------------------------------------------------------------------------
+
+//////////////////
+/// ramp_scale ///
+//////////////////
+
+// @width as function of the @generation value of the node
+int gen_max;
+getattribute("opinput:0", gen_max, "detail", "gen_max", 0, 0);
+
+float fit = fit(i@generation, 0, gen_max, 0, 1);
+f@width = chramp("scale", fit) * ch("mult");
+
+//-----------------------------------------------------------------------------------------------
+
+////////////////////////////////
+/// ramp_for_trunk/set_width ///
+////////////////////////////////
+
+// Simulates recursive algrithm to populate the @width using a stack =======
+void _setWidth(int pt; float mult; int gen_max)
+{
+    int stack[];
+    int kids[];
+    int curr_pt;
+    int generation;
+    float fit;
+    float width;
+    
+    //find my children
+    kids = point(0, "kids", pt);
+    
+    //push them in the stack
+    for(int i = 0; i < len(kids); i++)
+    {
+        //check if the kid already has a width set
+        if(point(0, "width", kids[i]) == -1.0)
+        {
+            push(stack, kids[i]);
+        }
+    } 
+    
+    while(len(stack) > 0)
+    {
+        //pop child
+        curr_pt = pop(stack);
+        
+        //set its width
+        generation = point(0, "generation", curr_pt);
+        fit = fit(generation, 0, gen_max, 0, 1);
+        width = chramp("scale", fit) * mult;
+        setpointattrib(0, "width", curr_pt, width, "set");
+        
+        //find its children
+        kids = point(0, "kids", curr_pt);
+        
+        //push the children
+        for(int i = 0; i < len(kids); i++)
+        {
+            //check if the kid already has a width set
+            if(point(0, "width", kids[i]) == -1.0)
+            {
+                push(stack, kids[i]);
+            }
+        }
+    }
+    return;
+}
+
+// MAIN CODE ==============================================================
+int gen_max;
+getattribute("opinput:0", gen_max, "detail", "gen_max", 0, 0);
+int root_count = npoints(1);
+int pt;
+float mult;
+
+for(int i = 0; i < root_count; i++)
+{
+    //find id from input1, use it as ptnum for points in input0
+    //(where id and ptnum match)
+    pt = point(1, "id", i);
+    mult = point(1, "width", i);
+    _setWidth(pt, mult, gen_max);
+}
+
+//-----------------------------------------------------------------------------------------------
+
+//////////////////////
+/// roots_leonardo ///
+//////////////////////
+
+// array where the index is the @ptnum for the tree points
+// and the content is the width of that point.
+// initialized to all zeros.
+float widths[];
+for(int i = 0; i < @numpt; i++)
+{
+    append(widths, 0);
+}
+
+printf("widths: %d\n", widths);
+
+// array where the intex is the @ptnum for the tree points
+// and the content is the generation value for that point.
+int generations[];
+int gen;
+for(int i = 0; i < @numpt; i++)
+{
+    gen = point(0, "generation", i);
+    append(generations, gen);
+}
+
+// array that contains the reordered @ptnum for the tree points
+// by generation, in reverse order (from the points with greater
+// generation back to the very root)
+int sorted_by_gen[] = reverse(argsort(generations));
+
+// now populate the widths array starting from the tip points
+// proceeding back to the root
+// we iterate over the sorted_by_gen to make sure we pick the
+// points from the newest to the oldest
+
+int kids[];
+for(int i = 0; i < len(widths); i++)
+{
+    // retrieve children list for current point
+    kids = point(0, "kids", sorted_by_gen[i]);
+    
+    if(len(kids))
+    {
+        float accum = 0;
+        foreach(int kid; kids)
+        {
+            accum += pow(widths[kid], 2);
+        }
+        float new_width = sqrt(accum);
+        widths[sorted_by_gen[i]] = new_width;
+    }
+    else
+    {
+        widths[sorted_by_gen[i]] = ch("tips_width");
+    }
+}
+
+// finally update the geometry with the new values
+for(int pt = 0; pt < len(widths); pt++)
+{
+    setpointattrib(0, "width", pt, widths[pt]);
+}
+
+//-----------------------------------------------------------------------------------------------
+
+///////////////////////////
+/// from_trunk_leonardo ///
+///////////////////////////
+
+// Find parent for a given node =============================================
+int _findParent(int pt)
+{
+    return point(0, "parent", pt);
+}
+
+// Find kids count for a given node =========================================
+int _kidsCount(int pt)
+{
+    int kids[] = point(0, "kids", pt);
+    return len(kids);
+}
+
+// Find width for a given point =============================================
+float _findWidth(int pt)
+{
+    return point(0, "width", pt);
+}
+// Calculate new width attribute value ======================================
+float _calculateWidth(int pt)
+{
+    int parent = _findParent(pt);
+    int kids_count = _kidsCount(parent);
+    float parent_width = _findWidth(parent);
+    
+    if(kids_count == 0)
+    {
+        return 0;
+    }
+    float pow_width_parent = pow(parent_width, 2);
+    float mywidth = sqrt(pow_width_parent/kids_count);
+    return mywidth;
+}
+
+// MAIN CODE ================================================================
+// since the trunk already has a @width set, this Leonardo proceeds from
+// roots point (the ones belonging to the trunk) to the tip branches
+
+int pt = detail(1, "iteration");
+float width;
+if(point(0, "generation", pt) >= 0)
+{
+    if (point(0, "generation", pt) == 0 && point(0, "width", pt) == -1.0)
+    {
+        width = ch("width");
+        setpointattrib(0, "width", pt, width, "set");
+    }
+    else
+    {
+        setpointattrib(0, "width", pt, _calculateWidth(pt), "set");
+    }
+}
+
+//-----------------------------------------------------------------------------------------------
+//----------------------------------------------END WIDTH----------------------------------------
+//-----------------------------------------------------------------------------------------------
+
+
+
+
+
+

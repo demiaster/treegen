@@ -1,0 +1,16 @@
+// density as function of the radial distance
+// of bounding object
+int min_dist = detail(0, "min_dist");
+int max_dist = detail(0, "max_dist");
+
+float fit = fit(f@dist, min_dist, max_dist, 0, 1);
+float probability = chramp("probability", fit);
+
+i@dead = 0;
+
+// if the rand number less than the user defined probability
+// node is set to dead and removed the next node
+if(rand(@ptnum) < probability)
+{
+  i@dead = 1;
+}

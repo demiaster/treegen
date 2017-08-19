@@ -1,0 +1,17 @@
+if(i@fertile == 1)
+{
+  int nbrs[] = point(0, "nbrs", @ptnum);
+  foreach(int pt; nbrs)
+  {
+    v@dir += normalize(point(1, "P", pt) - @P);
+  }
+  v@dir = normalize(v@dir);
+  
+  // if dir == 0 the point will not reproduce anymore
+  // it means that its @nbrs list was empty
+  if(length(v@dir) == 0)
+  {
+    i@fertile = 0;
+    i@n_dead = 0;
+  }
+}

@@ -1,0 +1,10 @@
+if((i@n_dead == 0))
+{
+  if(i@generation > ch("kill_gen"))
+  {
+    if(rand(@ptnum) < ch("probability"))
+    {
+      i@n_dead = 1;
+    }
+  }
+}

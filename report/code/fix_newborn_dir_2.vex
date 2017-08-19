@@ -1,0 +1,28 @@
+// MAIN CODE ===============================================
+int kids[];
+vector sibling;
+vector dir;
+float deg_angle;
+float rad_angle;
+if(i@fertile == 1)
+{
+  if(int(point(0, "generation", @ptnum)) < 
+                                       ch("gen_correction"))
+  {
+    kids = point(0, "kids", @ptnum);
+    if(len(kids) != 0)
+    {
+      sibling = vector(_getSibling(@ptnum, @numpt));
+      dir = vector(point(0, "dir", @ptnum));
+      rad_angle = acos(dot(dir, sibling));
+      deg_angle = degrees(rad_angle);
+      if(deg_angle < ch("angle"))
+      {
+        vector new_dir;
+        new_dir = _correctAngle(dir, sibling, rad_angle,
+                                radians(ch("angle")));
+        setpointattrib(0, "dir", @ptnum, new_dir, "set");
+      }
+    }
+  }   
+}

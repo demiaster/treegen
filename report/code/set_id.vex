@@ -1,0 +1,14 @@
+// MAIN CODE ===============================================
+int treecount = detail(0, "treepts");
+int newid = 0;
+
+// cycles over all the newborns, set the @id
+// using the previously created @treepts
+// then updates the @treepts value for next
+// iteration of the space colonization algorithm
+for(int i = 0; i < @numpt; i++)
+{
+  newid = treecount + i;
+  setpointattrib(0, "id", i, newid, "set");
+  setdetailattrib(0, "treepts", 1, "add");
+}

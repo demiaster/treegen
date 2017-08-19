@@ -1,0 +1,34 @@
+// Find ptnum from id ======================================
+int _findPt(int id; int numpt)
+{
+  for(int pt = 0; pt < numpt; pt++)
+  {
+    if(point(0, "id", pt) == id)
+    {
+      return pt;
+    }
+  }
+  return -1;
+}
+
+// Find sibling growdirection ==============================
+vector _getSibling(int pt; int numpt)
+{
+  int kids[] = point(0, "kids", pt);
+  int eldest_id = kids[0];
+  int eldest_pt = _findPt(eldest_id, numpt);
+  return vector(point(0, "growdir", eldest_pt));
+}
+
+// Correct the angle between two siblings ==================
+vector _correctAngle(vector a; vector b;
+                     float theta, n_theta)
+{
+  // assumes dir and sib to be both normalized vectors
+  vector a_para = cos(theta) * b;
+  vector a_perp = a - a_para;
+  vector new_aperp = a_perp *
+         ((length(a_para) * tan(n_theta)) / length(a_perp));
+  vector new_dir = a_para + new_aperp;
+  return normalize(new_dir);
+}

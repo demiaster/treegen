@@ -1,0 +1,8 @@
+if(s@type == "node")
+{
+  i@generation = 0;
+}
+else
+{
+  i@generation = -1;
+}

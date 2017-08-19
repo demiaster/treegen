@@ -1,0 +1,27 @@
+// Set influencing inf attribute to attractors =============
+void _setInfluencing(vector p)
+{
+  int influencing[];
+  int attr;
+  
+  influencing = nearpoints(0, p, ch("di"));
+  
+  for(int i = 0; i < len(influencing); i++)
+  {
+      attr = influencing[i];
+      setpointattrib(0, "inf", attr, 1, "set");
+      setpointattrib(0, "Cd", attr, {1, 0, 0}, "set");
+  }
+}
+
+// MAIN CODE ===============================================
+int nodes_count = npoints(1);
+int influencing[];
+vector p;
+
+for(int i = 0; i < nodes_count; i++)
+{
+  p = point(1, "P", i);
+  _setInfluencing(p);
+    
+}

@@ -1,0 +1,19 @@
+// fetching info about what primitive are we working on
+int prim = detail(1, "iteration");
+int points[];
+int kids[];
+int pt;
+int child;
+
+points = primpoints(0, prim);
+// the last node will not have any children to set
+for(int i = 0; i < len(points) - 1; i++)
+{
+  // set as child for current node
+  // the next one in the list of points
+  pt = points[i];
+  child = points[i+1];
+  kids = point(0, "kids", pt);
+  append(kids, child);
+  setpointattrib(0, "kids", pt, kids, "set");
+}

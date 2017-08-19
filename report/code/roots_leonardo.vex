@@ -1,0 +1,49 @@
+// index is the @ptnum for the tree points,
+// content is the width of that point. Init to all 0.
+float widths[];
+for(int i = 0; i < @numpt; i++)
+{
+  append(widths, 0);
+}
+
+// array where the intex is the @ptnum for the tree points
+// and the content is the generation value for that point.
+int generations[];
+int gen;
+for(int i = 0; i < @numpt; i++)
+{
+  gen = point(0, "generation", i);
+  append(generations, gen);
+}
+
+// array for reordered @ptnum for the tree points by gen,
+// reverse order (from pts with greater gen back to root)
+int sorted_by_gen[] = reverse(argsort(generations));
+
+// populate widths[] from the tips to root. Iterate over
+// sorted_by_gen[] to pick points from newest to oldest
+int kids[];
+for(int i = 0; i < len(widths); i++)
+{
+  // retrieve children list for current point
+  kids = point(0, "kids", sorted_by_gen[i]);
+  
+  if(len(kids))
+  {
+    float accum = 0;
+    foreach(int kid; kids)
+    {
+      accum += pow(widths[kid], 2);
+    }
+    float new_width = sqrt(accum);
+    widths[sorted_by_gen[i]] = new_width;
+  }
+  else
+    widths[sorted_by_gen[i]] = ch("tips_width");
+}
+
+// finally update the geometry with the new values
+for(int pt = 0; pt < len(widths); pt++)
+{
+  setpointattrib(0, "width", pt, widths[pt]);
+}

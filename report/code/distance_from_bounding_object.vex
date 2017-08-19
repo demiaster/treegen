@@ -1,0 +1,3 @@
+// calculate distance from input1 (bounding object)
+// assign to attribute @dist
+f@dist = xyzdist(1, @P);

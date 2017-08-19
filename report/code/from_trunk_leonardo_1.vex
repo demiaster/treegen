@@ -1,0 +1,34 @@
+// Find parent for a given node ============================
+int _findParent(int pt)
+{
+  return point(0, "parent", pt);
+}
+
+// Find kids count for a given node ========================
+int _kidsCount(int pt)
+{
+  int kids[] = point(0, "kids", pt);
+  return len(kids);
+}
+
+// Find width for a given point ============================
+float _findWidth(int pt)
+{
+  return point(0, "width", pt);
+}
+
+// Calculate new width attribute value =====================
+float _calculateWidth(int pt)
+{
+  int parent = _findParent(pt);
+  int kids_count = _kidsCount(parent);
+  float parent_width = _findWidth(parent);
+  
+  if(kids_count == 0)
+  {
+    return 0;
+  }
+  float pow_width_parent = pow(parent_width, 2);
+  float mywidth = sqrt(pow_width_parent/kids_count);
+  return mywidth;
+}

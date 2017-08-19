@@ -1,0 +1,8 @@
+int numpt = npoints(1);
+float width;
+
+for(int i = 0; i < numpt; i++)
+{
+  width = point(1, "width", i);
+  setpointattrib(0, "width", i, width, "set");
+}

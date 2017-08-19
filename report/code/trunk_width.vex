@@ -1,0 +1,31 @@
+// fetching info about primitives
+int prim = detail(1, "iteration");
+int points[];
+int pt;
+float width;
+float fit;
+
+points = primpoints(0, prim);
+if(point(0, "width", points[0]) == -1)
+{
+  // main trunk case
+  for(int i = 0; i < len(points); i++)
+  {
+    pt = points[i];
+    fit = fit(i, 0, len(points), 0, 1);
+    width = chramp("scale", fit)* ch("multip");
+    setpointattrib(0, "width", pt, width, "set");
+  }
+}
+else
+{
+  // other branches case
+  float mult = point(0, "width", points[0]);
+  for(int i = 1; i < len(points); i++)
+  {
+    pt = points[i];
+    fit = fit(i, 0, len(points), 0, 1);
+    width = chramp("scale", fit) * mult;
+    setpointattrib(0, "width", pt, width, "set");
+  }
+}

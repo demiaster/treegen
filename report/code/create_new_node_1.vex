@@ -1,0 +1,21 @@
+// Find parent id ==========================================
+int _findId(int point)
+{
+    return point(0, "id", point);
+}
+
+// Initialize new point attributes =========================
+void _initializeAttributes(int son, father; vector dir;
+                           float len; int gen)
+{
+  setpointattrib(0, "attr_dead", son,-1,             "set");
+  setpointattrib(0, "Cd",        son,{0, 1, 0},      "set");
+  setpointattrib(0, "fertile",   son,0,              "set");
+  setpointattrib(0, "generation",son,gen,            "set");
+  setpointattrib(0, "growdir",   son,dir,            "set");
+  setpointattrib(0, "id",        son,-1,             "set");
+  setpointattrib(0, "len",       son,len,            "set");
+  setpointattrib(0, "n_dead",    son,0,              "set");
+  setpointattrib(0, "parent",    son,_findId(father),"set");
+  setpointattrib(0, "type",      son,"node",         "set");  
+}

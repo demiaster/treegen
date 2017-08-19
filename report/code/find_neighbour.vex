@@ -1,0 +1,21 @@
+// find closest tree node to given attr point and return it=
+int _findClosestNode(int attr)
+{
+  vector p = point(1, "P", attr);
+  return nearpoint(0, p);
+}
+
+// append attractor to nbrs list for the given tree node ===
+void _addNearAttractor(int node; int attr)
+{
+  int nbrs[] = point(0, "nbrs", node);
+  append(nbrs, attr);
+  setpointattrib(0, "nbrs", node, nbrs, "set");
+}
+
+// MAIN CODE ===============================================
+int node;
+int attr = detail(2, "iteration");
+
+node = _findClosestNode(attr);
+_addNearAttractor(node, attr);

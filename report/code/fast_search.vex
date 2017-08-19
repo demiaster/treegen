@@ -1,0 +1,39 @@
+// find closest tree node to given attr point and return it=
+int _findClosestNode(int attr)
+{
+  vector p = point(1, "P", attr);
+  return nearpoint(0, p);
+}
+
+// MAIN CODE ===============================================
+int influencing_count = npoints(1);
+int node_pt;
+int closest[];
+int ordered_attr[];
+int ordered_closest[];
+int nbrs[];
+
+for(int attr = 0; attr < influencing_count; attr++)
+{
+  node_pt = _findClosestNode(attr);
+  append(closest, node_pt);
+}
+
+ordered_attr = argsort(closest);
+ordered_closest = sort(closest);
+
+for(int i = 0; i < len(ordered_attr); i++)
+{
+  append(nbrs, ordered_attr[i]);
+  
+  // we have to update the whole list of nbrs at once or
+  // or the geometry will only see the last added point
+  // (cooking problem)
+  if((i == len(ordered_attr) - 1) ||
+     (ordered_closest[i] != ordered_closest[i + 1]))
+  {
+    setpointattrib(0, "nbrs", ordered_closest[i],
+                   nbrs, "set");
+    nbrs = {};
+  }
+}

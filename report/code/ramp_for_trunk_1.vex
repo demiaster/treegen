@@ -1,0 +1,47 @@
+// Find parent id ==========================================
+// Populate the @width using a stack =======================
+void _setWidth(int pt; float mult; int gen_max)
+{
+  int stack[], int kids[];
+  int curr_pt, generation;
+  float fit, width;
+  
+  //find my children
+  kids = point(0, "kids", pt);
+  
+  //push them in the stack
+  for(int i = 0; i < len(kids); i++)
+  {
+    //check if the kid already has a width set
+    if(point(0, "width", kids[i]) == -1.0)
+    {
+      push(stack, kids[i]);
+    }
+  } 
+  
+  while(len(stack) > 0)
+  {
+    //pop child
+    curr_pt = pop(stack);
+    
+    //set its width
+    generation = point(0, "generation", curr_pt);
+    fit = fit(generation, 0, gen_max, 0, 1);
+    width = chramp("scale", fit) * mult;
+    setpointattrib(0, "width", curr_pt, width, "set");
+    
+    //find its children
+    kids = point(0, "kids", curr_pt);
+    
+    //push the children
+    for(int i = 0; i < len(kids); i++)
+    {
+      //check if the kid already has a width set
+      if(point(0, "width", kids[i]) == -1.0)
+      {
+        push(stack, kids[i]);
+      }
+    }
+  }
+  return;
+}

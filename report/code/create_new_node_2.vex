@@ -1,0 +1,37 @@
+// Main Code ===============================================
+if(i@fertile == 1)
+{
+  int newpoint;
+  float len = point(0, "len", @ptnum);
+  int gen = point(0, "generation", @ptnum);
+  int max_gen = detail(1, "numiteration");
+  float new_len;
+  
+  // switch between user defined ramp for internodes length
+  // and constant length through all internodes
+  // create and place the new node, initialize its attribs
+  if(int(ch("enable_ramp_scaling")))
+  {
+    float fit = fit(i@generation, 0, max_gen, 0, 1);
+    new_len = chramp("D", fit) * ch("mult");
+    newpoint = addpoint(0, @P + vector(new_len * v@dir));
+    _initializeAttributes(newpoint, @ptnum, v@dir,
+                          new_len, ++gen);
+  }
+  else
+  {
+    if(gen == 0)
+    {
+      newpoint = addpoint(0, @P + vector(len * v@dir));
+      _initializeAttributes(newpoint, @ptnum, v@dir,
+                            len, ++gen);
+    }
+    else
+    {
+      newpoint = addpoint(0, @P + vector(len * 
+                                  ch("scaling") * v@dir));
+      _initializeAttributes(newpoint, @ptnum, v@dir,
+                            len * ch("scaling"), ++gen);
+    }
+  }
+}

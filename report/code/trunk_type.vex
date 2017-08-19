@@ -1,0 +1,13 @@
+// only choose some of the points in the "node" groups
+// to be marked as starting nodes for space colonization alg
+// the remaining ones are marked as "trunk": they will not
+// play any part in the space colonization algorithm
+if((inpointgroup(0, "nodes", @ptnum)) &&
+   !(@ptnum % int(ch("discretization"))))
+{
+  s@type = "node";
+}
+else
+{
+  s@type = "trunk";
+}

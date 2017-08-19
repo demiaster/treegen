@@ -1,0 +1,2 @@
+// save y coordinate for the point to the @height attribute
+f@height = @P.y;

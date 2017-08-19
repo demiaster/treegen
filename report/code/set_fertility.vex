@@ -1,0 +1,25 @@
+if(i@n_dead == 0)
+{
+  int kids[] = point(0, "kids", @ptnum);
+  if(int(point(0, "generation", @ptnum)) < 
+     ch("branching_start"))
+  {
+    if(len(kids) == 0)
+    {
+      i@fertile = 1;
+    }
+    else
+    {
+      i@fertile = 0;
+    }
+  }
+  else if(len(kids) < ch("kids"))
+  {
+    i@fertile = 1;
+  }
+  else
+  {
+    i@fertile = 0;
+    i@n_dead = 1;
+  }
+}
