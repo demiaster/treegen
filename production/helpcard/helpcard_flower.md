@@ -132,13 +132,7 @@ Gives more refined control over the stem mesh.
 *Reset All Changes*:
     #id: internalname
     
-    Reset changes applied with the scuplt tool.
-    
-*End*:
-    #id: internalname
-    
-    Press to quit sculpting mode and save changes.
-    
+    Reset changes applied with the scuplt tool.    
     
 ~~~
 ~~~
@@ -156,6 +150,13 @@ You can choose your custom geometry or modify the built in models.
     *Filaments*: for more like a lily final look.
     
     *Base*: choose it if you aim for a daisy/sunflower look.
+    
+*Flip Normals*:
+    #id: internalname
+    
+    When type changes from *Filaments* to *Base*,
+    it may happens that either the stamen object appear with reversed normals
+    causing issues. Use the toggle *Flip Normals* to to have outward pointing normals.
 
 ~~~
 ===Filaments===
@@ -173,12 +174,12 @@ that you can further manipulate with different bending tools.
 *Average Angle*:
     #id: internalname
     
-    Path to custom filament object.
+    Bends the filaments across their length.
     
 *Additional Angle (Random)*:
     #id: internalname
     
-    Path to custom filament object.
+    Adds bending on the tip of the stamen filaments.
     
 ====Length====
 
@@ -218,6 +219,11 @@ that you can further manipulate with different bending tools.
     #id: internalname
     
     Creates random variations along the filament.
+    
+*Divisions*:
+    #id: internalname
+    
+    Increase or decrease the polycount of the filaments mesh.
   
     
 ====Instancing====
@@ -233,7 +239,7 @@ that you can further manipulate with different bending tools.
     Distance between filaments.
     Higher numbers determine greater distance.
     
-*Bloom*:
+*Similar to a blooming effect for petals but applied to the stamen filaments*:
     #id: internalname
     
     Filaments are organized similarly to petals crown.
@@ -263,6 +269,11 @@ that you can further manipulate with a sculpt tool.
     
     Scale the stamen base uniformly along xyz axis.
     
+*Color*:
+    #id: internalname
+    
+    Applies color to the stamen base.    
+    
 ====Sculpt====
 Gives more refined control over the stamen base mesh.
 
@@ -277,10 +288,13 @@ Gives more refined control over the stamen base mesh.
     
     Reset changes applied with the scuplt tool.
     
-*End*:
+====Material====
+
+*Color*:
     #id: internalname
     
-    Press to quit sculpting mode and save changes.
+    Applies color to the stem.
+
     
 ~~~
 ~~~
@@ -299,7 +313,7 @@ Gives more refined control over the stamen base mesh.
 *Scale*:
     #id: internalname
     
-    Scale petal geometry along x, y, z at the time.
+    Scale petal geometry along x, z at the time.
     
 *Additional Length*:
     #id: internalname
@@ -316,6 +330,11 @@ Gives more refined control over the stamen base mesh.
     #id: internalname
     
     Changes distance between petals.
+    
+*Color*:
+    #id: internalname
+    
+    Applies color to petals.
 
 ~~~
 ===Rotation===
@@ -340,7 +359,7 @@ Gives more refined control over the stamen base mesh.
 ~~~
 ===Instancing===
 
-*Min Heigth*:
+*Min Height*:
     #id: internalname
     
     Initial heigth measured on stamen base for petals to be born.
